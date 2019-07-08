@@ -1,7 +1,6 @@
 using System;
 using DataAccess.Data;
 using DataAccess.DbEntities;
-using DataAccess.Data;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
