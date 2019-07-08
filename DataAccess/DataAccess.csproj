@@ -13,7 +13,11 @@
 
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.0.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1" />
+     <PackageReference Include="Microsoft.Net.Compilers" Version="2.4.0" />
 
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\HumanitarianAssistance.Common\HumanitarianAssistance.Common.csproj" />
   </ItemGroup>
 

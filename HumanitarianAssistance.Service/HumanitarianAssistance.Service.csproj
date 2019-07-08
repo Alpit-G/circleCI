@@ -7,12 +7,22 @@
   <ItemGroup>
     <PackageReference Include="DotNetCore.NPOI" Version="1.0.2" />
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="Google.Apis.Drive.v3" Version="1.36.1.1407" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.0.1" />
-    <PackageReference Include="Select.HtmlToPdf.NetCore" Version="18.4.0" />
+
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="2.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Razor" Version="2.1.2" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="2.8.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.8.0" />
+     <PackageReference Include="Microsoft.Net.Compilers" Version="2.4.0" />
+     <PackageReference Include="Microsoft.AspNetCore.Mvc.Analyzers" Version="2.2.0" />
+
+
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     <ProjectReference Include="..\HumanitarianAssistance.Common\HumanitarianAssistance.Common.csproj" />
     <ProjectReference Include="..\HumanitarianAssistance.Entities\HumanitarianAssistance.ViewModels.csproj" />

@@ -237,7 +237,7 @@ namespace DataAccess
         #endregion
 
 
-        private IGenericRepository<Errorlog> _errorlogRepository { get; set; }
+        private IGenericRepository<Errorlog> _errorlogRepository;
         private IGenericRepository<ProjectActivityProvinceDetail> _projectActivityProvinceDetailRepository;
 
         private IGenericRepository<ProjectOpportunityControl> _projectOpportunityControlRepository;
