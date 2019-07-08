@@ -9,6 +9,9 @@ jobs:
           name: dotnet --info
           command: dotnet --info
       - run: 
+          name: dotnet restore
+          command: dotnet restore
+      - run: 
           name: dotnet clean
           command: dotnet clean
       - run: 
