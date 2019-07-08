@@ -15,8 +15,8 @@ jobs:
           name: dotnet clean
           command: dotnet clean
       - run: 
-          name: dotnet build
-          command: dotnet build
+          name: dotnet msbuild
+          command: dotnet msbuild
       - run: 
           name: dotnet run
           command: dotnet run
