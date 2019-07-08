@@ -1,7 +1,7 @@
 using DataAccess.DbEntities;
 
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using HumanitarianAssistance.Service.interfaces;
 using HumanitarianAssistance.WebApi.Extensions;
 using Microsoft.AspNetCore.Identity;

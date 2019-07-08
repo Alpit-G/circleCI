@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using HumanitarianAssistance.ViewModels;
 using HumanitarianAssistance.Common.Enums;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using System.Data;
 using NpgsqlTypes;
 using Npgsql;

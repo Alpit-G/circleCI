@@ -1,5 +1,5 @@
 ﻿using DataAccess.DbEntities;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Linq;

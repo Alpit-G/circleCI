@@ -8,7 +8,7 @@ using DataAccess;
 using DataAccess.DbEntities;
 using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using HumanitarianAssistance.Service.APIResponses;
 using HumanitarianAssistance.Service.interfaces;
 using HumanitarianAssistance.ViewModels.Models;

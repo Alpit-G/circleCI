@@ -3,7 +3,7 @@ using DataAccess.Data;
 using DataAccess.DbEntities;
 using HumanitarianAssistance.Common.ApplicationSettings;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using HumanitarianAssistance.Service;
 using HumanitarianAssistance.Service.Classes;
 using HumanitarianAssistance.Service.Classes.AccountingNew;

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HumanitarianAssistance.Entities
+namespace DataAccess.Data
 {
     public class ApplicationDbContext : IdentityDbContext<AppUser>
     {

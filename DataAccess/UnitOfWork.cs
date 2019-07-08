@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using DataAccess.DbEntities;
 using System.Threading.Tasks;
 using DataAccess.DbEntities.Store;

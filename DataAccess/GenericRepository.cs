@@ -1,4 +1,4 @@
-﻿using HumanitarianAssistance.Entities;
+﻿using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

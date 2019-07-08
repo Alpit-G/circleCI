@@ -4,7 +4,7 @@ using DataAccess.DbEntities.ErrorLog;
 using DataAccess.DbEntities.Marketing;
 using DataAccess.DbEntities.Project;
 using DataAccess.DbEntities.Store;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;

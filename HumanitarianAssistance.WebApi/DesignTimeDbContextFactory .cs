@@ -1,4 +1,4 @@
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;

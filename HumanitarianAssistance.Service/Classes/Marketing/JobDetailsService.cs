@@ -3,7 +3,7 @@ using DataAccess;
 using DataAccess.DbEntities;
 using DataAccess.DbEntities.Marketing;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 using HumanitarianAssistance.Service.APIResponses;
 using HumanitarianAssistance.Service.interfaces.Marketing;
 using HumanitarianAssistance.ViewModels.Models.Marketing;

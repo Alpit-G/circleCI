@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using HumanitarianAssistance.Entities;
+using DataAccess.Data;
 
 namespace HumanitarianAssistance.Service.Classes
 {
