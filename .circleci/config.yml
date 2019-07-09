@@ -29,5 +29,5 @@ jobs:
           name: dotnet build
           command: dotnet build HumanitarianAssistance.WebApi/HumanitarianAssistance.WebApi.csproj 
       - run: 
-          name: dotnet run
-          command: dotnet run HumanitarianAssistance.WebApi/HumanitarianAssistance.WebApi.csproj 
+          name: dotnet publish
+          command: dotnet publish HumanitarianAssistance.WebApi/HumanitarianAssistance.WebApi.csproj -c Release -o release
