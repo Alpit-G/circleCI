@@ -5,6 +5,25 @@ jobs:
       - image: microsoft/dotnet:2.2-sdk
     steps:
       - checkout
+
+      # - run: 
+      #     name: install node
+      #     command: "curl -sL https://deb.nodesource.com/setup_10.x | bash -  && apt update  && apt install -y nodejs"
+      # - run: npm cache clean -f
+      # - run: npm install -g n
+      # - run: n stable
+      # - run: node -v
+      # - run: npm -v
+      # - run: npm install -g @angular/cli
+      
+      - run: 
+          name: install node
+          command: "curl -sL https://deb.nodesource.com/setup_10.x | bash -  && apt update  && apt install -y nodejs"
+      - run: sudo npm cache clean -f
+      - run: 
+          name: sudo npm install global
+          command: sudo npm install -g npm@latest
+
       - run: 
           name: dotnet --info
           command: dotnet --info
