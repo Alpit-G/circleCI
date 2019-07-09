@@ -1,0 +1,286 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Service\\HumanitarianAssistance.Service.csproj": {}
+  },
+  "projects": {
+    "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj",
+        "projectName": "HumanitarianAssistance.Common",
+        "projectPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj",
+        "packagesPath": "C:\\Users\\alpitg\\.nuget\\packages\\",
+        "outputPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alpitg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.DataAccess\\HumanitarianAssistance.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.DataAccess\\HumanitarianAssistance.DataAccess.csproj",
+        "projectName": "HumanitarianAssistance.DataAccess",
+        "projectPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.DataAccess\\HumanitarianAssistance.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\alpitg\\.nuget\\packages\\",
+        "outputPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alpitg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj": {
+                "projectPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools.DotNet": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL.Design": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Service\\HumanitarianAssistance.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Service\\HumanitarianAssistance.Service.csproj",
+        "projectName": "HumanitarianAssistance.Service",
+        "projectPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Service\\HumanitarianAssistance.Service.csproj",
+        "packagesPath": "C:\\Users\\alpitg\\.nuget\\packages\\",
+        "outputPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alpitg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj": {
+                "projectPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj"
+              },
+              "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.DataAccess\\HumanitarianAssistance.DataAccess.csproj": {
+                "projectPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.DataAccess\\HumanitarianAssistance.DataAccess.csproj"
+              },
+              "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.ViewModels\\HumanitarianAssistance.ViewModels.csproj": {
+                "projectPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.ViewModels\\HumanitarianAssistance.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "DotNetCore.NPOI": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
+            "Google.Apis.Drive.v3": {
+              "target": "Package",
+              "version": "[1.36.1.1407, )"
+            },
+            "Google.Cloud.Storage.V1": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Select.HtmlToPdf.NetCore": {
+              "target": "Package",
+              "version": "[18.4.0, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.ViewModels\\HumanitarianAssistance.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.ViewModels\\HumanitarianAssistance.ViewModels.csproj",
+        "projectName": "HumanitarianAssistance.ViewModels",
+        "projectPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.ViewModels\\HumanitarianAssistance.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\alpitg\\.nuget\\packages\\",
+        "outputPath": "D:\\Alpit_G\\Projects\\Humanitarian\\github-alpit-g\\circleCI\\HumanitarianAssistance.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alpitg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

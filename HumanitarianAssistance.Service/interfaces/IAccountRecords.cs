@@ -1,0 +1,15 @@
+﻿using HumanitarianAssistance.Service.APIResponses;
+using HumanitarianAssistance.ViewModels.Models.AccountingNew;
+using System;
+using System.Text;
+using System.Threading.Tasks;
+namespace HumanitarianAssistance.Service.interfaces
+{
+   public interface IAccountRecords
+    {
+
+        //APIResponse GetBalanceSheet();
+        Task<APIResponse> GetVoucherSummaryList(VoucherSummaryFilterModel voucherSummaryFilter);
+        Task<APIResponse> GetVoucherTransactionList(TransactionFilterModel model);
+    }
+}

@@ -1,0 +1,8 @@
+D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\bin\Debug\netcoreapp2.2\HumanitarianAssistance.ViewModels.deps.json
+D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\bin\Debug\netcoreapp2.2\HumanitarianAssistance.ViewModels.dll
+D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\bin\Debug\netcoreapp2.2\HumanitarianAssistance.ViewModels.pdb
+D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Debug\netcoreapp2.2\HumanitarianAssistance.ViewModels.csproj.CoreCompileInputs.cache
+D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Debug\netcoreapp2.2\HumanitarianAssistance.ViewModels.AssemblyInfoInputs.cache
+D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Debug\netcoreapp2.2\HumanitarianAssistance.ViewModels.AssemblyInfo.cs
+D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Debug\netcoreapp2.2\HumanitarianAssistance.ViewModels.dll
+D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Debug\netcoreapp2.2\HumanitarianAssistance.ViewModels.pdb

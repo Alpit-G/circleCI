@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanitarianAssistance.WebApi", "HumanitarianAssistance.WebApi\HumanitarianAssistance.WebApi.csproj", "{863A18AE-7897-4126-8478-CEAFE924585C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HumanitarianAssistance.WebApi", "HumanitarianAssistance.WebApi\HumanitarianAssistance.WebApi.csproj", "{863A18AE-7897-4126-8478-CEAFE924585C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanitarianAssistance.Common", "HumanitarianAssistance.Common\HumanitarianAssistance.Common.csproj", "{0FF4EBC7-75ED-4EA9-9B64-DE759BC92EBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanitarianAssistance.ViewModels", "HumanitarianAssistance.ViewModels\HumanitarianAssistance.ViewModels.csproj", "{307BCA14-332A-4CFA-8F06-24CBD7282B4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanitarianAssistance.DataAccess", "HumanitarianAssistance.DataAccess\HumanitarianAssistance.DataAccess.csproj", "{64B2D2AB-A59C-4AA8-8968-1B13F6CBDE7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanitarianAssistance.Service", "HumanitarianAssistance.Service\HumanitarianAssistance.Service.csproj", "{2AAEFAAD-751E-47C7-95E3-B96523D653F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{863A18AE-7897-4126-8478-CEAFE924585C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{863A18AE-7897-4126-8478-CEAFE924585C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{863A18AE-7897-4126-8478-CEAFE924585C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF4EBC7-75ED-4EA9-9B64-DE759BC92EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF4EBC7-75ED-4EA9-9B64-DE759BC92EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF4EBC7-75ED-4EA9-9B64-DE759BC92EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF4EBC7-75ED-4EA9-9B64-DE759BC92EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307BCA14-332A-4CFA-8F06-24CBD7282B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307BCA14-332A-4CFA-8F06-24CBD7282B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307BCA14-332A-4CFA-8F06-24CBD7282B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307BCA14-332A-4CFA-8F06-24CBD7282B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B2D2AB-A59C-4AA8-8968-1B13F6CBDE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B2D2AB-A59C-4AA8-8968-1B13F6CBDE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B2D2AB-A59C-4AA8-8968-1B13F6CBDE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B2D2AB-A59C-4AA8-8968-1B13F6CBDE7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AAEFAAD-751E-47C7-95E3-B96523D653F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AAEFAAD-751E-47C7-95E3-B96523D653F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AAEFAAD-751E-47C7-95E3-B96523D653F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AAEFAAD-751E-47C7-95E3-B96523D653F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
