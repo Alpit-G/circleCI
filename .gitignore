@@ -3,16 +3,14 @@
 ################################################################################
 
 /.vs/HumanitarianAssistance/v15
-HumanitarianAssistance.Common/obj/Debug/netcoreapp2.2/HumanitarianAssistance.Common.csproj.CoreCompileInputs.cache
-HumanitarianAssistance.Service/obj/Debug/netcoreapp2.2/HumanitarianAssistance.Service.csproj.CoreCompileInputs.cache
-HumanitarianAssistance.Common/obj/HumanitarianAssistance.Common.csproj.nuget.g.props
-HumanitarianAssistance.Common/obj/Debug/netcoreapp2.2/HumanitarianAssistance.Common.csprojAssemblyReference.cache
-HumanitarianAssistance.Common/obj/Debug/netcoreapp2.2/HumanitarianAssistance.Common.AssemblyInfo.cs
-HumanitarianAssistance.ViewModels/obj/Debug/netcoreapp2.2/HumanitarianAssistance.ViewModels.csproj.CoreCompileInputs.cache
-HumanitarianAssistance.ViewModels/obj/Debug/netcoreapp2.2/HumanitarianAssistance.ViewModels.AssemblyInfo.cs
-HumanitarianAssistance.Service/obj/Debug/netcoreapp2.2/HumanitarianAssistance.Service.AssemblyInfo.cs
-HumanitarianAssistance.DataAccess/obj/Debug/netcoreapp2.2/HumanitarianAssistance.DataAccess.csprojAssemblyReference.cache
-HumanitarianAssistance.DataAccess/obj/Debug/netcoreapp2.2/HumanitarianAssistance.DataAccess.csproj.CoreCompileInputs.cache
-HumanitarianAssistance.DataAccess/obj/Debug/netcoreapp2.2/HumanitarianAssistance.DataAccess.AssemblyInfo.cs
-/HumanitarianAssistance.Common/obj
+
 /HumanitarianAssistance.Common/bin
+/HumanitarianAssistance.Common/obj
+/HumanitarianAssistance.DataAccess/bin
+/HumanitarianAssistance.DataAccess/obj
+/HumanitarianAssistance.Service/bin
+/HumanitarianAssistance.Service/obj
+/HumanitarianAssistance.ViewModels/bin
+/HumanitarianAssistance.ViewModels/obj
+/HumanitarianAssistance.WebApi/bin
+/HumanitarianAssistance.WebApi/obj
