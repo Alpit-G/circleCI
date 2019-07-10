@@ -7,20 +7,20 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace HumanitarianAssistance.DataAccess.Migrations
+namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190710064022_InitializeMigration")]
-    partial class InitializeMigration
+    [Migration("20190506105844_addFieldTargetAndAchievedProjectActivitydetail06052019")]
+    partial class addFieldTargetAndAchievedProjectActivitydetail06052019
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountHeadType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountHeadType", b =>
                 {
                     b.Property<int>("AccountHeadTypeId")
                         .ValueGeneratedOnAdd()
@@ -49,114 +49,15 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AccountHeadType");
 
                     b.HasData(
-                        new
-                        {
-                            AccountHeadTypeId = 1,
-                            AccountHeadTypeName = "Assets",
-                            IsCreditBalancetype = false,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            AccountHeadTypeId = 2,
-                            AccountHeadTypeName = "Liabilities",
-                            IsCreditBalancetype = true,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            AccountHeadTypeId = 3,
-                            AccountHeadTypeName = "Donors Equity",
-                            IsCreditBalancetype = true,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            AccountHeadTypeId = 4,
-                            AccountHeadTypeName = "Income",
-                            IsCreditBalancetype = true,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            AccountHeadTypeId = 5,
-                            AccountHeadTypeName = "Expense",
-                            IsCreditBalancetype = false,
-                            IsDeleted = false
-                        });
+                        new { AccountHeadTypeId = 1, AccountHeadTypeName = "Assets", IsCreditBalancetype = false, IsDeleted = false },
+                        new { AccountHeadTypeId = 2, AccountHeadTypeName = "Liabilities", IsCreditBalancetype = true, IsDeleted = false },
+                        new { AccountHeadTypeId = 3, AccountHeadTypeName = "Donors Equity", IsCreditBalancetype = true, IsDeleted = false },
+                        new { AccountHeadTypeId = 4, AccountHeadTypeName = "Income", IsCreditBalancetype = true, IsDeleted = false },
+                        new { AccountHeadTypeId = 5, AccountHeadTypeName = "Expense", IsCreditBalancetype = false, IsDeleted = false }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountLevel", b =>
-                {
-                    b.Property<int>("AccountLevelId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("serial");
-
-                    b.Property<string>("AccountLevelName")
-                        .HasMaxLength(50);
-
-                    b.HasKey("AccountLevelId");
-
-                    b.ToTable("AccountLevel");
-
-                    b.HasData(
-                        new
-                        {
-                            AccountLevelId = 1,
-                            AccountLevelName = "Main Level Accounts"
-                        },
-                        new
-                        {
-                            AccountLevelId = 2,
-                            AccountLevelName = "Control Level Accounts"
-                        },
-                        new
-                        {
-                            AccountLevelId = 3,
-                            AccountLevelName = "Sub Level Accounts"
-                        },
-                        new
-                        {
-                            AccountLevelId = 4,
-                            AccountLevelName = "Input Level Accounts"
-                        });
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountType", b =>
-                {
-                    b.Property<int>("AccountTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("serial");
-
-                    b.Property<int?>("AccountCategory");
-
-                    b.Property<int>("AccountHeadTypeId");
-
-                    b.Property<string>("AccountTypeName")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.HasKey("AccountTypeId");
-
-                    b.HasIndex("AccountHeadTypeId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("AccountType");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.AccountFilterType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountingNew.AccountFilterType", b =>
                 {
                     b.Property<int>("AccountFilterTypeId")
                         .ValueGeneratedOnAdd()
@@ -183,21 +84,12 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AccountFilterType");
 
                     b.HasData(
-                        new
-                        {
-                            AccountFilterTypeId = 1,
-                            AccountFilterTypeName = "Inventory Account",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            AccountFilterTypeId = 2,
-                            AccountFilterTypeName = "Salary Account",
-                            IsDeleted = false
-                        });
+                        new { AccountFilterTypeId = 1, AccountFilterTypeName = "Inventory Account", IsDeleted = false },
+                        new { AccountFilterTypeId = 2, AccountFilterTypeName = "Salary Account", IsDeleted = false }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", b =>
                 {
                     b.Property<long>("ChartOfAccountNewId")
                         .ValueGeneratedOnAdd()
@@ -245,7 +137,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ChartOfAccountNew");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ExchangeRateVerification", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountingNew.ExchangeRateVerification", b =>
                 {
                     b.Property<long>("ExRateVerificationId")
                         .ValueGeneratedOnAdd();
@@ -273,7 +165,62 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ExchangeRateVerifications");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ActivityMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountLevel", b =>
+                {
+                    b.Property<int>("AccountLevelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("serial");
+
+                    b.Property<string>("AccountLevelName")
+                        .HasMaxLength(50);
+
+                    b.HasKey("AccountLevelId");
+
+                    b.ToTable("AccountLevel");
+
+                    b.HasData(
+                        new { AccountLevelId = 1, AccountLevelName = "Main Level Accounts" },
+                        new { AccountLevelId = 2, AccountLevelName = "Control Level Accounts" },
+                        new { AccountLevelId = 3, AccountLevelName = "Sub Level Accounts" },
+                        new { AccountLevelId = 4, AccountLevelName = "Input Level Accounts" }
+                    );
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.AccountType", b =>
+                {
+                    b.Property<int>("AccountTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("serial");
+
+                    b.Property<int?>("AccountCategory");
+
+                    b.Property<int>("AccountHeadTypeId");
+
+                    b.Property<string>("AccountTypeName")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.HasKey("AccountTypeId");
+
+                    b.HasIndex("AccountHeadTypeId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("AccountType");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.ActivityMaster", b =>
                 {
                     b.Property<int>("ActivityId")
                         .ValueGeneratedOnAdd()
@@ -312,7 +259,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ActivityMaster");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Advances", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Advances", b =>
                 {
                     b.Property<int>("AdvancesId")
                         .ValueGeneratedOnAdd()
@@ -379,7 +326,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Advances");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AgreeDisagreePermission", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AgreeDisagreePermission", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -414,7 +361,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AgreeDisagreePermission");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AnalyticalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AnalyticalDetail", b =>
                 {
                     b.Property<long>("AnalyticalId")
                         .ValueGeneratedOnAdd();
@@ -488,7 +435,191 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AnalyticalDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AppUser", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ApplicationPages", b =>
+                {
+                    b.Property<int>("PageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("serial");
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<int>("ModuleId");
+
+                    b.Property<string>("ModuleName");
+
+                    b.Property<string>("PageName");
+
+                    b.HasKey("PageId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("ApplicationPages");
+
+                    b.HasData(
+                        new { PageId = 1, IsDeleted = false, ModuleId = 1, ModuleName = "Users", PageName = "Users" },
+                        new { PageId = 2, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "ChartOfAccount" },
+                        new { PageId = 3, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "JournalCodes" },
+                        new { PageId = 4, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "CurrencyCodes" },
+                        new { PageId = 5, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "OfficeCodes" },
+                        new { PageId = 6, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "FinancialYear" },
+                        new { PageId = 7, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "PensionRate" },
+                        new { PageId = 8, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "EmployeeContract" },
+                        new { PageId = 9, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "AppraisalQuestions" },
+                        new { PageId = 10, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "TechnicalQuestions" },
+                        new { PageId = 11, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "EmailSettings" },
+                        new { PageId = 12, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "ExchangeRate" },
+                        new { PageId = 13, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "LeaveReason" },
+                        new { PageId = 14, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "Profession" },
+                        new { PageId = 15, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "Department" },
+                        new { PageId = 16, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "Qualification" },
+                        new { PageId = 17, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "Designation" },
+                        new { PageId = 18, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "JobGrade" },
+                        new { PageId = 19, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "SalaryHead" },
+                        new { PageId = 20, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "SalaryTaxReportContent" },
+                        new { PageId = 21, IsDeleted = false, ModuleId = 2, ModuleName = "Code", PageName = "SetPayrollAccount" },
+                        new { PageId = 22, IsDeleted = true, ModuleId = 3, ModuleName = "Accounting", PageName = "Vouchers" },
+                        new { PageId = 23, IsDeleted = false, ModuleId = 3, ModuleName = "Accounting", PageName = "Journal" },
+                        new { PageId = 24, IsDeleted = false, ModuleId = 3, ModuleName = "Accounting", PageName = "LedgerStatement" },
+                        new { PageId = 25, IsDeleted = false, ModuleId = 3, ModuleName = "Accounting", PageName = "BudgetBalance" },
+                        new { PageId = 26, IsDeleted = false, ModuleId = 3, ModuleName = "Accounting", PageName = "TrialBalance" },
+                        new { PageId = 27, IsDeleted = false, ModuleId = 3, ModuleName = "Accounting", PageName = "FinancialReport" },
+                        new { PageId = 28, IsDeleted = true, ModuleId = 3, ModuleName = "Accounting", PageName = "CategoryPopulator" },
+                        new { PageId = 29, IsDeleted = false, ModuleId = 3, ModuleName = "Accounting", PageName = "ExchangeGainLoss" },
+                        new { PageId = 30, IsDeleted = false, ModuleId = 3, ModuleName = "Accounting", PageName = "GainLossTransaction" },
+                        new { PageId = 31, IsDeleted = false, ModuleId = 3, ModuleName = "Accounting", PageName = "PensionPayments" },
+                        new { PageId = 32, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "Employees" },
+                        new { PageId = 33, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "PayrollDailyHours" },
+                        new { PageId = 34, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "Holidays" },
+                        new { PageId = 35, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "Attendance" },
+                        new { PageId = 36, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "ApproveLeave" },
+                        new { PageId = 37, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "MonthlyPayrollRegister" },
+                        new { PageId = 38, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "Jobs" },
+                        new { PageId = 39, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "Interview" },
+                        new { PageId = 40, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "EmployeeAppraisal" },
+                        new { PageId = 41, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "Advances" },
+                        new { PageId = 42, IsDeleted = false, ModuleId = 4, ModuleName = "HR", PageName = "Summary" },
+                        new { PageId = 43, IsDeleted = false, ModuleId = 5, ModuleName = "Store", PageName = "Categories" },
+                        new { PageId = 44, IsDeleted = false, ModuleId = 5, ModuleName = "Store", PageName = "StoreSourceCodes" },
+                        new { PageId = 45, IsDeleted = false, ModuleId = 5, ModuleName = "Store", PageName = "PaymentTypes" },
+                        new { PageId = 46, IsDeleted = false, ModuleId = 5, ModuleName = "Store", PageName = "Store" },
+                        new { PageId = 47, IsDeleted = false, ModuleId = 5, ModuleName = "Store", PageName = "ProcurementSummary" },
+                        new { PageId = 48, IsDeleted = false, ModuleId = 5, ModuleName = "Store", PageName = "DepreciationReport" },
+                        new { PageId = 49, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "TimeCategory" },
+                        new { PageId = 50, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Quality" },
+                        new { PageId = 51, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Phase" },
+                        new { PageId = 52, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Nature" },
+                        new { PageId = 53, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Medium" },
+                        new { PageId = 54, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "MediaCategory" },
+                        new { PageId = 55, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "ActivityType" },
+                        new { PageId = 56, IsDeleted = false, ModuleId = 7, ModuleName = "AccountingNew", PageName = "Assets" },
+                        new { PageId = 57, IsDeleted = false, ModuleId = 7, ModuleName = "AccountingNew", PageName = "Liabilities" },
+                        new { PageId = 58, IsDeleted = false, ModuleId = 7, ModuleName = "AccountingNew", PageName = "Income" },
+                        new { PageId = 59, IsDeleted = false, ModuleId = 7, ModuleName = "AccountingNew", PageName = "Expense" },
+                        new { PageId = 60, IsDeleted = false, ModuleId = 7, ModuleName = "AccountingNew", PageName = "BalanceSheet" },
+                        new { PageId = 61, IsDeleted = false, ModuleId = 7, ModuleName = "AccountingNew", PageName = "IncomeExpenseReport" },
+                        new { PageId = 62, IsDeleted = false, ModuleId = 7, ModuleName = "AccountingNew", PageName = "Vouchers" },
+                        new { PageId = 63, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Clients" },
+                        new { PageId = 64, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "UnitRates" },
+                        new { PageId = 65, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Jobs" },
+                        new { PageId = 66, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Contracts" },
+                        new { PageId = 67, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "MyProjects" },
+                        new { PageId = 68, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "Donors" },
+                        new { PageId = 69, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "ProjectDetails" },
+                        new { PageId = 70, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "Proposal" },
+                        new { PageId = 71, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "CriteriaEvaluation" },
+                        new { PageId = 72, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Producer" },
+                        new { PageId = 73, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Policy" },
+                        new { PageId = 74, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "ProjectJobs" },
+                        new { PageId = 75, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "ProjectActivities" },
+                        new { PageId = 76, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Channel" },
+                        new { PageId = 77, IsDeleted = false, ModuleId = 6, ModuleName = "Marketing", PageName = "Scheduler" },
+                        new { PageId = 78, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "ProjectDashboard" },
+                        new { PageId = 79, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "ProjectCashFlow" },
+                        new { PageId = 80, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "ProjectBudgetLine" },
+                        new { PageId = 81, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "BroadCastPolicy" },
+                        new { PageId = 82, IsDeleted = false, ModuleId = 8, ModuleName = "Projects", PageName = "ProposalReport" }
+                    );
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.AppraisalGeneralQuestions", b =>
+                {
+                    b.Property<int>("AppraisalGeneralQuestionsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("serial");
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("DariQuestion");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<int?>("OfficeId");
+
+                    b.Property<string>("Question");
+
+                    b.Property<int?>("SequenceNo");
+
+                    b.HasKey("AppraisalGeneralQuestionsId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("AppraisalGeneralQuestions");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.ApproveRejectPermission", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("serial");
+
+                    b.Property<bool>("Approve");
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<int>("PageId");
+
+                    b.Property<bool>("Reject");
+
+                    b.Property<string>("RoleId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.HasIndex("PageId");
+
+                    b.ToTable("ApproveRejectPermission");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.AppUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -544,812 +675,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ApplicationPages", b =>
-                {
-                    b.Property<int>("PageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("serial");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<int>("ModuleId");
-
-                    b.Property<string>("ModuleName");
-
-                    b.Property<string>("PageName");
-
-                    b.HasKey("PageId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("ApplicationPages");
-
-                    b.HasData(
-                        new
-                        {
-                            PageId = 1,
-                            IsDeleted = false,
-                            ModuleId = 1,
-                            ModuleName = "Users",
-                            PageName = "Users"
-                        },
-                        new
-                        {
-                            PageId = 2,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "ChartOfAccount"
-                        },
-                        new
-                        {
-                            PageId = 3,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "JournalCodes"
-                        },
-                        new
-                        {
-                            PageId = 4,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "CurrencyCodes"
-                        },
-                        new
-                        {
-                            PageId = 5,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "OfficeCodes"
-                        },
-                        new
-                        {
-                            PageId = 6,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "FinancialYear"
-                        },
-                        new
-                        {
-                            PageId = 7,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "PensionRate"
-                        },
-                        new
-                        {
-                            PageId = 8,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "EmployeeContract"
-                        },
-                        new
-                        {
-                            PageId = 9,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "AppraisalQuestions"
-                        },
-                        new
-                        {
-                            PageId = 10,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "TechnicalQuestions"
-                        },
-                        new
-                        {
-                            PageId = 11,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "EmailSettings"
-                        },
-                        new
-                        {
-                            PageId = 12,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "ExchangeRate"
-                        },
-                        new
-                        {
-                            PageId = 13,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "LeaveReason"
-                        },
-                        new
-                        {
-                            PageId = 14,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "Profession"
-                        },
-                        new
-                        {
-                            PageId = 15,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "Department"
-                        },
-                        new
-                        {
-                            PageId = 16,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "Qualification"
-                        },
-                        new
-                        {
-                            PageId = 17,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "Designation"
-                        },
-                        new
-                        {
-                            PageId = 18,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "JobGrade"
-                        },
-                        new
-                        {
-                            PageId = 19,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "SalaryHead"
-                        },
-                        new
-                        {
-                            PageId = 20,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "SalaryTaxReportContent"
-                        },
-                        new
-                        {
-                            PageId = 21,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "SetPayrollAccount"
-                        },
-                        new
-                        {
-                            PageId = 22,
-                            IsDeleted = true,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "Vouchers"
-                        },
-                        new
-                        {
-                            PageId = 23,
-                            IsDeleted = false,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "Journal"
-                        },
-                        new
-                        {
-                            PageId = 24,
-                            IsDeleted = false,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "LedgerStatement"
-                        },
-                        new
-                        {
-                            PageId = 25,
-                            IsDeleted = false,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "BudgetBalance"
-                        },
-                        new
-                        {
-                            PageId = 26,
-                            IsDeleted = false,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "TrialBalance"
-                        },
-                        new
-                        {
-                            PageId = 27,
-                            IsDeleted = false,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "FinancialReport"
-                        },
-                        new
-                        {
-                            PageId = 28,
-                            IsDeleted = true,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "CategoryPopulator"
-                        },
-                        new
-                        {
-                            PageId = 29,
-                            IsDeleted = false,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "ExchangeGainLoss"
-                        },
-                        new
-                        {
-                            PageId = 30,
-                            IsDeleted = false,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "GainLossTransaction"
-                        },
-                        new
-                        {
-                            PageId = 31,
-                            IsDeleted = false,
-                            ModuleId = 3,
-                            ModuleName = "Accounting",
-                            PageName = "PensionPayments"
-                        },
-                        new
-                        {
-                            PageId = 32,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "Employees"
-                        },
-                        new
-                        {
-                            PageId = 33,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "PayrollDailyHours"
-                        },
-                        new
-                        {
-                            PageId = 34,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "Holidays"
-                        },
-                        new
-                        {
-                            PageId = 35,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "Attendance"
-                        },
-                        new
-                        {
-                            PageId = 36,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "ApproveLeave"
-                        },
-                        new
-                        {
-                            PageId = 37,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "MonthlyPayrollRegister"
-                        },
-                        new
-                        {
-                            PageId = 38,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "Jobs"
-                        },
-                        new
-                        {
-                            PageId = 39,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "Interview"
-                        },
-                        new
-                        {
-                            PageId = 40,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "EmployeeAppraisal"
-                        },
-                        new
-                        {
-                            PageId = 41,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "Advances"
-                        },
-                        new
-                        {
-                            PageId = 42,
-                            IsDeleted = false,
-                            ModuleId = 4,
-                            ModuleName = "HR",
-                            PageName = "Summary"
-                        },
-                        new
-                        {
-                            PageId = 43,
-                            IsDeleted = false,
-                            ModuleId = 5,
-                            ModuleName = "Store",
-                            PageName = "Categories"
-                        },
-                        new
-                        {
-                            PageId = 44,
-                            IsDeleted = false,
-                            ModuleId = 5,
-                            ModuleName = "Store",
-                            PageName = "StoreSourceCodes"
-                        },
-                        new
-                        {
-                            PageId = 45,
-                            IsDeleted = false,
-                            ModuleId = 5,
-                            ModuleName = "Store",
-                            PageName = "PaymentTypes"
-                        },
-                        new
-                        {
-                            PageId = 46,
-                            IsDeleted = false,
-                            ModuleId = 5,
-                            ModuleName = "Store",
-                            PageName = "Store"
-                        },
-                        new
-                        {
-                            PageId = 47,
-                            IsDeleted = false,
-                            ModuleId = 5,
-                            ModuleName = "Store",
-                            PageName = "ProcurementSummary"
-                        },
-                        new
-                        {
-                            PageId = 48,
-                            IsDeleted = false,
-                            ModuleId = 5,
-                            ModuleName = "Store",
-                            PageName = "DepreciationReport"
-                        },
-                        new
-                        {
-                            PageId = 49,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "TimeCategory"
-                        },
-                        new
-                        {
-                            PageId = 50,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Quality"
-                        },
-                        new
-                        {
-                            PageId = 51,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Phase"
-                        },
-                        new
-                        {
-                            PageId = 52,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Nature"
-                        },
-                        new
-                        {
-                            PageId = 53,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Medium"
-                        },
-                        new
-                        {
-                            PageId = 54,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "MediaCategory"
-                        },
-                        new
-                        {
-                            PageId = 55,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "ActivityType"
-                        },
-                        new
-                        {
-                            PageId = 56,
-                            IsDeleted = false,
-                            ModuleId = 7,
-                            ModuleName = "AccountingNew",
-                            PageName = "Assets"
-                        },
-                        new
-                        {
-                            PageId = 57,
-                            IsDeleted = false,
-                            ModuleId = 7,
-                            ModuleName = "AccountingNew",
-                            PageName = "Liabilities"
-                        },
-                        new
-                        {
-                            PageId = 58,
-                            IsDeleted = false,
-                            ModuleId = 7,
-                            ModuleName = "AccountingNew",
-                            PageName = "Income"
-                        },
-                        new
-                        {
-                            PageId = 59,
-                            IsDeleted = false,
-                            ModuleId = 7,
-                            ModuleName = "AccountingNew",
-                            PageName = "Expense"
-                        },
-                        new
-                        {
-                            PageId = 60,
-                            IsDeleted = false,
-                            ModuleId = 7,
-                            ModuleName = "AccountingNew",
-                            PageName = "BalanceSheet"
-                        },
-                        new
-                        {
-                            PageId = 61,
-                            IsDeleted = false,
-                            ModuleId = 7,
-                            ModuleName = "AccountingNew",
-                            PageName = "IncomeExpenseReport"
-                        },
-                        new
-                        {
-                            PageId = 62,
-                            IsDeleted = false,
-                            ModuleId = 7,
-                            ModuleName = "AccountingNew",
-                            PageName = "Vouchers"
-                        },
-                        new
-                        {
-                            PageId = 63,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Clients"
-                        },
-                        new
-                        {
-                            PageId = 64,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "UnitRates"
-                        },
-                        new
-                        {
-                            PageId = 65,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Jobs"
-                        },
-                        new
-                        {
-                            PageId = 66,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Contracts"
-                        },
-                        new
-                        {
-                            PageId = 67,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "MyProjects"
-                        },
-                        new
-                        {
-                            PageId = 68,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "Donors"
-                        },
-                        new
-                        {
-                            PageId = 69,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProjectDetails"
-                        },
-                        new
-                        {
-                            PageId = 70,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "Proposal"
-                        },
-                        new
-                        {
-                            PageId = 71,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "CriteriaEvaluation"
-                        },
-                        new
-                        {
-                            PageId = 72,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Producer"
-                        },
-                        new
-                        {
-                            PageId = 73,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Policy"
-                        },
-                        new
-                        {
-                            PageId = 74,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProjectJobs"
-                        },
-                        new
-                        {
-                            PageId = 75,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProjectActivities"
-                        },
-                        new
-                        {
-                            PageId = 76,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Channel"
-                        },
-                        new
-                        {
-                            PageId = 77,
-                            IsDeleted = false,
-                            ModuleId = 6,
-                            ModuleName = "Marketing",
-                            PageName = "Scheduler"
-                        },
-                        new
-                        {
-                            PageId = 78,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProjectDashboard"
-                        },
-                        new
-                        {
-                            PageId = 79,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProjectCashFlow"
-                        },
-                        new
-                        {
-                            PageId = 80,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProjectBudgetLine"
-                        },
-                        new
-                        {
-                            PageId = 81,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "BroadCastPolicy"
-                        },
-                        new
-                        {
-                            PageId = 82,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProposalReport"
-                        },
-                        new
-                        {
-                            PageId = 83,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProjectIndicators"
-                        },
-                        new
-                        {
-                            PageId = 84,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "ProjectPeople"
-                        },
-                        new
-                        {
-                            PageId = 85,
-                            IsDeleted = false,
-                            ModuleId = 7,
-                            ModuleName = "AccountingNew",
-                            PageName = "VoucherSummaryReport"
-                        },
-                        new
-                        {
-                            PageId = 86,
-                            IsDeleted = false,
-                            ModuleId = 8,
-                            ModuleName = "Projects",
-                            PageName = "HiringRequests"
-                        },
-                        new
-                        {
-                            PageId = 87,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "PensionDebitAccount"
-                        },
-                        new
-                        {
-                            PageId = 88,
-                            IsDeleted = false,
-                            ModuleId = 2,
-                            ModuleName = "Code",
-                            PageName = "AttendanceGroupMaster"
-                        });
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AppraisalGeneralQuestions", b =>
-                {
-                    b.Property<int>("AppraisalGeneralQuestionsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("serial");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("DariQuestion");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<int?>("OfficeId");
-
-                    b.Property<string>("Question");
-
-                    b.Property<int?>("SequenceNo");
-
-                    b.HasKey("AppraisalGeneralQuestionsId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("AppraisalGeneralQuestions");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ApproveRejectPermission", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("serial");
-
-                    b.Property<bool>("Approve");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<int>("PageId");
-
-                    b.Property<bool>("Reject");
-
-                    b.Property<string>("RoleId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.HasIndex("PageId");
-
-                    b.ToTable("ApproveRejectPermission");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AssignActivity", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AssignActivity", b =>
                 {
                     b.Property<long>("AssignActivityId")
                         .ValueGeneratedOnAdd()
@@ -1404,7 +730,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AssignActivity");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AssignActivityApproveBy", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AssignActivityApproveBy", b =>
                 {
                     b.Property<long>("AssignActivityApprovedById")
                         .ValueGeneratedOnAdd()
@@ -1430,7 +756,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AssignActivityApproveBy");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AssignActivityFeedback", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AssignActivityFeedback", b =>
                 {
                     b.Property<long>("FeedbackId")
                         .ValueGeneratedOnAdd()
@@ -1467,7 +793,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AssignActivityFeedback");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AssignLeaveToEmployee", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AssignLeaveToEmployee", b =>
                 {
                     b.Property<long>("LeaveId")
                         .ValueGeneratedOnAdd()
@@ -1513,35 +839,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AssignLeaveToEmployee");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AttendanceGroupMaster", b =>
-                {
-                    b.Property<long>("AttendanceGroupId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("AttendanceGroupId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("AttendanceGroupMaster");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.BudgetLineType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.BudgetLineType", b =>
                 {
                     b.Property<int>("BudgetLineTypeId")
                         .ValueGeneratedOnAdd()
@@ -1569,7 +867,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("BudgetLineType");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.BudgetReceivable", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.BudgetReceivable", b =>
                 {
                     b.Property<long>("BudgetReceivalbeId")
                         .ValueGeneratedOnAdd();
@@ -1605,7 +903,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("BudgetReceivable");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.BudgetReceivedAmount", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.BudgetReceivedAmount", b =>
                 {
                     b.Property<long>("BudgetReceivedAmountId")
                         .ValueGeneratedOnAdd();
@@ -1641,7 +939,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("BudgetReceivedAmount");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.CategoryPopulator", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.CategoryPopulator", b =>
                 {
                     b.Property<int>("CategoryPopulatorId")
                         .ValueGeneratedOnAdd();
@@ -1675,7 +973,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("CategoryPopulator");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.CodeType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.CodeType", b =>
                 {
                     b.Property<int>("CodeTypeId")
                         .ValueGeneratedOnAdd()
@@ -1688,34 +986,15 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("CodeType");
 
                     b.HasData(
-                        new
-                        {
-                            CodeTypeId = 1,
-                            CodeTypeName = "Organizations"
-                        },
-                        new
-                        {
-                            CodeTypeId = 2,
-                            CodeTypeName = "Suppliers"
-                        },
-                        new
-                        {
-                            CodeTypeId = 3,
-                            CodeTypeName = "Repair Shops"
-                        },
-                        new
-                        {
-                            CodeTypeId = 4,
-                            CodeTypeName = "Individual/Others"
-                        },
-                        new
-                        {
-                            CodeTypeId = 5,
-                            CodeTypeName = "Locations/Stores"
-                        });
+                        new { CodeTypeId = 1, CodeTypeName = "Organizations" },
+                        new { CodeTypeId = 2, CodeTypeName = "Suppliers" },
+                        new { CodeTypeId = 3, CodeTypeName = "Repair Shops" },
+                        new { CodeTypeId = 4, CodeTypeName = "Individual/Others" },
+                        new { CodeTypeId = 5, CodeTypeName = "Locations/Stores" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ContractTypeContent", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ContractTypeContent", b =>
                 {
                     b.Property<int>("ContractTypeContentId")
                         .ValueGeneratedOnAdd();
@@ -1749,7 +1028,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ContractTypeContent");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.CountryDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.CountryDetails", b =>
                 {
                     b.Property<int>("CountryId")
                         .ValueGeneratedOnAdd()
@@ -1777,21 +1056,12 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("CountryDetails");
 
                     b.HasData(
-                        new
-                        {
-                            CountryId = 1,
-                            CountryName = "Afghanistan",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            CountryId = 2,
-                            CountryName = "United States",
-                            IsDeleted = false
-                        });
+                        new { CountryId = 1, CountryName = "Afghanistan", IsDeleted = false },
+                        new { CountryId = 2, CountryName = "United States", IsDeleted = false }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.CurrencyDetails", b =>
                 {
                     b.Property<int>("CurrencyId")
                         .ValueGeneratedOnAdd();
@@ -1827,45 +1097,14 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("CurrencyDetails");
 
                     b.HasData(
-                        new
-                        {
-                            CurrencyId = 1,
-                            CurrencyCode = "AFG",
-                            CurrencyName = "Afghanistan",
-                            IsDeleted = false,
-                            SalaryTaxFlag = true,
-                            Status = false
-                        },
-                        new
-                        {
-                            CurrencyId = 2,
-                            CurrencyCode = "EUR",
-                            CurrencyName = "European Curency",
-                            IsDeleted = false,
-                            SalaryTaxFlag = false,
-                            Status = false
-                        },
-                        new
-                        {
-                            CurrencyId = 3,
-                            CurrencyCode = "PKR",
-                            CurrencyName = "Pakistani Rupees",
-                            IsDeleted = false,
-                            SalaryTaxFlag = false,
-                            Status = true
-                        },
-                        new
-                        {
-                            CurrencyId = 4,
-                            CurrencyCode = "USD",
-                            CurrencyName = "US Dollars",
-                            IsDeleted = false,
-                            SalaryTaxFlag = false,
-                            Status = false
-                        });
+                        new { CurrencyId = 1, CurrencyCode = "AFG", CurrencyName = "Afghanistan", IsDeleted = false, SalaryTaxFlag = true, Status = false },
+                        new { CurrencyId = 2, CurrencyCode = "EUR", CurrencyName = "European Curency", IsDeleted = false, SalaryTaxFlag = false, Status = false },
+                        new { CurrencyId = 3, CurrencyCode = "PKR", CurrencyName = "Pakistani Rupees", IsDeleted = false, SalaryTaxFlag = false, Status = true },
+                        new { CurrencyId = 4, CurrencyCode = "USD", CurrencyName = "US Dollars", IsDeleted = false, SalaryTaxFlag = false, Status = false }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Department", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Department", b =>
                 {
                     b.Property<int>("DepartmentId")
                         .ValueGeneratedOnAdd()
@@ -1898,16 +1137,11 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Department");
 
                     b.HasData(
-                        new
-                        {
-                            DepartmentId = 1,
-                            DepartmentName = "Administration",
-                            IsDeleted = false,
-                            OfficeId = 1
-                        });
+                        new { DepartmentId = 1, DepartmentName = "Administration", IsDeleted = false, OfficeId = 1 }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.DesignationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.DesignationDetail", b =>
                 {
                     b.Property<int>("DesignationId")
                         .ValueGeneratedOnAdd();
@@ -1936,7 +1170,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("DesignationDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.DistrictDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.DistrictDetail", b =>
                 {
                     b.Property<long>("DistrictID")
                         .ValueGeneratedOnAdd()
@@ -1966,910 +1200,133 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("DistrictDetail");
 
                     b.HasData(
-                        new
-                        {
-                            DistrictID = 1L,
-                            District = "Jawand",
-                            IsDeleted = false,
-                            ProvinceID = 1
-                        },
-                        new
-                        {
-                            DistrictID = 2L,
-                            District = "Muqur",
-                            IsDeleted = false,
-                            ProvinceID = 1
-                        },
-                        new
-                        {
-                            DistrictID = 3L,
-                            District = "Qadis",
-                            IsDeleted = false,
-                            ProvinceID = 1
-                        },
-                        new
-                        {
-                            DistrictID = 4L,
-                            District = "Baghlani Jadid",
-                            IsDeleted = false,
-                            ProvinceID = 2
-                        },
-                        new
-                        {
-                            DistrictID = 5L,
-                            District = "Dahana i Ghuri",
-                            IsDeleted = false,
-                            ProvinceID = 2
-                        },
-                        new
-                        {
-                            DistrictID = 6L,
-                            District = "Chahar Bolak",
-                            IsDeleted = false,
-                            ProvinceID = 3
-                        },
-                        new
-                        {
-                            DistrictID = 7L,
-                            District = "Chahar Kint",
-                            IsDeleted = false,
-                            ProvinceID = 3
-                        },
-                        new
-                        {
-                            DistrictID = 8L,
-                            District = "Panjab",
-                            IsDeleted = false,
-                            ProvinceID = 4
-                        },
-                        new
-                        {
-                            DistrictID = 9L,
-                            District = "Shibar",
-                            IsDeleted = false,
-                            ProvinceID = 4
-                        },
-                        new
-                        {
-                            DistrictID = 10L,
-                            District = "Bamyan",
-                            IsDeleted = false,
-                            ProvinceID = 4
-                        },
-                        new
-                        {
-                            DistrictID = 11L,
-                            District = "Gizab",
-                            IsDeleted = false,
-                            ProvinceID = 5
-                        },
-                        new
-                        {
-                            DistrictID = 12L,
-                            District = "Bala Buluk",
-                            IsDeleted = false,
-                            ProvinceID = 6
-                        },
-                        new
-                        {
-                            DistrictID = 13L,
-                            District = "Bakwa",
-                            IsDeleted = false,
-                            ProvinceID = 6
-                        },
-                        new
-                        {
-                            DistrictID = 14L,
-                            District = "Andkhoy",
-                            IsDeleted = false,
-                            ProvinceID = 7
-                        },
-                        new
-                        {
-                            DistrictID = 15L,
-                            District = "Almar",
-                            IsDeleted = false,
-                            ProvinceID = 7
-                        },
-                        new
-                        {
-                            DistrictID = 16L,
-                            District = "Bilchiragh",
-                            IsDeleted = false,
-                            ProvinceID = 7
-                        },
-                        new
-                        {
-                            DistrictID = 17L,
-                            District = "Ajristan",
-                            IsDeleted = false,
-                            ProvinceID = 8
-                        },
-                        new
-                        {
-                            DistrictID = 18L,
-                            District = "Andar",
-                            IsDeleted = false,
-                            ProvinceID = 8
-                        },
-                        new
-                        {
-                            DistrictID = 19L,
-                            District = "Shahrak",
-                            IsDeleted = false,
-                            ProvinceID = 9
-                        },
-                        new
-                        {
-                            DistrictID = 20L,
-                            District = "Tulak",
-                            IsDeleted = false,
-                            ProvinceID = 9
-                        },
-                        new
-                        {
-                            DistrictID = 21L,
-                            District = "Baghran",
-                            IsDeleted = false,
-                            ProvinceID = 10
-                        },
-                        new
-                        {
-                            DistrictID = 22L,
-                            District = "Garmsir",
-                            IsDeleted = false,
-                            ProvinceID = 10
-                        },
-                        new
-                        {
-                            DistrictID = 23L,
-                            District = "Chishti Sharif",
-                            IsDeleted = false,
-                            ProvinceID = 11
-                        },
-                        new
-                        {
-                            DistrictID = 24L,
-                            District = "Aqcha",
-                            IsDeleted = false,
-                            ProvinceID = 12
-                        },
-                        new
-                        {
-                            DistrictID = 25L,
-                            District = "Fayzabad",
-                            IsDeleted = false,
-                            ProvinceID = 12
-                        },
-                        new
-                        {
-                            DistrictID = 26L,
-                            District = "GuzDarzabara",
-                            IsDeleted = false,
-                            ProvinceID = 12
-                        },
-                        new
-                        {
-                            DistrictID = 27L,
-                            District = "Chahar Asyab",
-                            IsDeleted = false,
-                            ProvinceID = 13
-                        },
-                        new
-                        {
-                            DistrictID = 28L,
-                            District = "Deh Sabz",
-                            IsDeleted = false,
-                            ProvinceID = 13
-                        },
-                        new
-                        {
-                            DistrictID = 29L,
-                            District = "Bagrami",
-                            IsDeleted = false,
-                            ProvinceID = 13
-                        },
-                        new
-                        {
-                            DistrictID = 30L,
-                            District = "Daman",
-                            IsDeleted = false,
-                            ProvinceID = 14
-                        },
-                        new
-                        {
-                            DistrictID = 31L,
-                            District = "Ghorak",
-                            IsDeleted = false,
-                            ProvinceID = 14
-                        },
-                        new
-                        {
-                            DistrictID = 32L,
-                            District = "Alasay",
-                            IsDeleted = false,
-                            ProvinceID = 15
-                        },
-                        new
-                        {
-                            DistrictID = 33L,
-                            District = "Bak",
-                            IsDeleted = false,
-                            ProvinceID = 16
-                        },
-                        new
-                        {
-                            DistrictID = 34L,
-                            District = "Gurbuz",
-                            IsDeleted = false,
-                            ProvinceID = 16
-                        },
-                        new
-                        {
-                            DistrictID = 35L,
-                            District = "Asadabad",
-                            IsDeleted = false,
-                            ProvinceID = 17
-                        },
-                        new
-                        {
-                            DistrictID = 36L,
-                            District = "Bar Kunar",
-                            IsDeleted = false,
-                            ProvinceID = 17
-                        },
-                        new
-                        {
-                            DistrictID = 37L,
-                            District = "Ali Abad",
-                            IsDeleted = false,
-                            ProvinceID = 18
-                        },
-                        new
-                        {
-                            DistrictID = 38L,
-                            District = "Archi",
-                            IsDeleted = false,
-                            ProvinceID = 18
-                        },
-                        new
-                        {
-                            DistrictID = 39L,
-                            District = "Alingar",
-                            IsDeleted = false,
-                            ProvinceID = 19
-                        },
-                        new
-                        {
-                            DistrictID = 40L,
-                            District = "Alishing",
-                            IsDeleted = false,
-                            ProvinceID = 19
-                        },
-                        new
-                        {
-                            DistrictID = 41L,
-                            District = "Baraki Barak",
-                            IsDeleted = false,
-                            ProvinceID = 20
-                        },
-                        new
-                        {
-                            DistrictID = 42L,
-                            District = "Charkh",
-                            IsDeleted = false,
-                            ProvinceID = 20
-                        },
-                        new
-                        {
-                            DistrictID = 43L,
-                            District = "Maidan Wardak",
-                            IsDeleted = false,
-                            ProvinceID = 21
-                        },
-                        new
-                        {
-                            DistrictID = 44L,
-                            District = "Achin",
-                            IsDeleted = false,
-                            ProvinceID = 22
-                        },
-                        new
-                        {
-                            DistrictID = 45L,
-                            District = "Bati Kot",
-                            IsDeleted = false,
-                            ProvinceID = 22
-                        },
-                        new
-                        {
-                            DistrictID = 46L,
-                            District = "Kang",
-                            IsDeleted = false,
-                            ProvinceID = 23
-                        },
-                        new
-                        {
-                            DistrictID = 47L,
-                            District = "Chakhansur",
-                            IsDeleted = false,
-                            ProvinceID = 23
-                        },
-                        new
-                        {
-                            DistrictID = 48L,
-                            District = "Kamdesh",
-                            IsDeleted = false,
-                            ProvinceID = 24
-                        },
-                        new
-                        {
-                            DistrictID = 49L,
-                            District = "Mandol",
-                            IsDeleted = false,
-                            ProvinceID = 24
-                        },
-                        new
-                        {
-                            DistrictID = 50L,
-                            District = "Gardez",
-                            IsDeleted = false,
-                            ProvinceID = 25
-                        },
-                        new
-                        {
-                            DistrictID = 51L,
-                            District = "Jaji",
-                            IsDeleted = false,
-                            ProvinceID = 25
-                        },
-                        new
-                        {
-                            DistrictID = 52L,
-                            District = "Zurmat",
-                            IsDeleted = false,
-                            ProvinceID = 25
-                        },
-                        new
-                        {
-                            DistrictID = 53L,
-                            District = "Wuza Zadran",
-                            IsDeleted = false,
-                            ProvinceID = 25
-                        },
-                        new
-                        {
-                            DistrictID = 54L,
-                            District = "Dila",
-                            IsDeleted = false,
-                            ProvinceID = 26
-                        },
-                        new
-                        {
-                            DistrictID = 55L,
-                            District = "Barmal",
-                            IsDeleted = false,
-                            ProvinceID = 26
-                        },
-                        new
-                        {
-                            DistrictID = 56L,
-                            District = "Kal",
-                            IsDeleted = false,
-                            ProvinceID = 26
-                        },
-                        new
-                        {
-                            DistrictID = 57L,
-                            District = "Chang",
-                            IsDeleted = false,
-                            ProvinceID = 26
-                        },
-                        new
-                        {
-                            DistrictID = 58L,
-                            District = "Anaba",
-                            IsDeleted = false,
-                            ProvinceID = 27
-                        },
-                        new
-                        {
-                            DistrictID = 59L,
-                            District = "Bagram",
-                            IsDeleted = false,
-                            ProvinceID = 28
-                        },
-                        new
-                        {
-                            DistrictID = 60L,
-                            District = "Chaharikar",
-                            IsDeleted = false,
-                            ProvinceID = 28
-                        },
-                        new
-                        {
-                            DistrictID = 61L,
-                            District = "Jabal Saraj",
-                            IsDeleted = false,
-                            ProvinceID = 28
-                        },
-                        new
-                        {
-                            DistrictID = 62L,
-                            District = "Kohi Safi",
-                            IsDeleted = false,
-                            ProvinceID = 28
-                        },
-                        new
-                        {
-                            DistrictID = 63L,
-                            District = "Salang",
-                            IsDeleted = false,
-                            ProvinceID = 28
-                        },
-                        new
-                        {
-                            DistrictID = 64L,
-                            District = "Aybak",
-                            IsDeleted = false,
-                            ProvinceID = 29
-                        },
-                        new
-                        {
-                            DistrictID = 65L,
-                            District = "Balkhab",
-                            IsDeleted = false,
-                            ProvinceID = 30
-                        },
-                        new
-                        {
-                            DistrictID = 66L,
-                            District = "Bangi",
-                            IsDeleted = false,
-                            ProvinceID = 31
-                        },
-                        new
-                        {
-                            DistrictID = 67L,
-                            District = "Uakhar",
-                            IsDeleted = false,
-                            ProvinceID = 32
-                        },
-                        new
-                        {
-                            DistrictID = 68L,
-                            District = "Argahandab",
-                            IsDeleted = false,
-                            ProvinceID = 33
-                        },
-                        new
-                        {
-                            DistrictID = 69L,
-                            District = "Atghar",
-                            IsDeleted = false,
-                            ProvinceID = 33
-                        },
-                        new
-                        {
-                            DistrictID = 70L,
-                            District = "Alabama",
-                            IsDeleted = false,
-                            ProvinceID = 34
-                        },
-                        new
-                        {
-                            DistrictID = 71L,
-                            District = "Arizona",
-                            IsDeleted = false,
-                            ProvinceID = 35
-                        },
-                        new
-                        {
-                            DistrictID = 72L,
-                            District = "Jurors",
-                            IsDeleted = false,
-                            ProvinceID = 35
-                        },
-                        new
-                        {
-                            DistrictID = 73L,
-                            District = "Arona",
-                            IsDeleted = false,
-                            ProvinceID = 35
-                        },
-                        new
-                        {
-                            DistrictID = 74L,
-                            District = "Arkansas",
-                            IsDeleted = false,
-                            ProvinceID = 36
-                        },
-                        new
-                        {
-                            DistrictID = 75L,
-                            District = "California",
-                            IsDeleted = false,
-                            ProvinceID = 37
-                        },
-                        new
-                        {
-                            DistrictID = 76L,
-                            District = "Califor",
-                            IsDeleted = false,
-                            ProvinceID = 37
-                        },
-                        new
-                        {
-                            DistrictID = 77L,
-                            District = "Colorado",
-                            IsDeleted = false,
-                            ProvinceID = 38
-                        },
-                        new
-                        {
-                            DistrictID = 78L,
-                            District = "Connecticut",
-                            IsDeleted = false,
-                            ProvinceID = 39
-                        },
-                        new
-                        {
-                            DistrictID = 79L,
-                            District = "Aelaware",
-                            IsDeleted = false,
-                            ProvinceID = 40
-                        },
-                        new
-                        {
-                            DistrictID = 80L,
-                            District = "Florida",
-                            IsDeleted = false,
-                            ProvinceID = 41
-                        },
-                        new
-                        {
-                            DistrictID = 81L,
-                            District = "Georia",
-                            IsDeleted = false,
-                            ProvinceID = 42
-                        },
-                        new
-                        {
-                            DistrictID = 82L,
-                            District = "Hawaii",
-                            IsDeleted = false,
-                            ProvinceID = 43
-                        },
-                        new
-                        {
-                            DistrictID = 83L,
-                            District = "Idaho",
-                            IsDeleted = false,
-                            ProvinceID = 44
-                        },
-                        new
-                        {
-                            DistrictID = 84L,
-                            District = "Illinois",
-                            IsDeleted = false,
-                            ProvinceID = 45
-                        },
-                        new
-                        {
-                            DistrictID = 85L,
-                            District = "Indiana",
-                            IsDeleted = false,
-                            ProvinceID = 46
-                        },
-                        new
-                        {
-                            DistrictID = 86L,
-                            District = "Undia",
-                            IsDeleted = false,
-                            ProvinceID = 46
-                        },
-                        new
-                        {
-                            DistrictID = 87L,
-                            District = "Iowa",
-                            IsDeleted = false,
-                            ProvinceID = 47
-                        },
-                        new
-                        {
-                            DistrictID = 88L,
-                            District = "Lansa",
-                            IsDeleted = false,
-                            ProvinceID = 48
-                        },
-                        new
-                        {
-                            DistrictID = 89L,
-                            District = "Kentucky",
-                            IsDeleted = false,
-                            ProvinceID = 49
-                        },
-                        new
-                        {
-                            DistrictID = 90L,
-                            District = "Louisiana",
-                            IsDeleted = false,
-                            ProvinceID = 50
-                        },
-                        new
-                        {
-                            DistrictID = 91L,
-                            District = "Maine",
-                            IsDeleted = false,
-                            ProvinceID = 51
-                        },
-                        new
-                        {
-                            DistrictID = 92L,
-                            District = "Maryland",
-                            IsDeleted = false,
-                            ProvinceID = 52
-                        },
-                        new
-                        {
-                            DistrictID = 93L,
-                            District = "Massachusetts",
-                            IsDeleted = false,
-                            ProvinceID = 53
-                        },
-                        new
-                        {
-                            DistrictID = 94L,
-                            District = "Michigan",
-                            IsDeleted = false,
-                            ProvinceID = 54
-                        },
-                        new
-                        {
-                            DistrictID = 95L,
-                            District = "Minnesota",
-                            IsDeleted = false,
-                            ProvinceID = 55
-                        },
-                        new
-                        {
-                            DistrictID = 96L,
-                            District = "Mississippi",
-                            IsDeleted = false,
-                            ProvinceID = 56
-                        },
-                        new
-                        {
-                            DistrictID = 97L,
-                            District = "Missouri",
-                            IsDeleted = false,
-                            ProvinceID = 57
-                        },
-                        new
-                        {
-                            DistrictID = 98L,
-                            District = "Montana",
-                            IsDeleted = false,
-                            ProvinceID = 58
-                        },
-                        new
-                        {
-                            DistrictID = 99L,
-                            District = "Nebraska",
-                            IsDeleted = false,
-                            ProvinceID = 59
-                        },
-                        new
-                        {
-                            DistrictID = 100L,
-                            District = "Yevada",
-                            IsDeleted = false,
-                            ProvinceID = 60
-                        },
-                        new
-                        {
-                            DistrictID = 101L,
-                            District = "New Hampshire",
-                            IsDeleted = false,
-                            ProvinceID = 61
-                        },
-                        new
-                        {
-                            DistrictID = 102L,
-                            District = "New Jersey",
-                            IsDeleted = false,
-                            ProvinceID = 62
-                        },
-                        new
-                        {
-                            DistrictID = 103L,
-                            District = "New Mexico",
-                            IsDeleted = false,
-                            ProvinceID = 63
-                        },
-                        new
-                        {
-                            DistrictID = 104L,
-                            District = "New York",
-                            IsDeleted = false,
-                            ProvinceID = 64
-                        },
-                        new
-                        {
-                            DistrictID = 105L,
-                            District = "North Carolina",
-                            IsDeleted = false,
-                            ProvinceID = 65
-                        },
-                        new
-                        {
-                            DistrictID = 106L,
-                            District = "North Dakota",
-                            IsDeleted = false,
-                            ProvinceID = 66
-                        },
-                        new
-                        {
-                            DistrictID = 107L,
-                            District = "Ohio",
-                            IsDeleted = false,
-                            ProvinceID = 67
-                        },
-                        new
-                        {
-                            DistrictID = 108L,
-                            District = "Oklahoma",
-                            IsDeleted = false,
-                            ProvinceID = 68
-                        },
-                        new
-                        {
-                            DistrictID = 109L,
-                            District = "Tregon",
-                            IsDeleted = false,
-                            ProvinceID = 69
-                        },
-                        new
-                        {
-                            DistrictID = 110L,
-                            District = "Pennsylvania",
-                            IsDeleted = false,
-                            ProvinceID = 70
-                        },
-                        new
-                        {
-                            DistrictID = 111L,
-                            District = "Rhode Island",
-                            IsDeleted = false,
-                            ProvinceID = 71
-                        },
-                        new
-                        {
-                            DistrictID = 112L,
-                            District = "South Carolina",
-                            IsDeleted = false,
-                            ProvinceID = 72
-                        },
-                        new
-                        {
-                            DistrictID = 113L,
-                            District = "South Dakota",
-                            IsDeleted = false,
-                            ProvinceID = 73
-                        },
-                        new
-                        {
-                            DistrictID = 114L,
-                            District = "Tennessee",
-                            IsDeleted = false,
-                            ProvinceID = 74
-                        },
-                        new
-                        {
-                            DistrictID = 115L,
-                            District = "Texas",
-                            IsDeleted = false,
-                            ProvinceID = 75
-                        },
-                        new
-                        {
-                            DistrictID = 116L,
-                            District = "Wtaha",
-                            IsDeleted = false,
-                            ProvinceID = 76
-                        },
-                        new
-                        {
-                            DistrictID = 117L,
-                            District = "Oermont",
-                            IsDeleted = false,
-                            ProvinceID = 77
-                        },
-                        new
-                        {
-                            DistrictID = 118L,
-                            District = "Virginia",
-                            IsDeleted = false,
-                            ProvinceID = 78
-                        },
-                        new
-                        {
-                            DistrictID = 119L,
-                            District = "Washinn",
-                            IsDeleted = false,
-                            ProvinceID = 79
-                        },
-                        new
-                        {
-                            DistrictID = 120L,
-                            District = "West Virginia",
-                            IsDeleted = false,
-                            ProvinceID = 80
-                        },
-                        new
-                        {
-                            DistrictID = 121L,
-                            District = "Nouit Vinia",
-                            IsDeleted = false,
-                            ProvinceID = 80
-                        },
-                        new
-                        {
-                            DistrictID = 122L,
-                            District = "Wisconsin",
-                            IsDeleted = false,
-                            ProvinceID = 81
-                        },
-                        new
-                        {
-                            DistrictID = 123L,
-                            District = "Wyoming",
-                            IsDeleted = false,
-                            ProvinceID = 82
-                        });
+                        new { DistrictID = 1L, District = "Jawand", IsDeleted = false, ProvinceID = 1 },
+                        new { DistrictID = 2L, District = "Muqur", IsDeleted = false, ProvinceID = 1 },
+                        new { DistrictID = 3L, District = "Qadis", IsDeleted = false, ProvinceID = 1 },
+                        new { DistrictID = 4L, District = "Baghlani Jadid", IsDeleted = false, ProvinceID = 2 },
+                        new { DistrictID = 5L, District = "Dahana i Ghuri", IsDeleted = false, ProvinceID = 2 },
+                        new { DistrictID = 6L, District = "Chahar Bolak", IsDeleted = false, ProvinceID = 3 },
+                        new { DistrictID = 7L, District = "Chahar Kint", IsDeleted = false, ProvinceID = 3 },
+                        new { DistrictID = 8L, District = "Panjab", IsDeleted = false, ProvinceID = 4 },
+                        new { DistrictID = 9L, District = "Shibar", IsDeleted = false, ProvinceID = 4 },
+                        new { DistrictID = 10L, District = "Bamyan", IsDeleted = false, ProvinceID = 4 },
+                        new { DistrictID = 11L, District = "Gizab", IsDeleted = false, ProvinceID = 5 },
+                        new { DistrictID = 12L, District = "Bala Buluk", IsDeleted = false, ProvinceID = 6 },
+                        new { DistrictID = 13L, District = "Bakwa", IsDeleted = false, ProvinceID = 6 },
+                        new { DistrictID = 14L, District = "Andkhoy", IsDeleted = false, ProvinceID = 7 },
+                        new { DistrictID = 15L, District = "Almar", IsDeleted = false, ProvinceID = 7 },
+                        new { DistrictID = 16L, District = "Bilchiragh", IsDeleted = false, ProvinceID = 7 },
+                        new { DistrictID = 17L, District = "Ajristan", IsDeleted = false, ProvinceID = 8 },
+                        new { DistrictID = 18L, District = "Andar", IsDeleted = false, ProvinceID = 8 },
+                        new { DistrictID = 19L, District = "Shahrak", IsDeleted = false, ProvinceID = 9 },
+                        new { DistrictID = 20L, District = "Tulak", IsDeleted = false, ProvinceID = 9 },
+                        new { DistrictID = 21L, District = "Baghran", IsDeleted = false, ProvinceID = 10 },
+                        new { DistrictID = 22L, District = "Garmsir", IsDeleted = false, ProvinceID = 10 },
+                        new { DistrictID = 23L, District = "Chishti Sharif", IsDeleted = false, ProvinceID = 11 },
+                        new { DistrictID = 24L, District = "Aqcha", IsDeleted = false, ProvinceID = 12 },
+                        new { DistrictID = 25L, District = "Fayzabad", IsDeleted = false, ProvinceID = 12 },
+                        new { DistrictID = 26L, District = "GuzDarzabara", IsDeleted = false, ProvinceID = 12 },
+                        new { DistrictID = 27L, District = "Chahar Asyab", IsDeleted = false, ProvinceID = 13 },
+                        new { DistrictID = 28L, District = "Deh Sabz", IsDeleted = false, ProvinceID = 13 },
+                        new { DistrictID = 29L, District = "Bagrami", IsDeleted = false, ProvinceID = 13 },
+                        new { DistrictID = 30L, District = "Daman", IsDeleted = false, ProvinceID = 14 },
+                        new { DistrictID = 31L, District = "Ghorak", IsDeleted = false, ProvinceID = 14 },
+                        new { DistrictID = 32L, District = "Alasay", IsDeleted = false, ProvinceID = 15 },
+                        new { DistrictID = 33L, District = "Bak", IsDeleted = false, ProvinceID = 16 },
+                        new { DistrictID = 34L, District = "Gurbuz", IsDeleted = false, ProvinceID = 16 },
+                        new { DistrictID = 35L, District = "Asadabad", IsDeleted = false, ProvinceID = 17 },
+                        new { DistrictID = 36L, District = "Bar Kunar", IsDeleted = false, ProvinceID = 17 },
+                        new { DistrictID = 37L, District = "Ali Abad", IsDeleted = false, ProvinceID = 18 },
+                        new { DistrictID = 38L, District = "Archi", IsDeleted = false, ProvinceID = 18 },
+                        new { DistrictID = 39L, District = "Alingar", IsDeleted = false, ProvinceID = 19 },
+                        new { DistrictID = 40L, District = "Alishing", IsDeleted = false, ProvinceID = 19 },
+                        new { DistrictID = 41L, District = "Baraki Barak", IsDeleted = false, ProvinceID = 20 },
+                        new { DistrictID = 42L, District = "Charkh", IsDeleted = false, ProvinceID = 20 },
+                        new { DistrictID = 43L, District = "Maidan Wardak", IsDeleted = false, ProvinceID = 21 },
+                        new { DistrictID = 44L, District = "Achin", IsDeleted = false, ProvinceID = 22 },
+                        new { DistrictID = 45L, District = "Bati Kot", IsDeleted = false, ProvinceID = 22 },
+                        new { DistrictID = 46L, District = "Kang", IsDeleted = false, ProvinceID = 23 },
+                        new { DistrictID = 47L, District = "Chakhansur", IsDeleted = false, ProvinceID = 23 },
+                        new { DistrictID = 48L, District = "Kamdesh", IsDeleted = false, ProvinceID = 24 },
+                        new { DistrictID = 49L, District = "Mandol", IsDeleted = false, ProvinceID = 24 },
+                        new { DistrictID = 50L, District = "Gardez", IsDeleted = false, ProvinceID = 25 },
+                        new { DistrictID = 51L, District = "Jaji", IsDeleted = false, ProvinceID = 25 },
+                        new { DistrictID = 52L, District = "Zurmat", IsDeleted = false, ProvinceID = 25 },
+                        new { DistrictID = 53L, District = "Wuza Zadran", IsDeleted = false, ProvinceID = 25 },
+                        new { DistrictID = 54L, District = "Dila", IsDeleted = false, ProvinceID = 26 },
+                        new { DistrictID = 55L, District = "Barmal", IsDeleted = false, ProvinceID = 26 },
+                        new { DistrictID = 56L, District = "Kal", IsDeleted = false, ProvinceID = 26 },
+                        new { DistrictID = 57L, District = "Chang", IsDeleted = false, ProvinceID = 26 },
+                        new { DistrictID = 58L, District = "Anaba", IsDeleted = false, ProvinceID = 27 },
+                        new { DistrictID = 59L, District = "Bagram", IsDeleted = false, ProvinceID = 28 },
+                        new { DistrictID = 60L, District = "Chaharikar", IsDeleted = false, ProvinceID = 28 },
+                        new { DistrictID = 61L, District = "Jabal Saraj", IsDeleted = false, ProvinceID = 28 },
+                        new { DistrictID = 62L, District = "Kohi Safi", IsDeleted = false, ProvinceID = 28 },
+                        new { DistrictID = 63L, District = "Salang", IsDeleted = false, ProvinceID = 28 },
+                        new { DistrictID = 64L, District = "Aybak", IsDeleted = false, ProvinceID = 29 },
+                        new { DistrictID = 65L, District = "Balkhab", IsDeleted = false, ProvinceID = 30 },
+                        new { DistrictID = 66L, District = "Bangi", IsDeleted = false, ProvinceID = 31 },
+                        new { DistrictID = 67L, District = "Uakhar", IsDeleted = false, ProvinceID = 32 },
+                        new { DistrictID = 68L, District = "Argahandab", IsDeleted = false, ProvinceID = 33 },
+                        new { DistrictID = 69L, District = "Atghar", IsDeleted = false, ProvinceID = 33 },
+                        new { DistrictID = 70L, District = "Alabama", IsDeleted = false, ProvinceID = 34 },
+                        new { DistrictID = 71L, District = "Arizona", IsDeleted = false, ProvinceID = 35 },
+                        new { DistrictID = 72L, District = "Jurors", IsDeleted = false, ProvinceID = 35 },
+                        new { DistrictID = 73L, District = "Arona", IsDeleted = false, ProvinceID = 35 },
+                        new { DistrictID = 74L, District = "Arkansas", IsDeleted = false, ProvinceID = 36 },
+                        new { DistrictID = 75L, District = "California", IsDeleted = false, ProvinceID = 37 },
+                        new { DistrictID = 76L, District = "Califor", IsDeleted = false, ProvinceID = 37 },
+                        new { DistrictID = 77L, District = "Colorado", IsDeleted = false, ProvinceID = 38 },
+                        new { DistrictID = 78L, District = "Connecticut", IsDeleted = false, ProvinceID = 39 },
+                        new { DistrictID = 79L, District = "Aelaware", IsDeleted = false, ProvinceID = 40 },
+                        new { DistrictID = 80L, District = "Florida", IsDeleted = false, ProvinceID = 41 },
+                        new { DistrictID = 81L, District = "Georia", IsDeleted = false, ProvinceID = 42 },
+                        new { DistrictID = 82L, District = "Hawaii", IsDeleted = false, ProvinceID = 43 },
+                        new { DistrictID = 83L, District = "Idaho", IsDeleted = false, ProvinceID = 44 },
+                        new { DistrictID = 84L, District = "Illinois", IsDeleted = false, ProvinceID = 45 },
+                        new { DistrictID = 85L, District = "Indiana", IsDeleted = false, ProvinceID = 46 },
+                        new { DistrictID = 86L, District = "Undia", IsDeleted = false, ProvinceID = 46 },
+                        new { DistrictID = 87L, District = "Iowa", IsDeleted = false, ProvinceID = 47 },
+                        new { DistrictID = 88L, District = "Lansa", IsDeleted = false, ProvinceID = 48 },
+                        new { DistrictID = 89L, District = "Kentucky", IsDeleted = false, ProvinceID = 49 },
+                        new { DistrictID = 90L, District = "Louisiana", IsDeleted = false, ProvinceID = 50 },
+                        new { DistrictID = 91L, District = "Maine", IsDeleted = false, ProvinceID = 51 },
+                        new { DistrictID = 92L, District = "Maryland", IsDeleted = false, ProvinceID = 52 },
+                        new { DistrictID = 93L, District = "Massachusetts", IsDeleted = false, ProvinceID = 53 },
+                        new { DistrictID = 94L, District = "Michigan", IsDeleted = false, ProvinceID = 54 },
+                        new { DistrictID = 95L, District = "Minnesota", IsDeleted = false, ProvinceID = 55 },
+                        new { DistrictID = 96L, District = "Mississippi", IsDeleted = false, ProvinceID = 56 },
+                        new { DistrictID = 97L, District = "Missouri", IsDeleted = false, ProvinceID = 57 },
+                        new { DistrictID = 98L, District = "Montana", IsDeleted = false, ProvinceID = 58 },
+                        new { DistrictID = 99L, District = "Nebraska", IsDeleted = false, ProvinceID = 59 },
+                        new { DistrictID = 100L, District = "Yevada", IsDeleted = false, ProvinceID = 60 },
+                        new { DistrictID = 101L, District = "New Hampshire", IsDeleted = false, ProvinceID = 61 },
+                        new { DistrictID = 102L, District = "New Jersey", IsDeleted = false, ProvinceID = 62 },
+                        new { DistrictID = 103L, District = "New Mexico", IsDeleted = false, ProvinceID = 63 },
+                        new { DistrictID = 104L, District = "New York", IsDeleted = false, ProvinceID = 64 },
+                        new { DistrictID = 105L, District = "North Carolina", IsDeleted = false, ProvinceID = 65 },
+                        new { DistrictID = 106L, District = "North Dakota", IsDeleted = false, ProvinceID = 66 },
+                        new { DistrictID = 107L, District = "Ohio", IsDeleted = false, ProvinceID = 67 },
+                        new { DistrictID = 108L, District = "Oklahoma", IsDeleted = false, ProvinceID = 68 },
+                        new { DistrictID = 109L, District = "Tregon", IsDeleted = false, ProvinceID = 69 },
+                        new { DistrictID = 110L, District = "Pennsylvania", IsDeleted = false, ProvinceID = 70 },
+                        new { DistrictID = 111L, District = "Rhode Island", IsDeleted = false, ProvinceID = 71 },
+                        new { DistrictID = 112L, District = "South Carolina", IsDeleted = false, ProvinceID = 72 },
+                        new { DistrictID = 113L, District = "South Dakota", IsDeleted = false, ProvinceID = 73 },
+                        new { DistrictID = 114L, District = "Tennessee", IsDeleted = false, ProvinceID = 74 },
+                        new { DistrictID = 115L, District = "Texas", IsDeleted = false, ProvinceID = 75 },
+                        new { DistrictID = 116L, District = "Wtaha", IsDeleted = false, ProvinceID = 76 },
+                        new { DistrictID = 117L, District = "Oermont", IsDeleted = false, ProvinceID = 77 },
+                        new { DistrictID = 118L, District = "Virginia", IsDeleted = false, ProvinceID = 78 },
+                        new { DistrictID = 119L, District = "Washinn", IsDeleted = false, ProvinceID = 79 },
+                        new { DistrictID = 120L, District = "West Virginia", IsDeleted = false, ProvinceID = 80 },
+                        new { DistrictID = 121L, District = "Nouit Vinia", IsDeleted = false, ProvinceID = 80 },
+                        new { DistrictID = 122L, District = "Wisconsin", IsDeleted = false, ProvinceID = 81 },
+                        new { DistrictID = 123L, District = "Wyoming", IsDeleted = false, ProvinceID = 82 }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.DocumentFileDetail", b =>
-                {
-                    b.Property<long>("DocumentFileId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool?>("Active");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<int>("ModuleId");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("PageId");
-
-                    b.Property<string>("RawFileMimeType");
-
-                    b.Property<long>("RawFileSizeBytes");
-
-                    b.Property<string>("StorageDirectoryPath");
-
-                    b.HasKey("DocumentFileId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("DocumentFileDetail");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.DonorDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.DonorDetail", b =>
                 {
                     b.Property<long>("DonorId")
                         .ValueGeneratedOnAdd()
@@ -2904,7 +1361,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("DonorDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmailSettingDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmailSettingDetail", b =>
                 {
                     b.Property<long>("EmailId")
                         .ValueGeneratedOnAdd()
@@ -2946,7 +1403,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmailSettingDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmailType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmailType", b =>
                 {
                     b.Property<int>("EmailTypeId")
                         .ValueGeneratedOnAdd()
@@ -2974,21 +1431,12 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmailType");
 
                     b.HasData(
-                        new
-                        {
-                            EmailTypeId = 1,
-                            EmailTypeName = "General",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            EmailTypeId = 2,
-                            EmailTypeName = "Bidding Panel",
-                            IsDeleted = false
-                        });
+                        new { EmailTypeId = 1, EmailTypeName = "General", IsDeleted = false },
+                        new { EmailTypeId = 2, EmailTypeName = "Bidding Panel", IsDeleted = false }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAnalyticalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAnalyticalDetail", b =>
                 {
                     b.Property<int>("AnalyticalID")
                         .ValueGeneratedOnAdd()
@@ -3041,7 +1489,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeAnalyticalDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeApplyLeave", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeApplyLeave", b =>
                 {
                     b.Property<long>("ApplyLeaveId")
                         .ValueGeneratedOnAdd();
@@ -3086,7 +1534,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeApplyLeave");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAppraisalDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAppraisalDetails", b =>
                 {
                     b.Property<int>("EmployeeAppraisalDetailsId")
                         .ValueGeneratedOnAdd()
@@ -3141,7 +1589,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeAppraisalDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAppraisalQuestions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAppraisalQuestions", b =>
                 {
                     b.Property<int>("EmployeeAppraisalQuestionsId")
                         .ValueGeneratedOnAdd()
@@ -3178,7 +1626,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeAppraisalQuestions");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAppraisalTeamMember", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAppraisalTeamMember", b =>
                 {
                     b.Property<int>("EmployeeAppraisalTeamMemberId")
                         .ValueGeneratedOnAdd()
@@ -3207,7 +1655,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeAppraisalTeamMember");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAttendance", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAttendance", b =>
                 {
                     b.Property<long>("AttendanceId")
                         .ValueGeneratedOnAdd();
@@ -3240,13 +1688,9 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.Property<DateTime?>("OutTime");
 
-                    b.Property<int>("OverTimeMinutes");
-
                     b.Property<string>("Remarks");
 
                     b.Property<string>("TotalWorkTime");
-
-                    b.Property<int>("WorkTimeMinutes");
 
                     b.HasKey("AttendanceId");
 
@@ -3265,7 +1709,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeAttendance");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeContract", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeContract", b =>
                 {
                     b.Property<int>("EmployeeContractId")
                         .ValueGeneratedOnAdd()
@@ -3356,7 +1800,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeContract");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeContractType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeContractType", b =>
                 {
                     b.Property<int>("EmployeeContractTypeId")
                         .ValueGeneratedOnAdd()
@@ -3369,24 +1813,13 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeContractType");
 
                     b.HasData(
-                        new
-                        {
-                            EmployeeContractTypeId = 1,
-                            EmployeeContractTypeName = "Probationary"
-                        },
-                        new
-                        {
-                            EmployeeContractTypeId = 2,
-                            EmployeeContractTypeName = "PartTime"
-                        },
-                        new
-                        {
-                            EmployeeContractTypeId = 3,
-                            EmployeeContractTypeName = "Permanent"
-                        });
+                        new { EmployeeContractTypeId = 1, EmployeeContractTypeName = "Probationary" },
+                        new { EmployeeContractTypeId = 2, EmployeeContractTypeName = "PartTime" },
+                        new { EmployeeContractTypeId = 3, EmployeeContractTypeName = "Permanent" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeDetail", b =>
                 {
                     b.Property<int>("EmployeeID")
                         .ValueGeneratedOnAdd()
@@ -3535,7 +1968,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDocumentDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeDocumentDetail", b =>
                 {
                     b.Property<int>("DocumentID")
                         .ValueGeneratedOnAdd()
@@ -3579,7 +2012,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeDocumentDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeEducations", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeEducations", b =>
                 {
                     b.Property<int>("EmployeeEducationsId")
                         .ValueGeneratedOnAdd()
@@ -3618,7 +2051,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeEducations");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeEvaluation", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeEvaluation", b =>
                 {
                     b.Property<int>("EmployeeEvaluationId")
                         .ValueGeneratedOnAdd()
@@ -3669,7 +2102,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeEvaluation");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeEvaluationTraining", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeEvaluationTraining", b =>
                 {
                     b.Property<int>("EmployeeEvaluationTrainingId")
                         .ValueGeneratedOnAdd()
@@ -3708,7 +2141,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeEvaluationTraining");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHealthInfo", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHealthInfo", b =>
                 {
                     b.Property<long>("EmployeeHealthInfoId")
                         .ValueGeneratedOnAdd();
@@ -3778,7 +2211,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeHealthInfo");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHealthQuestion", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHealthQuestion", b =>
                 {
                     b.Property<int>("EmployeeHealthQuestionId")
                         .ValueGeneratedOnAdd()
@@ -3809,7 +2242,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeHealthQuestion");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHistoryDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHistoryDetail", b =>
                 {
                     b.Property<long>("HistoryID")
                         .ValueGeneratedOnAdd()
@@ -3843,7 +2276,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeHistoryDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHistoryOutsideCountry", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHistoryOutsideCountry", b =>
                 {
                     b.Property<int>("EmployeeHistoryOutsideCountryId")
                         .ValueGeneratedOnAdd()
@@ -3884,7 +2317,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeHistoryOutsideCountry");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHistoryOutsideOrganization", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHistoryOutsideOrganization", b =>
                 {
                     b.Property<int>("EmployeeHistoryOutsideOrganizationId")
                         .ValueGeneratedOnAdd()
@@ -3925,7 +2358,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeHistoryOutsideOrganization");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeInfoReferences", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeInfoReferences", b =>
                 {
                     b.Property<int>("EmployeeInfoReferencesId")
                         .ValueGeneratedOnAdd()
@@ -3966,7 +2399,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeInfoReferences");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeLanguages", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeLanguages", b =>
                 {
                     b.Property<int>("SpeakLanguageId")
                         .ValueGeneratedOnAdd()
@@ -4005,7 +2438,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeLanguages");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeMonthlyAttendance", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeMonthlyAttendance", b =>
                 {
                     b.Property<int>("MonthlyAttendanceId")
                         .ValueGeneratedOnAdd()
@@ -4020,8 +2453,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.Property<double>("AdvanceRecoveryAmount");
 
                     b.Property<int?>("AttendanceHours");
-
-                    b.Property<int>("AttendanceMinutes");
 
                     b.Property<string>("CreatedById");
 
@@ -4056,8 +2487,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.Property<double?>("NetSalary");
 
                     b.Property<int?>("OfficeId");
-
-                    b.Property<int>("OverTimeMinutes");
 
                     b.Property<int?>("OvertimeHours");
 
@@ -4096,7 +2525,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeMonthlyAttendance");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeMonthlyPayroll", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeMonthlyPayroll", b =>
                 {
                     b.Property<long>("MonthlyPayrollId")
                         .ValueGeneratedOnAdd()
@@ -4123,7 +2552,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeMonthlyPayroll");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeOtherSkills", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeOtherSkills", b =>
                 {
                     b.Property<int>("EmployeeOtherSkillsId")
                         .ValueGeneratedOnAdd()
@@ -4160,7 +2589,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeOtherSkills");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePaymentTypes", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePaymentTypes", b =>
                 {
                     b.Property<int>("EmployeePaymentTypesId")
                         .ValueGeneratedOnAdd()
@@ -4261,7 +2690,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeePaymentTypes");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayroll", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayroll", b =>
                 {
                     b.Property<long>("PayrollId")
                         .ValueGeneratedOnAdd()
@@ -4316,7 +2745,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeePayroll");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayrollAccountHead", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayrollAccountHead", b =>
                 {
                     b.Property<int>("EmployeePayrollAccountId")
                         .ValueGeneratedOnAdd()
@@ -4359,7 +2788,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeePayrollAccountHead");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayrollDetailTest", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayrollDetailTest", b =>
                 {
                     b.Property<int>("PayrollId")
                         .ValueGeneratedOnAdd()
@@ -4436,7 +2865,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeePayrollDetailTest");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayrollForMonth", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayrollForMonth", b =>
                 {
                     b.Property<int>("EmployeePaymentTypesId")
                         .ValueGeneratedOnAdd()
@@ -4515,7 +2944,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeePayrollForMonth");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayrollMonth", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayrollMonth", b =>
                 {
                     b.Property<long>("MonthlyPayrollId")
                         .ValueGeneratedOnAdd()
@@ -4564,7 +2993,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeePayrollMonth");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePensionRate", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePensionRate", b =>
                 {
                     b.Property<int>("EmployeePensionRateId")
                         .ValueGeneratedOnAdd()
@@ -4597,13 +3026,11 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeePensionRate");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeProfessionalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeProfessionalDetail", b =>
                 {
                     b.Property<long>("EmployeeProfessionalId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("serial");
-
-                    b.Property<long?>("AttendanceGroupId");
 
                     b.Property<string>("ContractStatus");
 
@@ -4666,8 +3093,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.HasKey("EmployeeProfessionalId");
 
-                    b.HasIndex("AttendanceGroupId");
-
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("DepartmentId");
@@ -4690,7 +3115,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeProfessionalDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeRelativeInfo", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeRelativeInfo", b =>
                 {
                     b.Property<int>("EmployeeRelativeInfoId")
                         .ValueGeneratedOnAdd()
@@ -4731,13 +3156,13 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeRelativeInfo");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryAnalyticalInfo", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeSalaryAnalyticalInfo", b =>
                 {
                     b.Property<int>("EmployeeSalaryAnalyticalInfoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("serial");
 
-                    b.Property<int?>("AccountCode");
+                    b.Property<int>("AccountCode");
 
                     b.Property<long>("BudgetlineId");
 
@@ -4746,8 +3171,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.Property<DateTime?>("CreatedDate");
 
                     b.Property<int>("EmployeeID");
-
-                    b.Property<long?>("HiringRequestId");
 
                     b.Property<bool?>("IsDeleted");
 
@@ -4767,8 +3190,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.HasIndex("HiringRequestId");
-
                     b.HasIndex("ModifiedById");
 
                     b.HasIndex("ProjectId");
@@ -4776,7 +3197,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeSalaryAnalyticalInfo");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryBudget", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeSalaryBudget", b =>
                 {
                     b.Property<int>("EmployeeSalaryBudgetId")
                         .ValueGeneratedOnAdd()
@@ -4813,7 +3234,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeSalaryBudget");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeSalaryDetails", b =>
                 {
                     b.Property<long>("SalaryId")
                         .ValueGeneratedOnAdd()
@@ -4859,7 +3280,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeSalaryDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryPaymentHistory", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeSalaryPaymentHistory", b =>
                 {
                     b.Property<int>("SalaryPaymentId")
                         .ValueGeneratedOnAdd()
@@ -4898,7 +3319,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeSalaryPaymentHistory");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeType", b =>
                 {
                     b.Property<int>("EmployeeTypeId")
                         .ValueGeneratedOnAdd()
@@ -4926,27 +3347,13 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeType");
 
                     b.HasData(
-                        new
-                        {
-                            EmployeeTypeId = 1,
-                            EmployeeTypeName = "Prospective",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            EmployeeTypeId = 2,
-                            EmployeeTypeName = "Active",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            EmployeeTypeId = 3,
-                            EmployeeTypeName = "Terminated",
-                            IsDeleted = false
-                        });
+                        new { EmployeeTypeId = 1, EmployeeTypeName = "Prospective", IsDeleted = false },
+                        new { EmployeeTypeId = 2, EmployeeTypeName = "Active", IsDeleted = false },
+                        new { EmployeeTypeId = 3, EmployeeTypeName = "Terminated", IsDeleted = false }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ErrorLog.Errorlog", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ErrorLog.Errorlog", b =>
                 {
                     b.Property<long>("ExceptionId")
                         .ValueGeneratedOnAdd()
@@ -4987,7 +3394,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("errorlog");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ExchangeRate", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ExchangeRate", b =>
                 {
                     b.Property<long>("ExchangeRateId")
                         .ValueGeneratedOnAdd()
@@ -5034,7 +3441,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ExchangeRates");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ExchangeRateDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ExchangeRateDetail", b =>
                 {
                     b.Property<int>("ExchangeRateId")
                         .ValueGeneratedOnAdd()
@@ -5069,7 +3476,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ExchangeRateDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ExistInterviewDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ExistInterviewDetails", b =>
                 {
                     b.Property<int>("ExistInterviewDetailsId")
                         .ValueGeneratedOnAdd()
@@ -5200,7 +3607,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ExistInterviewDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.FinancialYearDetail", b =>
                 {
                     b.Property<int>("FinancialYearId")
                         .ValueGeneratedOnAdd()
@@ -5236,18 +3643,11 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("FinancialYearDetail");
 
                     b.HasData(
-                        new
-                        {
-                            FinancialYearId = 1,
-                            EndDate = new DateTime(2019, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FinancialYearName = "2019 Financial Year",
-                            IsDefault = true,
-                            IsDeleted = false,
-                            StartDate = new DateTime(2019, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
+                        new { FinancialYearId = 1, EndDate = new DateTime(2019, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), FinancialYearName = "2019 Financial Year", IsDefault = true, IsDeleted = false, StartDate = new DateTime(2019, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.GainLossSelectedAccounts", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.GainLossSelectedAccounts", b =>
                 {
                     b.Property<int>("GainLossSelectedAccountId")
                         .ValueGeneratedOnAdd()
@@ -5276,40 +3676,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("GainLossSelectedAccounts");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.HRJobInterviewers", b =>
-                {
-                    b.Property<long>("HRJobInterviewerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("serial");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<int>("EmployeeId");
-
-                    b.Property<int>("InterviewDetailsId");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.HasKey("HRJobInterviewerId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("InterviewDetailsId");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("HRJobInterviewers");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.HolidayDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.HolidayDetails", b =>
                 {
                     b.Property<long>("HolidayId")
                         .ValueGeneratedOnAdd()
@@ -5351,7 +3718,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("HolidayDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.HolidayWeeklyDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.HolidayWeeklyDetails", b =>
                 {
                     b.Property<int>("HolidayWeeklyId")
                         .ValueGeneratedOnAdd()
@@ -5387,7 +3754,40 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("HolidayWeeklyDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.HRJobInterviewers", b =>
+                {
+                    b.Property<long>("HRJobInterviewerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("serial");
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<int>("EmployeeId");
+
+                    b.Property<int>("InterviewDetailsId");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.HasKey("HRJobInterviewerId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("InterviewDetailsId");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("HRJobInterviewers");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewDetails", b =>
                 {
                     b.Property<int>("InterviewDetailsId")
                         .ValueGeneratedOnAdd()
@@ -5478,7 +3878,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InterviewDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewLanguages", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewLanguages", b =>
                 {
                     b.Property<int>("InterviewLanguagesId")
                         .ValueGeneratedOnAdd()
@@ -5519,7 +3919,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InterviewLanguages");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewScheduleDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewScheduleDetails", b =>
                 {
                     b.Property<long>("ScheduleId")
                         .ValueGeneratedOnAdd()
@@ -5569,7 +3969,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InterviewScheduleDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewTechnicalQuestion", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewTechnicalQuestion", b =>
                 {
                     b.Property<int>("InterviewTechnicalQuestionId")
                         .ValueGeneratedOnAdd()
@@ -5602,7 +4002,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InterviewTechnicalQuestion");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewTechnicalQuestions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewTechnicalQuestions", b =>
                 {
                     b.Property<int>("InterviewTechnicalQuestionsId")
                         .ValueGeneratedOnAdd()
@@ -5631,7 +4031,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InterviewTechnicalQuestions");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewTrainings", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewTrainings", b =>
                 {
                     b.Property<int>("InterviewTrainingsId")
                         .ValueGeneratedOnAdd()
@@ -5670,7 +4070,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InterviewTrainings");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ItemSpecificationDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ItemSpecificationDetails", b =>
                 {
                     b.Property<int>("ItemSpecificationDetailsId")
                         .ValueGeneratedOnAdd()
@@ -5703,7 +4103,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ItemSpecificationDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ItemSpecificationMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ItemSpecificationMaster", b =>
                 {
                     b.Property<int>("ItemSpecificationMasterId")
                         .ValueGeneratedOnAdd()
@@ -5738,7 +4138,55 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ItemSpecificationMaster");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.JobGrade", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.JobDetails", b =>
+                {
+                    b.Property<long>("JobId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long?>("ContractId");
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("Description");
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<bool>("IsAgreementApproved");
+
+                    b.Property<bool>("IsApproved");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("JobCode");
+
+                    b.Property<string>("JobName");
+
+                    b.Property<long?>("JobPhaseId");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.HasKey("JobId");
+
+                    b.HasIndex("ContractId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("JobPhaseId");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("JobDetails");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.JobGrade", b =>
                 {
                     b.Property<int>("GradeId")
                         .ValueGeneratedOnAdd()
@@ -5765,7 +4213,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("JobGrade");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.JobHiringDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.JobHiringDetails", b =>
                 {
                     b.Property<long>("JobId")
                         .ValueGeneratedOnAdd()
@@ -5776,8 +4224,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.Property<DateTime?>("CreatedDate");
 
                     b.Property<int?>("GradeId");
-
-                    b.Property<long?>("HiringRequestId");
 
                     b.Property<bool>("IsActive");
 
@@ -5804,9 +4250,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.HasIndex("GradeId");
 
-                    b.HasIndex("HiringRequestId")
-                        .IsUnique();
-
                     b.HasIndex("ModifiedById");
 
                     b.HasIndex("OfficeId");
@@ -5814,7 +4257,33 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("JobHiringDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.JournalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.JobPhase", b =>
+                {
+                    b.Property<long>("JobPhaseId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<string>("Phase");
+
+                    b.HasKey("JobPhaseId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("JobPhases");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.JournalDetail", b =>
                 {
                     b.Property<int>("JournalCode")
                         .ValueGeneratedOnAdd()
@@ -5844,7 +4313,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("JournalDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.LanguageDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.LanguageDetail", b =>
                 {
                     b.Property<int>("LanguageId")
                         .ValueGeneratedOnAdd()
@@ -5871,75 +4340,21 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("LanguageDetail");
 
                     b.HasData(
-                        new
-                        {
-                            LanguageId = 1,
-                            IsDeleted = false,
-                            LanguageName = "Arabic"
-                        },
-                        new
-                        {
-                            LanguageId = 2,
-                            IsDeleted = false,
-                            LanguageName = "Dari"
-                        },
-                        new
-                        {
-                            LanguageId = 3,
-                            IsDeleted = false,
-                            LanguageName = "English"
-                        },
-                        new
-                        {
-                            LanguageId = 4,
-                            IsDeleted = false,
-                            LanguageName = "French"
-                        },
-                        new
-                        {
-                            LanguageId = 5,
-                            IsDeleted = false,
-                            LanguageName = "German"
-                        },
-                        new
-                        {
-                            LanguageId = 6,
-                            IsDeleted = false,
-                            LanguageName = "Pashto"
-                        },
-                        new
-                        {
-                            LanguageId = 7,
-                            IsDeleted = false,
-                            LanguageName = "Russian"
-                        },
-                        new
-                        {
-                            LanguageId = 8,
-                            IsDeleted = false,
-                            LanguageName = "Turkish"
-                        },
-                        new
-                        {
-                            LanguageId = 9,
-                            IsDeleted = false,
-                            LanguageName = "Turkmani"
-                        },
-                        new
-                        {
-                            LanguageId = 10,
-                            IsDeleted = false,
-                            LanguageName = "Urdu"
-                        },
-                        new
-                        {
-                            LanguageId = 11,
-                            IsDeleted = false,
-                            LanguageName = "Uzbek"
-                        });
+                        new { LanguageId = 1, IsDeleted = false, LanguageName = "Arabic" },
+                        new { LanguageId = 2, IsDeleted = false, LanguageName = "Dari" },
+                        new { LanguageId = 3, IsDeleted = false, LanguageName = "English" },
+                        new { LanguageId = 4, IsDeleted = false, LanguageName = "French" },
+                        new { LanguageId = 5, IsDeleted = false, LanguageName = "German" },
+                        new { LanguageId = 6, IsDeleted = false, LanguageName = "Pashto" },
+                        new { LanguageId = 7, IsDeleted = false, LanguageName = "Russian" },
+                        new { LanguageId = 8, IsDeleted = false, LanguageName = "Turkish" },
+                        new { LanguageId = 9, IsDeleted = false, LanguageName = "Turkmani" },
+                        new { LanguageId = 10, IsDeleted = false, LanguageName = "Urdu" },
+                        new { LanguageId = 11, IsDeleted = false, LanguageName = "Uzbek" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.LeaveReasonDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.LeaveReasonDetail", b =>
                 {
                     b.Property<int>("LeaveReasonId")
                         .ValueGeneratedOnAdd()
@@ -5969,30 +4384,13 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("LeaveReasonDetail");
 
                     b.HasData(
-                        new
-                        {
-                            LeaveReasonId = 1,
-                            IsDeleted = false,
-                            ReasonName = "Casual Leave",
-                            Unit = 12
-                        },
-                        new
-                        {
-                            LeaveReasonId = 2,
-                            IsDeleted = false,
-                            ReasonName = "Emergency Leave",
-                            Unit = 6
-                        },
-                        new
-                        {
-                            LeaveReasonId = 3,
-                            IsDeleted = false,
-                            ReasonName = "Maternity Leave",
-                            Unit = 90
-                        });
+                        new { LeaveReasonId = 1, IsDeleted = false, ReasonName = "Casual Leave", Unit = 12 },
+                        new { LeaveReasonId = 2, IsDeleted = false, ReasonName = "Emergency Leave", Unit = 6 },
+                        new { LeaveReasonId = 3, IsDeleted = false, ReasonName = "Maternity Leave", Unit = 90 }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.LoggerDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.LoggerDetails", b =>
                 {
                     b.Property<int>("LoggerDetailsId")
                         .ValueGeneratedOnAdd();
@@ -6024,7 +4422,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("LoggerDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ActivityType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.ActivityType", b =>
                 {
                     b.Property<long>("ActivityTypeId")
                         .ValueGeneratedOnAdd();
@@ -6050,21 +4448,12 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ActivityTypes");
 
                     b.HasData(
-                        new
-                        {
-                            ActivityTypeId = 1L,
-                            ActivityName = "Broadcasting",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ActivityTypeId = 2L,
-                            ActivityName = "Production",
-                            IsDeleted = false
-                        });
+                        new { ActivityTypeId = 1L, ActivityName = "Broadcasting", IsDeleted = false },
+                        new { ActivityTypeId = 2L, ActivityName = "Production", IsDeleted = false }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Category", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Category", b =>
                 {
                     b.Property<long>("CategoryId")
                         .ValueGeneratedOnAdd();
@@ -6090,7 +4479,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Channel", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Channel", b =>
                 {
                     b.Property<long>("ChannelId")
                         .ValueGeneratedOnAdd();
@@ -6120,7 +4509,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Channel");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ClientDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.ClientDetails", b =>
                 {
                     b.Property<long>("ClientId")
                         .ValueGeneratedOnAdd()
@@ -6167,7 +4556,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ClientDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ContractDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.ContractDetails", b =>
                 {
                     b.Property<long>("ContractId")
                         .ValueGeneratedOnAdd();
@@ -6249,7 +4638,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ContractDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.InvoiceApproval", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.InvoiceApproval", b =>
                 {
                     b.Property<long>("InvoiceApprovalId")
                         .ValueGeneratedOnAdd();
@@ -6279,7 +4668,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InvoiceApproval");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.InvoiceGeneration", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.InvoiceGeneration", b =>
                 {
                     b.Property<long>("InvoiceId")
                         .ValueGeneratedOnAdd();
@@ -6321,81 +4710,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InvoiceGeneration");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobDetails", b =>
-                {
-                    b.Property<long>("JobId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<long?>("ContractId");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<DateTime>("EndDate");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<bool>("IsAgreementApproved");
-
-                    b.Property<bool>("IsApproved");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("JobCode");
-
-                    b.Property<string>("JobName");
-
-                    b.Property<long?>("JobPhaseId");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<DateTime>("StartDate");
-
-                    b.HasKey("JobId");
-
-                    b.HasIndex("ContractId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("JobPhaseId");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("JobDetails");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobPhase", b =>
-                {
-                    b.Property<long>("JobPhaseId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<string>("Phase");
-
-                    b.HasKey("JobPhaseId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("JobPhases");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobPriceDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.JobPriceDetails", b =>
                 {
                     b.Property<long>("JobPriceId")
                         .ValueGeneratedOnAdd();
@@ -6441,7 +4756,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("JobPriceDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Language", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Language", b =>
                 {
                     b.Property<long>("LanguageId")
                         .ValueGeneratedOnAdd();
@@ -6467,7 +4782,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Languages");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.MediaCategory", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.MediaCategory", b =>
                 {
                     b.Property<long>("MediaCategoryId")
                         .ValueGeneratedOnAdd();
@@ -6493,7 +4808,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("MediaCategories");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Medium", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Medium", b =>
                 {
                     b.Property<long>("MediumId")
                         .ValueGeneratedOnAdd();
@@ -6519,7 +4834,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Mediums");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Nature", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Nature", b =>
                 {
                     b.Property<long>("NatureId")
                         .ValueGeneratedOnAdd();
@@ -6545,7 +4860,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Natures");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PlayoutMinutes", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PlayoutMinutes", b =>
                 {
                     b.Property<long>("PlayoutMinuteId")
                         .ValueGeneratedOnAdd();
@@ -6577,7 +4892,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PlayoutMinutes");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDaySchedule", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicyDaySchedule", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -6621,7 +4936,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PolicyDaySchedules");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicyDetail", b =>
                 {
                     b.Property<long>("PolicyId")
                         .ValueGeneratedOnAdd();
@@ -6677,7 +4992,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PolicyDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyOrderSchedule", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicyOrderSchedule", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -6711,7 +5026,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PolicyOrderSchedules");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicySchedule", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicySchedule", b =>
                 {
                     b.Property<long>("PolicyScheduleId")
                         .ValueGeneratedOnAdd();
@@ -6767,7 +5082,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PolicySchedules");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyTimeSchedule", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicyTimeSchedule", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -6803,7 +5118,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PolicyTimeSchedules");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Producer", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Producer", b =>
                 {
                     b.Property<long>("ProducerId")
                         .ValueGeneratedOnAdd();
@@ -6829,7 +5144,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Producers");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Quality", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Quality", b =>
                 {
                     b.Property<long>("QualityId")
                         .ValueGeneratedOnAdd();
@@ -6855,7 +5170,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Qualities");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ScheduleDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.ScheduleDetails", b =>
                 {
                     b.Property<long>("ScheduleId")
                         .ValueGeneratedOnAdd();
@@ -6931,7 +5246,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ScheduleDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.TimeCategory", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.TimeCategory", b =>
                 {
                     b.Property<long>("TimeCategoryId")
                         .ValueGeneratedOnAdd();
@@ -6957,7 +5272,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("TimeCategories");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.UnitRate", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.UnitRate", b =>
                 {
                     b.Property<long>("UnitRateId")
                         .ValueGeneratedOnAdd();
@@ -7013,7 +5328,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("UnitRates");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.NationalityDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.NationalityDetails", b =>
                 {
                     b.Property<int>("NationalityId")
                         .ValueGeneratedOnAdd()
@@ -7041,7 +5356,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("NationalityDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.NotesMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.NotesMaster", b =>
                 {
                     b.Property<int>("NoteId")
                         .ValueGeneratedOnAdd()
@@ -7082,7 +5397,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("NotesMaster");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.OfficeDetail", b =>
                 {
                     b.Property<int>("OfficeId")
                         .ValueGeneratedOnAdd();
@@ -7123,17 +5438,11 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("OfficeDetail");
 
                     b.HasData(
-                        new
-                        {
-                            OfficeId = 1,
-                            IsDeleted = false,
-                            OfficeCode = "A0001",
-                            OfficeKey = "AF",
-                            OfficeName = "Afghanistan"
-                        });
+                        new { OfficeId = 1, IsDeleted = false, OfficeCode = "A0001", OfficeKey = "AF", OfficeName = "Afghanistan" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.OnlyForDT.EmployeeDetailDT", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.OnlyForDT.EmployeeDetailDT", b =>
                 {
                     b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
@@ -7397,7 +5706,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EmployeeDetailDT");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.OrderSchedulePermission", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.OrderSchedulePermission", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -7430,7 +5739,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("OrderSchedulePermission");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PayrollAccountHead", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.PayrollAccountHead", b =>
                 {
                     b.Property<int>("PayrollHeadId")
                         .ValueGeneratedOnAdd()
@@ -7465,55 +5774,19 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PayrollAccountHead");
 
                     b.HasData(
-                        new
-                        {
-                            PayrollHeadId = 1,
-                            IsDeleted = false,
-                            PayrollHeadName = "Net Salary",
-                            PayrollHeadTypeId = 3,
-                            TransactionTypeId = 1
-                        },
-                        new
-                        {
-                            PayrollHeadId = 2,
-                            IsDeleted = false,
-                            PayrollHeadName = "Advance Deduction",
-                            PayrollHeadTypeId = 2,
-                            TransactionTypeId = 1
-                        },
-                        new
-                        {
-                            PayrollHeadId = 3,
-                            IsDeleted = false,
-                            PayrollHeadName = "Salary Tax",
-                            PayrollHeadTypeId = 2,
-                            TransactionTypeId = 1
-                        },
-                        new
-                        {
-                            PayrollHeadId = 4,
-                            IsDeleted = true,
-                            PayrollHeadName = "Gross Salary",
-                            PayrollHeadTypeId = 3,
-                            TransactionTypeId = 2
-                        },
-                        new
-                        {
-                            PayrollHeadId = 5,
-                            IsDeleted = false,
-                            PayrollHeadName = "Pension",
-                            PayrollHeadTypeId = 2,
-                            TransactionTypeId = 1
-                        });
+                        new { PayrollHeadId = 1, IsDeleted = false, PayrollHeadName = "Net Salary", PayrollHeadTypeId = 3, TransactionTypeId = 1 },
+                        new { PayrollHeadId = 2, IsDeleted = false, PayrollHeadName = "Advance Deduction", PayrollHeadTypeId = 2, TransactionTypeId = 1 },
+                        new { PayrollHeadId = 3, IsDeleted = false, PayrollHeadName = "Salary Tax", PayrollHeadTypeId = 2, TransactionTypeId = 1 },
+                        new { PayrollHeadId = 4, IsDeleted = true, PayrollHeadName = "Gross Salary", PayrollHeadTypeId = 3, TransactionTypeId = 2 },
+                        new { PayrollHeadId = 5, IsDeleted = false, PayrollHeadName = "Pension", PayrollHeadTypeId = 2, TransactionTypeId = 1 }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PayrollMonthlyHourDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.PayrollMonthlyHourDetail", b =>
                 {
                     b.Property<int>("PayrollMonthlyHourID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("serial");
-
-                    b.Property<long?>("AttendanceGroupId");
 
                     b.Property<string>("CreatedById");
 
@@ -7543,8 +5816,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.HasKey("PayrollMonthlyHourID");
 
-                    b.HasIndex("AttendanceGroupId");
-
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("ModifiedById");
@@ -7554,36 +5825,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PayrollMonthlyHourDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PensionDebitAccountMaster", b =>
-                {
-                    b.Property<int>("PensionDebitAccountId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("serial");
-
-                    b.Property<long>("ChartOfAccountNewId");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.HasKey("PensionDebitAccountId");
-
-                    b.HasIndex("ChartOfAccountNewId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("PensionDebitAccountMaster");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PensionPaymentHistory", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.PensionPaymentHistory", b =>
                 {
                     b.Property<int>("PensionPaymentId")
                         .ValueGeneratedOnAdd()
@@ -7622,7 +5864,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PensionPaymentHistory");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Permissions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Permissions", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -7650,7 +5892,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("Permissions");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PermissionsInRoles", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.PermissionsInRoles", b =>
                 {
                     b.Property<string>("RoleId");
 
@@ -7693,7 +5935,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PermissionsInRoles");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ProfessionDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ProfessionDetails", b =>
                 {
                     b.Property<int>("ProfessionId")
                         .ValueGeneratedOnAdd()
@@ -7723,7 +5965,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProfessionDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ActivityDocumentsDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ActivityDocumentsDetail", b =>
                 {
                     b.Property<long>("ActtivityDocumentId")
                         .ValueGeneratedOnAdd()
@@ -7743,8 +5985,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.Property<DateTime?>("ModifiedDate");
 
-                    b.Property<long?>("MonitoringId");
-
                     b.Property<int?>("StatusId");
 
                     b.HasKey("ActtivityDocumentId");
@@ -7760,7 +6000,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ActivityDocumentsDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ActivityStatusDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ActivityStatusDetail", b =>
                 {
                     b.Property<int>("StatusId")
                         .ValueGeneratedOnAdd()
@@ -7787,7 +6027,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ActivityStatusDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ApproveProjectDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ApproveProjectDetails", b =>
                 {
                     b.Property<long>("ApproveProjrctId")
                         .ValueGeneratedOnAdd()
@@ -7828,7 +6068,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ApproveProjectDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.AreaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.AreaDetail", b =>
                 {
                     b.Property<long>("AreaId")
                         .ValueGeneratedOnAdd()
@@ -7857,7 +6097,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AreaDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.CEAgeGroupDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.CEAgeGroupDetail", b =>
                 {
                     b.Property<long>("AgeGroupOtherDetailId")
                         .ValueGeneratedOnAdd()
@@ -7888,7 +6128,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("CEAgeGroupDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.CEAssumptionDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.CEAssumptionDetail", b =>
                 {
                     b.Property<long>("AssumptionDetailId")
                         .ValueGeneratedOnAdd()
@@ -7919,7 +6159,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("CEAssumptionDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.CEFeasibilityExpertOtherDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.CEFeasibilityExpertOtherDetail", b =>
                 {
                     b.Property<long>("ExpertOtherDetailId")
                         .ValueGeneratedOnAdd()
@@ -7950,7 +6190,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("CEFeasibilityExpertOtherDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.CEOccupationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.CEOccupationDetail", b =>
                 {
                     b.Property<long>("OccupationOtherDetailId")
                         .ValueGeneratedOnAdd()
@@ -7981,7 +6221,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("CEOccupationDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.DistrictMultiSelect", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.DistrictMultiSelect", b =>
                 {
                     b.Property<long>("DistrictMultiSelectId")
                         .ValueGeneratedOnAdd()
@@ -8020,7 +6260,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("DistrictMultiSelect");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.DonorCriteriaDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.DonorCriteriaDetails", b =>
                 {
                     b.Property<long>("DonorCEId")
                         .ValueGeneratedOnAdd()
@@ -8087,7 +6327,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("DonorCriteriaDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.DonorEligibilityCriteria", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.DonorEligibilityCriteria", b =>
                 {
                     b.Property<long>("DonorEligibilityDetailId")
                         .ValueGeneratedOnAdd()
@@ -8118,7 +6358,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("DonorEligibilityCriteria");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.EligibilityCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.EligibilityCriteriaDetail", b =>
                 {
                     b.Property<long>("EligibilityId")
                         .ValueGeneratedOnAdd()
@@ -8153,7 +6393,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("EligibilityCriteriaDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.FeasibilityCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.FeasibilityCriteriaDetail", b =>
                 {
                     b.Property<long>("FeasibilityId")
                         .ValueGeneratedOnAdd()
@@ -8234,7 +6474,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("FeasibilityCriteriaDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.FinancialCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.FinancialCriteriaDetail", b =>
                 {
                     b.Property<long>("FinancialCriteriaDetailId")
                         .ValueGeneratedOnAdd()
@@ -8273,7 +6513,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("FinancialCriteriaDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.FinancialProjectDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.FinancialProjectDetail", b =>
                 {
                     b.Property<long>("FinancialProjectDetailId")
                         .ValueGeneratedOnAdd()
@@ -8306,7 +6546,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("FinancialProjectDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.GenderConsiderationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.GenderConsiderationDetail", b =>
                 {
                     b.Property<long>("GenderConsiderationId")
                         .ValueGeneratedOnAdd()
@@ -8333,93 +6573,18 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("GenderConsiderationDetail");
 
                     b.HasData(
-                        new
-                        {
-                            GenderConsiderationId = 1L,
-                            GenderConsiderationName = "50 % F - 50 % M Excellent",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            GenderConsiderationId = 2L,
-                            GenderConsiderationName = "40 % F - 60 % M Very Good",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            GenderConsiderationId = 3L,
-                            GenderConsiderationName = "30 % F - 70 % M Good",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            GenderConsiderationId = 4L,
-                            GenderConsiderationName = "25 % F - 75 % M Poor",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            GenderConsiderationId = 5L,
-                            GenderConsiderationName = "20 % F - 80 % M Poor",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            GenderConsiderationId = 6L,
-                            GenderConsiderationName = "10 % F - 90 % M Poor",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            GenderConsiderationId = 7L,
-                            GenderConsiderationName = "5 % F - 95 % M Poor",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            GenderConsiderationId = 8L,
-                            GenderConsiderationName = "0 % F - 100 % M Poor",
-                            IsDeleted = false
-                        });
+                        new { GenderConsiderationId = 1L, GenderConsiderationName = "50 % F - 50 % M Excellent", IsDeleted = false },
+                        new { GenderConsiderationId = 2L, GenderConsiderationName = "40 % F - 60 % M Very Good", IsDeleted = false },
+                        new { GenderConsiderationId = 3L, GenderConsiderationName = "30 % F - 70 % M Good", IsDeleted = false },
+                        new { GenderConsiderationId = 4L, GenderConsiderationName = "25 % F - 75 % M Poor", IsDeleted = false },
+                        new { GenderConsiderationId = 5L, GenderConsiderationName = "20 % F - 80 % M Poor", IsDeleted = false },
+                        new { GenderConsiderationId = 6L, GenderConsiderationName = "10 % F - 90 % M Poor", IsDeleted = false },
+                        new { GenderConsiderationId = 7L, GenderConsiderationName = "5 % F - 95 % M Poor", IsDeleted = false },
+                        new { GenderConsiderationId = 8L, GenderConsiderationName = "0 % F - 100 % M Poor", IsDeleted = false }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.HiringRequestCandidates", b =>
-                {
-                    b.Property<long>("CandidateId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<int?>("EmployeeID");
-
-                    b.Property<long>("HiringRequestId");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<bool>("IsSelected");
-
-                    b.Property<bool>("IsShortListed");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.HasKey("CandidateId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("EmployeeID");
-
-                    b.HasIndex("HiringRequestId");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("HiringRequestCandidates");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.PriorityCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.PriorityCriteriaDetail", b =>
                 {
                     b.Property<long>("PriorityCriteriaDetailId")
                         .ValueGeneratedOnAdd()
@@ -8472,7 +6637,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PriorityCriteriaDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.PriorityOtherDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.PriorityOtherDetail", b =>
                 {
                     b.Property<long>("PriorityOtherDetailId")
                         .ValueGeneratedOnAdd()
@@ -8503,7 +6668,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PriorityOtherDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProgramDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProgramDetail", b =>
                 {
                     b.Property<long>("ProgramId")
                         .ValueGeneratedOnAdd()
@@ -8534,41 +6699,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProgramDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivitiesControl", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<long>("ProjectId");
-
-                    b.Property<int>("RoleId");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.HasIndex("ProjectId");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("ProjectActivitiesControl");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectActivityDetail", b =>
                 {
                     b.Property<long>("ActivityId")
                         .ValueGeneratedOnAdd()
@@ -8617,8 +6748,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.Property<int?>("StatusId");
 
-                    b.Property<string>("SubActivityTitle");
-
                     b.Property<float?>("Target");
 
                     b.HasKey("ActivityId");
@@ -8638,7 +6767,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectActivityDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityExtensions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectActivityExtensions", b =>
                 {
                     b.Property<long>("ExtensionId")
                         .ValueGeneratedOnAdd()
@@ -8674,7 +6803,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectActivityExtensions");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityProvinceDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectActivityProvinceDetail", b =>
                 {
                     b.Property<long>("ActivityProvinceId")
                         .ValueGeneratedOnAdd()
@@ -8711,7 +6840,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectActivityProvinceDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectArea", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectArea", b =>
                 {
                     b.Property<long>("ProjectAreaId")
                         .ValueGeneratedOnAdd()
@@ -8744,7 +6873,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectArea");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectAssignTo", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectAssignTo", b =>
                 {
                     b.Property<long>("ProjectAssignToId")
                         .ValueGeneratedOnAdd()
@@ -8777,7 +6906,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectAssignTo");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectBudgetLineDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectBudgetLineDetail", b =>
                 {
                     b.Property<long>("BudgetLineId")
                         .ValueGeneratedOnAdd()
@@ -8820,7 +6949,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectBudgetLineDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectCommunication", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectCommunication", b =>
                 {
                     b.Property<long>("PCId")
                         .ValueGeneratedOnAdd()
@@ -8851,7 +6980,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectCommunication");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectCommunicationAttachment", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectCommunicationAttachment", b =>
                 {
                     b.Property<long>("PCAId")
                         .ValueGeneratedOnAdd()
@@ -8888,7 +7017,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectCommunicationAttachment");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectDetail", b =>
                 {
                     b.Property<long>("ProjectId")
                         .ValueGeneratedOnAdd()
@@ -8937,107 +7066,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectHiringControl", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<long>("ProjectId");
-
-                    b.Property<int>("RoleId");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.HasIndex("ProjectId");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("ProjectHiringControl");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectHiringRequestDetail", b =>
-                {
-                    b.Property<long>("HiringRequestId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<double?>("BasicPay");
-
-                    b.Property<long?>("BudgetLineId");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<int?>("CurrencyId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<int?>("EmployeeID");
-
-                    b.Property<int?>("FilledVacancies");
-
-                    b.Property<int?>("GradeId");
-
-                    b.Property<string>("HiringRequestCode");
-
-                    b.Property<bool>("IsCompleted");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<int?>("OfficeId");
-
-                    b.Property<string>("Position");
-
-                    b.Property<int?>("ProfessionId");
-
-                    b.Property<long?>("ProjectId");
-
-                    b.Property<int?>("TotalVacancies");
-
-                    b.HasKey("HiringRequestId");
-
-                    b.HasIndex("BudgetLineId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("CurrencyId");
-
-                    b.HasIndex("EmployeeID");
-
-                    b.HasIndex("GradeId");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.HasIndex("OfficeId");
-
-                    b.HasIndex("ProfessionId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("ProjectHiringRequestDetail");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectIndicatorQuestions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectIndicatorQuestions", b =>
                 {
                     b.Property<long>("IndicatorQuestionId")
                         .ValueGeneratedOnAdd()
@@ -9068,7 +7097,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectIndicatorQuestions");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectIndicators", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectIndicators", b =>
                 {
                     b.Property<long>("ProjectIndicatorId")
                         .ValueGeneratedOnAdd()
@@ -9097,7 +7126,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectIndicators");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectJobDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectJobDetail", b =>
                 {
                     b.Property<long>("ProjectJobId")
                         .ValueGeneratedOnAdd()
@@ -9130,41 +7159,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectJobDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectLogisticsControl", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<long>("ProjectId");
-
-                    b.Property<int>("RoleId");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.HasIndex("ProjectId");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("ProjectLogisticsControl");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectMonitoringIndicatorDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectMonitoringIndicatorDetail", b =>
                 {
                     b.Property<long>("MonitoringIndicatorId")
                         .ValueGeneratedOnAdd()
@@ -9197,7 +7192,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectMonitoringIndicatorDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectMonitoringIndicatorQuestions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectMonitoringIndicatorQuestions", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -9221,8 +7216,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.Property<string>("Verification");
 
-                    b.Property<int?>("VerificationId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedById");
@@ -9236,7 +7229,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectMonitoringIndicatorQuestions");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectMonitoringReviewDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectMonitoringReviewDetail", b =>
                 {
                     b.Property<long>("ProjectMonitoringReviewId")
                         .ValueGeneratedOnAdd()
@@ -9253,8 +7246,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.Property<string>("ModifiedById");
 
                     b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<DateTime?>("MonitoringDate");
 
                     b.Property<string>("NegativePoints");
 
@@ -9275,41 +7266,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectMonitoringReviewDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectOpportunityControl", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<long>("ProjectId");
-
-                    b.Property<int>("RoleId");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.HasIndex("ProjectId");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("ProjectOpportunityControl");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectOtherDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectOtherDetail", b =>
                 {
                     b.Property<long>("ProjectOtherDetailId")
                         .ValueGeneratedOnAdd()
@@ -9392,7 +7349,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectOtherDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectPhaseDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectPhaseDetails", b =>
                 {
                     b.Property<long>("ProjectPhaseDetailsId")
                         .ValueGeneratedOnAdd()
@@ -9419,15 +7376,11 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectPhaseDetails");
 
                     b.HasData(
-                        new
-                        {
-                            ProjectPhaseDetailsId = 1L,
-                            IsDeleted = false,
-                            ProjectPhase = "Data Entry"
-                        });
+                        new { ProjectPhaseDetailsId = 1L, IsDeleted = false, ProjectPhase = "Data Entry" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectPhaseTime", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectPhaseTime", b =>
                 {
                     b.Property<long>("ProjectPhaseTimeId")
                         .ValueGeneratedOnAdd()
@@ -9464,7 +7417,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectPhaseTime");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectProgram", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectProgram", b =>
                 {
                     b.Property<long>("ProjectProgramId")
                         .ValueGeneratedOnAdd()
@@ -9497,7 +7450,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectProgram");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectProposalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectProposalDetail", b =>
                 {
                     b.Property<long>("ProjectProposaldetailId")
                         .ValueGeneratedOnAdd()
@@ -9584,7 +7537,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectProposalDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectSector", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectSector", b =>
                 {
                     b.Property<long>("ProjectSectorId")
                         .ValueGeneratedOnAdd()
@@ -9617,7 +7570,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectSector");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProvinceMultiSelect", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProvinceMultiSelect", b =>
                 {
                     b.Property<long>("ProvinceMultiSelectId")
                         .ValueGeneratedOnAdd()
@@ -9652,7 +7605,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProvinceMultiSelect");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.PurposeofInitiativeCriteria", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.PurposeofInitiativeCriteria", b =>
                 {
                     b.Property<long>("ProductServiceId")
                         .ValueGeneratedOnAdd()
@@ -9745,7 +7698,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PurposeofInitiativeCriteria");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.RiskCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.RiskCriteriaDetail", b =>
                 {
                     b.Property<long>("RiskCriteriaDetailId")
                         .ValueGeneratedOnAdd()
@@ -9820,7 +7773,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("RiskCriteriaDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.SectorDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.SectorDetails", b =>
                 {
                     b.Property<long>("SectorId")
                         .ValueGeneratedOnAdd()
@@ -9849,7 +7802,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("SectorDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.SecurityConsiderationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.SecurityConsiderationDetail", b =>
                 {
                     b.Property<long>("SecurityConsiderationId")
                         .ValueGeneratedOnAdd()
@@ -9876,75 +7829,21 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("SecurityConsiderationDetail");
 
                     b.HasData(
-                        new
-                        {
-                            SecurityConsiderationId = 1L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Project Staff Cannot Visit Project Site"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 2L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Beneficiaries cannot be reached"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 3L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Resources cannot be deployed"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 4L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Threat exit for future (Highly)"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 5L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Project staff access the are partially"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 6L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Bonfires can be reached partially"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 7L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Resources can be deployed partially"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 8L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Future Threats exits"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 9L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "No barrier for staff to access the area"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 10L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "No obstacle for deploying Resources & office"
-                        },
-                        new
-                        {
-                            SecurityConsiderationId = 11L,
-                            IsDeleted = false,
-                            SecurityConsiderationName = "Future Threats expected"
-                        });
+                        new { SecurityConsiderationId = 1L, IsDeleted = false, SecurityConsiderationName = "Project Staff Cannot Visit Project Site" },
+                        new { SecurityConsiderationId = 2L, IsDeleted = false, SecurityConsiderationName = "Beneficiaries cannot be reached" },
+                        new { SecurityConsiderationId = 3L, IsDeleted = false, SecurityConsiderationName = "Resources cannot be deployed" },
+                        new { SecurityConsiderationId = 4L, IsDeleted = false, SecurityConsiderationName = "Threat exit for future (Highly)" },
+                        new { SecurityConsiderationId = 5L, IsDeleted = false, SecurityConsiderationName = "Project staff access the are partially" },
+                        new { SecurityConsiderationId = 6L, IsDeleted = false, SecurityConsiderationName = "Bonfires can be reached partially" },
+                        new { SecurityConsiderationId = 7L, IsDeleted = false, SecurityConsiderationName = "Resources can be deployed partially" },
+                        new { SecurityConsiderationId = 8L, IsDeleted = false, SecurityConsiderationName = "Future Threats exits" },
+                        new { SecurityConsiderationId = 9L, IsDeleted = false, SecurityConsiderationName = "No barrier for staff to access the area" },
+                        new { SecurityConsiderationId = 10L, IsDeleted = false, SecurityConsiderationName = "No obstacle for deploying Resources & office" },
+                        new { SecurityConsiderationId = 11L, IsDeleted = false, SecurityConsiderationName = "Future Threats expected" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.SecurityConsiderationMultiSelect", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.SecurityConsiderationMultiSelect", b =>
                 {
                     b.Property<long>("SecurityConsiderationMultiSelectId")
                         .ValueGeneratedOnAdd()
@@ -9979,7 +7878,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("SecurityConsiderationMultiSelect");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.SecurityDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.SecurityDetail", b =>
                 {
                     b.Property<long>("SecurityId")
                         .ValueGeneratedOnAdd()
@@ -10006,27 +7905,13 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("SecurityDetail");
 
                     b.HasData(
-                        new
-                        {
-                            SecurityId = 1L,
-                            IsDeleted = false,
-                            SecurityName = "Insecure"
-                        },
-                        new
-                        {
-                            SecurityId = 2L,
-                            IsDeleted = false,
-                            SecurityName = "Partially Insecure"
-                        },
-                        new
-                        {
-                            SecurityId = 3L,
-                            IsDeleted = false,
-                            SecurityName = "Secure (Green Area)"
-                        });
+                        new { SecurityId = 1L, IsDeleted = false, SecurityName = "Insecure" },
+                        new { SecurityId = 2L, IsDeleted = false, SecurityName = "Partially Insecure" },
+                        new { SecurityId = 3L, IsDeleted = false, SecurityName = "Secure (Green Area)" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.StrengthConsiderationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.StrengthConsiderationDetail", b =>
                 {
                     b.Property<long>("StrengthConsiderationId")
                         .ValueGeneratedOnAdd()
@@ -10053,27 +7938,13 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("StrengthConsiderationDetail");
 
                     b.HasData(
-                        new
-                        {
-                            StrengthConsiderationId = 1L,
-                            IsDeleted = false,
-                            StrengthConsiderationName = "Gender Friendly"
-                        },
-                        new
-                        {
-                            StrengthConsiderationId = 2L,
-                            IsDeleted = false,
-                            StrengthConsiderationName = "Not Gender Friendly"
-                        },
-                        new
-                        {
-                            StrengthConsiderationId = 3L,
-                            IsDeleted = false,
-                            StrengthConsiderationName = "Not Applicable"
-                        });
+                        new { StrengthConsiderationId = 1L, IsDeleted = false, StrengthConsiderationName = "Gender Friendly" },
+                        new { StrengthConsiderationId = 2L, IsDeleted = false, StrengthConsiderationName = "Not Gender Friendly" },
+                        new { StrengthConsiderationId = 3L, IsDeleted = false, StrengthConsiderationName = "Not Applicable" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.TargetBeneficiaryDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.TargetBeneficiaryDetail", b =>
                 {
                     b.Property<long>("TargetId")
                         .ValueGeneratedOnAdd()
@@ -10104,7 +7975,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("TargetBeneficiaryDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.WinProjectDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.WinProjectDetails", b =>
                 {
                     b.Property<long>("WinProjectId")
                         .ValueGeneratedOnAdd()
@@ -10143,7 +8014,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("WinProjectDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ProjectBudgetLine", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ProjectBudgetLine", b =>
                 {
                     b.Property<long>("BudgetLineId")
                         .ValueGeneratedOnAdd();
@@ -10185,7 +8056,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectBudgetLine");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ProjectDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ProjectDetails", b =>
                 {
                     b.Property<long>("ProjectId")
                         .ValueGeneratedOnAdd();
@@ -10231,7 +8102,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProjectDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ProvinceDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ProvinceDetails", b =>
                 {
                     b.Property<int>("ProvinceId")
                         .ValueGeneratedOnAdd()
@@ -10263,590 +8134,93 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ProvinceDetails");
 
                     b.HasData(
-                        new
-                        {
-                            ProvinceId = 1,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Badghis"
-                        },
-                        new
-                        {
-                            ProvinceId = 2,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Baghlan"
-                        },
-                        new
-                        {
-                            ProvinceId = 3,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Balkh"
-                        },
-                        new
-                        {
-                            ProvinceId = 4,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Bamyan"
-                        },
-                        new
-                        {
-                            ProvinceId = 5,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Daykundi"
-                        },
-                        new
-                        {
-                            ProvinceId = 6,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Farah"
-                        },
-                        new
-                        {
-                            ProvinceId = 7,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Faryab"
-                        },
-                        new
-                        {
-                            ProvinceId = 8,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Ghazni"
-                        },
-                        new
-                        {
-                            ProvinceId = 9,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Ghor"
-                        },
-                        new
-                        {
-                            ProvinceId = 10,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Helmand"
-                        },
-                        new
-                        {
-                            ProvinceId = 11,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Herat"
-                        },
-                        new
-                        {
-                            ProvinceId = 12,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Jowzjan"
-                        },
-                        new
-                        {
-                            ProvinceId = 13,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Kabul"
-                        },
-                        new
-                        {
-                            ProvinceId = 14,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Kandahar"
-                        },
-                        new
-                        {
-                            ProvinceId = 15,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Kapisa"
-                        },
-                        new
-                        {
-                            ProvinceId = 16,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Khost"
-                        },
-                        new
-                        {
-                            ProvinceId = 17,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Kunar"
-                        },
-                        new
-                        {
-                            ProvinceId = 18,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Kunduz"
-                        },
-                        new
-                        {
-                            ProvinceId = 19,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Laghman"
-                        },
-                        new
-                        {
-                            ProvinceId = 20,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Logar"
-                        },
-                        new
-                        {
-                            ProvinceId = 21,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Maidan Wardak"
-                        },
-                        new
-                        {
-                            ProvinceId = 22,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Nangarhar"
-                        },
-                        new
-                        {
-                            ProvinceId = 23,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Nimruz"
-                        },
-                        new
-                        {
-                            ProvinceId = 24,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Nuristan"
-                        },
-                        new
-                        {
-                            ProvinceId = 25,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Paktia"
-                        },
-                        new
-                        {
-                            ProvinceId = 26,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Paktika"
-                        },
-                        new
-                        {
-                            ProvinceId = 27,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Panjshir"
-                        },
-                        new
-                        {
-                            ProvinceId = 28,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Parwan"
-                        },
-                        new
-                        {
-                            ProvinceId = 29,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Samangan"
-                        },
-                        new
-                        {
-                            ProvinceId = 30,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Sar-e Pol"
-                        },
-                        new
-                        {
-                            ProvinceId = 31,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Takhar"
-                        },
-                        new
-                        {
-                            ProvinceId = 32,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Urozgan"
-                        },
-                        new
-                        {
-                            ProvinceId = 33,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Zabul"
-                        },
-                        new
-                        {
-                            ProvinceId = 34,
-                            CountryId = 1,
-                            IsDeleted = false,
-                            ProvinceName = "Alabama"
-                        },
-                        new
-                        {
-                            ProvinceId = 35,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Alaska"
-                        },
-                        new
-                        {
-                            ProvinceId = 36,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Arizona"
-                        },
-                        new
-                        {
-                            ProvinceId = 37,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Arkansas"
-                        },
-                        new
-                        {
-                            ProvinceId = 38,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "California"
-                        },
-                        new
-                        {
-                            ProvinceId = 39,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Colorado"
-                        },
-                        new
-                        {
-                            ProvinceId = 40,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Connecticut"
-                        },
-                        new
-                        {
-                            ProvinceId = 41,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Delaware"
-                        },
-                        new
-                        {
-                            ProvinceId = 42,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Florida"
-                        },
-                        new
-                        {
-                            ProvinceId = 43,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Georgia"
-                        },
-                        new
-                        {
-                            ProvinceId = 44,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Hawaii"
-                        },
-                        new
-                        {
-                            ProvinceId = 45,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Idaho"
-                        },
-                        new
-                        {
-                            ProvinceId = 46,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Illinois"
-                        },
-                        new
-                        {
-                            ProvinceId = 47,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Indiana"
-                        },
-                        new
-                        {
-                            ProvinceId = 48,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Iowa"
-                        },
-                        new
-                        {
-                            ProvinceId = 49,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Kansas"
-                        },
-                        new
-                        {
-                            ProvinceId = 50,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Kentucky"
-                        },
-                        new
-                        {
-                            ProvinceId = 51,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Louisiana"
-                        },
-                        new
-                        {
-                            ProvinceId = 52,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Maine"
-                        },
-                        new
-                        {
-                            ProvinceId = 53,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Maryland"
-                        },
-                        new
-                        {
-                            ProvinceId = 54,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Massachusetts"
-                        },
-                        new
-                        {
-                            ProvinceId = 55,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Michigan"
-                        },
-                        new
-                        {
-                            ProvinceId = 56,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Minnesota"
-                        },
-                        new
-                        {
-                            ProvinceId = 57,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Mississippi"
-                        },
-                        new
-                        {
-                            ProvinceId = 58,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Missouri"
-                        },
-                        new
-                        {
-                            ProvinceId = 59,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Montana"
-                        },
-                        new
-                        {
-                            ProvinceId = 60,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Nebraska"
-                        },
-                        new
-                        {
-                            ProvinceId = 61,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Nevada"
-                        },
-                        new
-                        {
-                            ProvinceId = 62,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "New Hampshire"
-                        },
-                        new
-                        {
-                            ProvinceId = 63,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "New Jersey"
-                        },
-                        new
-                        {
-                            ProvinceId = 64,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "New Mexico"
-                        },
-                        new
-                        {
-                            ProvinceId = 65,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "New York"
-                        },
-                        new
-                        {
-                            ProvinceId = 66,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "North Carolina"
-                        },
-                        new
-                        {
-                            ProvinceId = 67,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "North Dakota"
-                        },
-                        new
-                        {
-                            ProvinceId = 68,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Ohio"
-                        },
-                        new
-                        {
-                            ProvinceId = 69,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Oklahoma"
-                        },
-                        new
-                        {
-                            ProvinceId = 70,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Oregon"
-                        },
-                        new
-                        {
-                            ProvinceId = 71,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Pennsylvania"
-                        },
-                        new
-                        {
-                            ProvinceId = 72,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Rhode Island"
-                        },
-                        new
-                        {
-                            ProvinceId = 73,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "South Carolina"
-                        },
-                        new
-                        {
-                            ProvinceId = 74,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "South Dakota"
-                        },
-                        new
-                        {
-                            ProvinceId = 75,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Tennessee"
-                        },
-                        new
-                        {
-                            ProvinceId = 76,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Texas"
-                        },
-                        new
-                        {
-                            ProvinceId = 77,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Utah"
-                        },
-                        new
-                        {
-                            ProvinceId = 78,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Vermont"
-                        },
-                        new
-                        {
-                            ProvinceId = 79,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Virginia"
-                        },
-                        new
-                        {
-                            ProvinceId = 80,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Washington"
-                        },
-                        new
-                        {
-                            ProvinceId = 81,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "West Virginia"
-                        },
-                        new
-                        {
-                            ProvinceId = 82,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Wisconsin"
-                        },
-                        new
-                        {
-                            ProvinceId = 83,
-                            CountryId = 2,
-                            IsDeleted = false,
-                            ProvinceName = "Wyoming"
-                        });
+                        new { ProvinceId = 1, CountryId = 1, IsDeleted = false, ProvinceName = "Badghis" },
+                        new { ProvinceId = 2, CountryId = 1, IsDeleted = false, ProvinceName = "Baghlan" },
+                        new { ProvinceId = 3, CountryId = 1, IsDeleted = false, ProvinceName = "Balkh" },
+                        new { ProvinceId = 4, CountryId = 1, IsDeleted = false, ProvinceName = "Bamyan" },
+                        new { ProvinceId = 5, CountryId = 1, IsDeleted = false, ProvinceName = "Daykundi" },
+                        new { ProvinceId = 6, CountryId = 1, IsDeleted = false, ProvinceName = "Farah" },
+                        new { ProvinceId = 7, CountryId = 1, IsDeleted = false, ProvinceName = "Faryab" },
+                        new { ProvinceId = 8, CountryId = 1, IsDeleted = false, ProvinceName = "Ghazni" },
+                        new { ProvinceId = 9, CountryId = 1, IsDeleted = false, ProvinceName = "Ghor" },
+                        new { ProvinceId = 10, CountryId = 1, IsDeleted = false, ProvinceName = "Helmand" },
+                        new { ProvinceId = 11, CountryId = 1, IsDeleted = false, ProvinceName = "Herat" },
+                        new { ProvinceId = 12, CountryId = 1, IsDeleted = false, ProvinceName = "Jowzjan" },
+                        new { ProvinceId = 13, CountryId = 1, IsDeleted = false, ProvinceName = "Kabul" },
+                        new { ProvinceId = 14, CountryId = 1, IsDeleted = false, ProvinceName = "Kandahar" },
+                        new { ProvinceId = 15, CountryId = 1, IsDeleted = false, ProvinceName = "Kapisa" },
+                        new { ProvinceId = 16, CountryId = 1, IsDeleted = false, ProvinceName = "Khost" },
+                        new { ProvinceId = 17, CountryId = 1, IsDeleted = false, ProvinceName = "Kunar" },
+                        new { ProvinceId = 18, CountryId = 1, IsDeleted = false, ProvinceName = "Kunduz" },
+                        new { ProvinceId = 19, CountryId = 1, IsDeleted = false, ProvinceName = "Laghman" },
+                        new { ProvinceId = 20, CountryId = 1, IsDeleted = false, ProvinceName = "Logar" },
+                        new { ProvinceId = 21, CountryId = 1, IsDeleted = false, ProvinceName = "Maidan Wardak" },
+                        new { ProvinceId = 22, CountryId = 1, IsDeleted = false, ProvinceName = "Nangarhar" },
+                        new { ProvinceId = 23, CountryId = 1, IsDeleted = false, ProvinceName = "Nimruz" },
+                        new { ProvinceId = 24, CountryId = 1, IsDeleted = false, ProvinceName = "Nuristan" },
+                        new { ProvinceId = 25, CountryId = 1, IsDeleted = false, ProvinceName = "Paktia" },
+                        new { ProvinceId = 26, CountryId = 1, IsDeleted = false, ProvinceName = "Paktika" },
+                        new { ProvinceId = 27, CountryId = 1, IsDeleted = false, ProvinceName = "Panjshir" },
+                        new { ProvinceId = 28, CountryId = 1, IsDeleted = false, ProvinceName = "Parwan" },
+                        new { ProvinceId = 29, CountryId = 1, IsDeleted = false, ProvinceName = "Samangan" },
+                        new { ProvinceId = 30, CountryId = 1, IsDeleted = false, ProvinceName = "Sar-e Pol" },
+                        new { ProvinceId = 31, CountryId = 1, IsDeleted = false, ProvinceName = "Takhar" },
+                        new { ProvinceId = 32, CountryId = 1, IsDeleted = false, ProvinceName = "Urozgan" },
+                        new { ProvinceId = 33, CountryId = 1, IsDeleted = false, ProvinceName = "Zabul" },
+                        new { ProvinceId = 34, CountryId = 1, IsDeleted = false, ProvinceName = "Alabama" },
+                        new { ProvinceId = 35, CountryId = 2, IsDeleted = false, ProvinceName = "Alaska" },
+                        new { ProvinceId = 36, CountryId = 2, IsDeleted = false, ProvinceName = "Arizona" },
+                        new { ProvinceId = 37, CountryId = 2, IsDeleted = false, ProvinceName = "Arkansas" },
+                        new { ProvinceId = 38, CountryId = 2, IsDeleted = false, ProvinceName = "California" },
+                        new { ProvinceId = 39, CountryId = 2, IsDeleted = false, ProvinceName = "Colorado" },
+                        new { ProvinceId = 40, CountryId = 2, IsDeleted = false, ProvinceName = "Connecticut" },
+                        new { ProvinceId = 41, CountryId = 2, IsDeleted = false, ProvinceName = "Delaware" },
+                        new { ProvinceId = 42, CountryId = 2, IsDeleted = false, ProvinceName = "Florida" },
+                        new { ProvinceId = 43, CountryId = 2, IsDeleted = false, ProvinceName = "Georgia" },
+                        new { ProvinceId = 44, CountryId = 2, IsDeleted = false, ProvinceName = "Hawaii" },
+                        new { ProvinceId = 45, CountryId = 2, IsDeleted = false, ProvinceName = "Idaho" },
+                        new { ProvinceId = 46, CountryId = 2, IsDeleted = false, ProvinceName = "Illinois" },
+                        new { ProvinceId = 47, CountryId = 2, IsDeleted = false, ProvinceName = "Indiana" },
+                        new { ProvinceId = 48, CountryId = 2, IsDeleted = false, ProvinceName = "Iowa" },
+                        new { ProvinceId = 49, CountryId = 2, IsDeleted = false, ProvinceName = "Kansas" },
+                        new { ProvinceId = 50, CountryId = 2, IsDeleted = false, ProvinceName = "Kentucky" },
+                        new { ProvinceId = 51, CountryId = 2, IsDeleted = false, ProvinceName = "Louisiana" },
+                        new { ProvinceId = 52, CountryId = 2, IsDeleted = false, ProvinceName = "Maine" },
+                        new { ProvinceId = 53, CountryId = 2, IsDeleted = false, ProvinceName = "Maryland" },
+                        new { ProvinceId = 54, CountryId = 2, IsDeleted = false, ProvinceName = "Massachusetts" },
+                        new { ProvinceId = 55, CountryId = 2, IsDeleted = false, ProvinceName = "Michigan" },
+                        new { ProvinceId = 56, CountryId = 2, IsDeleted = false, ProvinceName = "Minnesota" },
+                        new { ProvinceId = 57, CountryId = 2, IsDeleted = false, ProvinceName = "Mississippi" },
+                        new { ProvinceId = 58, CountryId = 2, IsDeleted = false, ProvinceName = "Missouri" },
+                        new { ProvinceId = 59, CountryId = 2, IsDeleted = false, ProvinceName = "Montana" },
+                        new { ProvinceId = 60, CountryId = 2, IsDeleted = false, ProvinceName = "Nebraska" },
+                        new { ProvinceId = 61, CountryId = 2, IsDeleted = false, ProvinceName = "Nevada" },
+                        new { ProvinceId = 62, CountryId = 2, IsDeleted = false, ProvinceName = "New Hampshire" },
+                        new { ProvinceId = 63, CountryId = 2, IsDeleted = false, ProvinceName = "New Jersey" },
+                        new { ProvinceId = 64, CountryId = 2, IsDeleted = false, ProvinceName = "New Mexico" },
+                        new { ProvinceId = 65, CountryId = 2, IsDeleted = false, ProvinceName = "New York" },
+                        new { ProvinceId = 66, CountryId = 2, IsDeleted = false, ProvinceName = "North Carolina" },
+                        new { ProvinceId = 67, CountryId = 2, IsDeleted = false, ProvinceName = "North Dakota" },
+                        new { ProvinceId = 68, CountryId = 2, IsDeleted = false, ProvinceName = "Ohio" },
+                        new { ProvinceId = 69, CountryId = 2, IsDeleted = false, ProvinceName = "Oklahoma" },
+                        new { ProvinceId = 70, CountryId = 2, IsDeleted = false, ProvinceName = "Oregon" },
+                        new { ProvinceId = 71, CountryId = 2, IsDeleted = false, ProvinceName = "Pennsylvania" },
+                        new { ProvinceId = 72, CountryId = 2, IsDeleted = false, ProvinceName = "Rhode Island" },
+                        new { ProvinceId = 73, CountryId = 2, IsDeleted = false, ProvinceName = "South Carolina" },
+                        new { ProvinceId = 74, CountryId = 2, IsDeleted = false, ProvinceName = "South Dakota" },
+                        new { ProvinceId = 75, CountryId = 2, IsDeleted = false, ProvinceName = "Tennessee" },
+                        new { ProvinceId = 76, CountryId = 2, IsDeleted = false, ProvinceName = "Texas" },
+                        new { ProvinceId = 77, CountryId = 2, IsDeleted = false, ProvinceName = "Utah" },
+                        new { ProvinceId = 78, CountryId = 2, IsDeleted = false, ProvinceName = "Vermont" },
+                        new { ProvinceId = 79, CountryId = 2, IsDeleted = false, ProvinceName = "Virginia" },
+                        new { ProvinceId = 80, CountryId = 2, IsDeleted = false, ProvinceName = "Washington" },
+                        new { ProvinceId = 81, CountryId = 2, IsDeleted = false, ProvinceName = "West Virginia" },
+                        new { ProvinceId = 82, CountryId = 2, IsDeleted = false, ProvinceName = "Wisconsin" },
+                        new { ProvinceId = 83, CountryId = 2, IsDeleted = false, ProvinceName = "Wyoming" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.QualificationDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.QualificationDetails", b =>
                 {
                     b.Property<int>("QualificationId")
                         .ValueGeneratedOnAdd()
@@ -10874,7 +8248,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("QualificationDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.RatingBasedCriteria", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.RatingBasedCriteria", b =>
                 {
                     b.Property<int>("RatingBasedCriteriaId")
                         .ValueGeneratedOnAdd()
@@ -10907,7 +8281,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("RatingBasedCriteria");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.RolePermissions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.RolePermissions", b =>
                 {
                     b.Property<int>("RolesPermissionId")
                         .ValueGeneratedOnAdd()
@@ -10948,7 +8322,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("RolePermissions");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.SalaryHeadDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.SalaryHeadDetails", b =>
                 {
                     b.Property<int>("SalaryHeadId")
                         .ValueGeneratedOnAdd()
@@ -10984,108 +8358,21 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("SalaryHeadDetails");
 
                     b.HasData(
-                        new
-                        {
-                            SalaryHeadId = 1,
-                            Description = "Tr Allowance",
-                            HeadName = "Tr Allowance",
-                            HeadTypeId = 1,
-                            IsDeleted = false,
-                            TransactionTypeId = 2
-                        },
-                        new
-                        {
-                            SalaryHeadId = 2,
-                            Description = "Food Allowance",
-                            HeadName = "Food Allowance",
-                            HeadTypeId = 1,
-                            IsDeleted = false,
-                            TransactionTypeId = 2
-                        },
-                        new
-                        {
-                            SalaryHeadId = 3,
-                            Description = "Fine Deduction",
-                            HeadName = "Fine Deduction",
-                            HeadTypeId = 2,
-                            IsDeleted = false,
-                            TransactionTypeId = 1
-                        },
-                        new
-                        {
-                            SalaryHeadId = 4,
-                            Description = "Capacity Building Deduction",
-                            HeadName = "Capacity Building Deduction",
-                            HeadTypeId = 2,
-                            IsDeleted = false,
-                            TransactionTypeId = 1
-                        },
-                        new
-                        {
-                            SalaryHeadId = 5,
-                            Description = "Security Deduction",
-                            HeadName = "Security Deduction",
-                            HeadTypeId = 2,
-                            IsDeleted = false,
-                            TransactionTypeId = 1
-                        },
-                        new
-                        {
-                            SalaryHeadId = 6,
-                            Description = "Other Allowance",
-                            HeadName = "Other Allowance",
-                            HeadTypeId = 1,
-                            IsDeleted = false,
-                            TransactionTypeId = 2
-                        },
-                        new
-                        {
-                            SalaryHeadId = 7,
-                            Description = "Other Deduction",
-                            HeadName = "Other Deduction",
-                            HeadTypeId = 2,
-                            IsDeleted = false,
-                            TransactionTypeId = 1
-                        },
-                        new
-                        {
-                            SalaryHeadId = 8,
-                            Description = "Medical Allowance",
-                            HeadName = "Medical Allowance",
-                            HeadTypeId = 1,
-                            IsDeleted = false,
-                            TransactionTypeId = 2
-                        },
-                        new
-                        {
-                            SalaryHeadId = 9,
-                            Description = "Other1Allowance",
-                            HeadName = "Other1Allowance",
-                            HeadTypeId = 1,
-                            IsDeleted = false,
-                            TransactionTypeId = 2
-                        },
-                        new
-                        {
-                            SalaryHeadId = 10,
-                            Description = "Other2Allowance",
-                            HeadName = "Other2Allowance",
-                            HeadTypeId = 1,
-                            IsDeleted = false,
-                            TransactionTypeId = 2
-                        },
-                        new
-                        {
-                            SalaryHeadId = 11,
-                            Description = "Basic Pay (In hours)",
-                            HeadName = "Basic Pay (In hours)",
-                            HeadTypeId = 3,
-                            IsDeleted = false,
-                            TransactionTypeId = 2
-                        });
+                        new { SalaryHeadId = 1, Description = "Tr Allowance", HeadName = "Tr Allowance", HeadTypeId = 1, IsDeleted = false, TransactionTypeId = 2 },
+                        new { SalaryHeadId = 2, Description = "Food Allowance", HeadName = "Food Allowance", HeadTypeId = 1, IsDeleted = false, TransactionTypeId = 2 },
+                        new { SalaryHeadId = 3, Description = "Fine Deduction", HeadName = "Fine Deduction", HeadTypeId = 2, IsDeleted = false, TransactionTypeId = 1 },
+                        new { SalaryHeadId = 4, Description = "Capacity Building Deduction", HeadName = "Capacity Building Deduction", HeadTypeId = 2, IsDeleted = false, TransactionTypeId = 1 },
+                        new { SalaryHeadId = 5, Description = "Security Deduction", HeadName = "Security Deduction", HeadTypeId = 2, IsDeleted = false, TransactionTypeId = 1 },
+                        new { SalaryHeadId = 6, Description = "Other Allowance", HeadName = "Other Allowance", HeadTypeId = 1, IsDeleted = false, TransactionTypeId = 2 },
+                        new { SalaryHeadId = 7, Description = "Other Deduction", HeadName = "Other Deduction", HeadTypeId = 2, IsDeleted = false, TransactionTypeId = 1 },
+                        new { SalaryHeadId = 8, Description = "Medical Allowance", HeadName = "Medical Allowance", HeadTypeId = 1, IsDeleted = false, TransactionTypeId = 2 },
+                        new { SalaryHeadId = 9, Description = "Other1Allowance", HeadName = "Other1Allowance", HeadTypeId = 1, IsDeleted = false, TransactionTypeId = 2 },
+                        new { SalaryHeadId = 10, Description = "Other2Allowance", HeadName = "Other2Allowance", HeadTypeId = 1, IsDeleted = false, TransactionTypeId = 2 },
+                        new { SalaryHeadId = 11, Description = "Basic Pay (In hours)", HeadName = "Basic Pay (In hours)", HeadTypeId = 3, IsDeleted = false, TransactionTypeId = 2 }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.SalaryTaxReportContent", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.SalaryTaxReportContent", b =>
                 {
                     b.Property<int>("SalaryTaxReportContentId")
                         .ValueGeneratedOnAdd()
@@ -11116,7 +8403,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("SalaryTaxReportContent");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.InventoryItemType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.InventoryItemType", b =>
                 {
                     b.Property<int>("ItemType")
                         .ValueGeneratedOnAdd();
@@ -11142,7 +8429,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("InventoryItemType");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.ItemPurchaseDocument", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.ItemPurchaseDocument", b =>
                 {
                     b.Property<int>("DocumentId")
                         .ValueGeneratedOnAdd()
@@ -11181,7 +8468,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ItemPurchaseDocuments");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.MotorFuel", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.MotorFuel", b =>
                 {
                     b.Property<string>("FuelId")
                         .ValueGeneratedOnAdd();
@@ -11219,7 +8506,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("VehicleFuel");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.MotorMaintenance", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.MotorMaintenance", b =>
                 {
                     b.Property<string>("MaintenanceId")
                         .ValueGeneratedOnAdd();
@@ -11260,7 +8547,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("MotorMaintenances");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.MotorSparePart", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.MotorSparePart", b =>
                 {
                     b.Property<string>("PartId")
                         .ValueGeneratedOnAdd();
@@ -11302,7 +8589,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("MotorSpareParts");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.PaymentTypes", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.PaymentTypes", b =>
                 {
                     b.Property<int>("PaymentId")
                         .ValueGeneratedOnAdd()
@@ -11331,7 +8618,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PaymentTypes");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseGenerator", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.PurchaseGenerator", b =>
                 {
                     b.Property<int>("GeneratorId")
                         .ValueGeneratedOnAdd();
@@ -11368,7 +8655,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PurchaseGenerators");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseUnitType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.PurchaseUnitType", b =>
                 {
                     b.Property<int>("UnitTypeId")
                         .ValueGeneratedOnAdd();
@@ -11394,7 +8681,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PurchaseUnitType");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseVehicle", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.PurchaseVehicle", b =>
                 {
                     b.Property<int>("VehicleId")
                         .ValueGeneratedOnAdd()
@@ -11441,7 +8728,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("PurchaseVehicles");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.ReceiptType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.ReceiptType", b =>
                 {
                     b.Property<int>("ReceiptTypeId")
                         .ValueGeneratedOnAdd()
@@ -11468,51 +8755,17 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("ReceiptType");
 
                     b.HasData(
-                        new
-                        {
-                            ReceiptTypeId = 1,
-                            IsDeleted = false,
-                            ReceiptTypeName = "Purchased"
-                        },
-                        new
-                        {
-                            ReceiptTypeId = 2,
-                            IsDeleted = false,
-                            ReceiptTypeName = "Transfers"
-                        },
-                        new
-                        {
-                            ReceiptTypeId = 3,
-                            IsDeleted = false,
-                            ReceiptTypeName = "Donation"
-                        },
-                        new
-                        {
-                            ReceiptTypeId = 4,
-                            IsDeleted = false,
-                            ReceiptTypeName = "Take Over"
-                        },
-                        new
-                        {
-                            ReceiptTypeId = 5,
-                            IsDeleted = false,
-                            ReceiptTypeName = "Loan"
-                        },
-                        new
-                        {
-                            ReceiptTypeId = 6,
-                            IsDeleted = false,
-                            ReceiptTypeName = "Return"
-                        },
-                        new
-                        {
-                            ReceiptTypeId = 7,
-                            IsDeleted = false,
-                            ReceiptTypeName = "Other"
-                        });
+                        new { ReceiptTypeId = 1, IsDeleted = false, ReceiptTypeName = "Purchased" },
+                        new { ReceiptTypeId = 2, IsDeleted = false, ReceiptTypeName = "Transfers" },
+                        new { ReceiptTypeId = 3, IsDeleted = false, ReceiptTypeName = "Donation" },
+                        new { ReceiptTypeId = 4, IsDeleted = false, ReceiptTypeName = "Take Over" },
+                        new { ReceiptTypeId = 5, IsDeleted = false, ReceiptTypeName = "Loan" },
+                        new { ReceiptTypeId = 6, IsDeleted = false, ReceiptTypeName = "Return" },
+                        new { ReceiptTypeId = 7, IsDeleted = false, ReceiptTypeName = "Other" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StatusAtTimeOfIssue", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.StatusAtTimeOfIssue", b =>
                 {
                     b.Property<int>("StatusAtTimeOfIssueId")
                         .ValueGeneratedOnAdd()
@@ -11539,147 +8792,19 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("StatusAtTimeOfIssue");
 
                     b.HasData(
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 1,
-                            IsDeleted = false,
-                            StatusName = "New"
-                        },
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 2,
-                            IsDeleted = false,
-                            StatusName = "Useable"
-                        },
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 3,
-                            IsDeleted = false,
-                            StatusName = "To Repair"
-                        },
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 4,
-                            IsDeleted = false,
-                            StatusName = "Damage"
-                        },
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 5,
-                            IsDeleted = false,
-                            StatusName = "Sold"
-                        },
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 6,
-                            IsDeleted = false,
-                            StatusName = "Stolen"
-                        },
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 7,
-                            IsDeleted = false,
-                            StatusName = "Handover"
-                        },
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 8,
-                            IsDeleted = false,
-                            StatusName = "Demolished"
-                        },
-                        new
-                        {
-                            StatusAtTimeOfIssueId = 9,
-                            IsDeleted = false,
-                            StatusName = "Broken"
-                        });
+                        new { StatusAtTimeOfIssueId = 1, IsDeleted = false, StatusName = "New" },
+                        new { StatusAtTimeOfIssueId = 2, IsDeleted = false, StatusName = "Useable" },
+                        new { StatusAtTimeOfIssueId = 3, IsDeleted = false, StatusName = "To Repair" },
+                        new { StatusAtTimeOfIssueId = 4, IsDeleted = false, StatusName = "Damage" },
+                        new { StatusAtTimeOfIssueId = 5, IsDeleted = false, StatusName = "Sold" },
+                        new { StatusAtTimeOfIssueId = 6, IsDeleted = false, StatusName = "Stolen" },
+                        new { StatusAtTimeOfIssueId = 7, IsDeleted = false, StatusName = "Handover" },
+                        new { StatusAtTimeOfIssueId = 8, IsDeleted = false, StatusName = "Demolished" },
+                        new { StatusAtTimeOfIssueId = 9, IsDeleted = false, StatusName = "Broken" }
+                    );
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreInventory", b =>
-                {
-                    b.Property<string>("InventoryId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AssetType");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("InventoryCode");
-
-                    b.Property<long?>("InventoryCreditAccount");
-
-                    b.Property<long>("InventoryDebitAccount");
-
-                    b.Property<string>("InventoryDescription");
-
-                    b.Property<string>("InventoryName");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.HasKey("InventoryId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("InventoryCreditAccount");
-
-                    b.HasIndex("InventoryDebitAccount");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("StoreInventories");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreInventoryItem", b =>
-                {
-                    b.Property<string>("ItemId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ItemCode");
-
-                    b.Property<long?>("ItemGroupId");
-
-                    b.Property<string>("ItemInventory");
-
-                    b.Property<string>("ItemName");
-
-                    b.Property<int>("ItemType");
-
-                    b.Property<string>("MasterInventoryCode");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.HasKey("ItemId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ItemGroupId");
-
-                    b.HasIndex("ItemInventory");
-
-                    b.HasIndex("ItemType");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("InventoryItems");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemGroup", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.StoreItemGroup", b =>
                 {
                     b.Property<long>("ItemGroupId")
                         .ValueGeneratedOnAdd()
@@ -11714,7 +8839,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("StoreItemGroups");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemPurchase", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.StoreItemPurchase", b =>
                 {
                     b.Property<string>("PurchaseId")
                         .ValueGeneratedOnAdd();
@@ -11816,7 +8941,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("StoreItemPurchases");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StorePurchaseOrder", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.StorePurchaseOrder", b =>
                 {
                     b.Property<string>("OrderId")
                         .ValueGeneratedOnAdd();
@@ -11872,7 +8997,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("StorePurchaseOrders");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.VehicleLocation", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.VehicleLocation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -11902,7 +9027,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("VehicleLocations");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.VehicleMileage", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.VehicleMileage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -11930,7 +9055,91 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("VehicleMileages");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.StoreSourceCodeDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.StoreInventory", b =>
+                {
+                    b.Property<string>("InventoryId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AssetType");
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("InventoryCode");
+
+                    b.Property<long?>("InventoryCreditAccount");
+
+                    b.Property<long>("InventoryDebitAccount");
+
+                    b.Property<string>("InventoryDescription");
+
+                    b.Property<string>("InventoryName");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.HasKey("InventoryId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("InventoryCreditAccount");
+
+                    b.HasIndex("InventoryDebitAccount");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("StoreInventories");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.StoreInventoryItem", b =>
+                {
+                    b.Property<string>("ItemId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ItemCode");
+
+                    b.Property<long?>("ItemGroupId");
+
+                    b.Property<string>("ItemInventory");
+
+                    b.Property<string>("ItemName");
+
+                    b.Property<int>("ItemType");
+
+                    b.Property<string>("MasterInventoryCode");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.HasKey("ItemId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ItemGroupId");
+
+                    b.HasIndex("ItemInventory");
+
+                    b.HasIndex("ItemType");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("InventoryItems");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.StoreSourceCodeDetail", b =>
                 {
                     b.Property<long>("SourceCodeId")
                         .ValueGeneratedOnAdd();
@@ -11978,7 +9187,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("StoreSourceCodeDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.StrongandWeakPoints", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.StrongandWeakPoints", b =>
                 {
                     b.Property<int>("StrongPointsId")
                         .ValueGeneratedOnAdd()
@@ -12013,7 +9222,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("StrongandWeakPoints");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.TaskMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.TaskMaster", b =>
                 {
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
@@ -12052,7 +9261,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("TaskMaster");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.TechnicalQuestion", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.TechnicalQuestion", b =>
                 {
                     b.Property<int>("TechnicalQuestionId")
                         .ValueGeneratedOnAdd()
@@ -12079,7 +9288,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("TechnicalQuestion");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.UserDetailOffices", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.UserDetailOffices", b =>
                 {
                     b.Property<int>("UserOfficesId")
                         .ValueGeneratedOnAdd()
@@ -12108,7 +9317,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("UserDetailOffices");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.UserDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.UserDetails", b =>
                 {
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
@@ -12156,7 +9365,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("UserDetails");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.VoucherDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.VoucherDetail", b =>
                 {
                     b.Property<long>("VoucherNo")
                         .ValueGeneratedOnAdd()
@@ -12234,16 +9443,30 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("VoucherDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.VoucherDocumentDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.VoucherDocumentDetail", b =>
                 {
-                    b.Property<long>("VoucherDocumentId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("DocumentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("serial");
 
                     b.Property<string>("CreatedById");
 
                     b.Property<DateTime?>("CreatedDate");
 
-                    b.Property<long>("DocumentFileId");
+                    b.Property<DateTime?>("DocumentDate");
+
+                    b.Property<string>("DocumentFilePath");
+
+                    b.Property<string>("DocumentGUID");
+
+                    b.Property<string>("DocumentName")
+                        .HasMaxLength(100);
+
+                    b.Property<int?>("DocumentType");
+
+                    b.Property<string>("Extension");
+
+                    b.Property<byte[]>("FilePath");
 
                     b.Property<bool?>("IsDeleted");
 
@@ -12253,11 +9476,9 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.Property<long>("VoucherNo");
 
-                    b.HasKey("VoucherDocumentId");
+                    b.HasKey("DocumentID");
 
                     b.HasIndex("CreatedById");
-
-                    b.HasIndex("DocumentFileId");
 
                     b.HasIndex("ModifiedById");
 
@@ -12266,7 +9487,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("VoucherDocumentDetail");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.VoucherTransactions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.VoucherTransactions", b =>
                 {
                     b.Property<long>("TransactionId")
                         .ValueGeneratedOnAdd()
@@ -12344,8 +9565,6 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
                     b.HasIndex("CurrencyId");
 
-                    b.HasIndex("JobId");
-
                     b.HasIndex("ModifiedById");
 
                     b.HasIndex("OfficeId");
@@ -12362,7 +9581,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("VoucherTransactions");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.VoucherType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.VoucherType", b =>
                 {
                     b.Property<int>("VoucherTypeId")
                         .ValueGeneratedOnAdd()
@@ -12376,16 +9595,25 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("VoucherType");
 
                     b.HasData(
-                        new
-                        {
-                            VoucherTypeId = 1,
-                            VoucherTypeName = "Adjustment"
-                        },
-                        new
-                        {
-                            VoucherTypeId = 2,
-                            VoucherTypeName = "Journal"
-                        });
+                        new { VoucherTypeId = 1, VoucherTypeName = "Adjustment" },
+                        new { VoucherTypeId = 2, VoucherTypeName = "Journal" }
+                    );
+                });
+
+            modelBuilder.Entity("HumanitarianAssistance.Entities.Models.AccountNoteDetail", b =>
+                {
+                    b.Property<long>("AccountCode")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long?>("AccountNote");
+
+                    b.Property<string>("BalanceType");
+
+                    b.Property<string>("Narration");
+
+                    b.HasKey("AccountCode");
+
+                    b.ToTable("AccountNoteDetail");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -12495,3653 +9723,3447 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountHeadType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountHeadType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountingNew.AccountFilterType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountHeadType", "AccountHeadType")
-                        .WithMany()
-                        .HasForeignKey("AccountHeadTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.AccountFilterType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.AccountFilterType", "AccountFilterType")
+                    b.HasOne("DataAccess.DbEntities.AccountingNew.AccountFilterType", "AccountFilterType")
                         .WithMany()
                         .HasForeignKey("AccountFilterTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountLevel", "AccountLevels")
+                    b.HasOne("DataAccess.DbEntities.AccountLevel", "AccountLevels")
                         .WithMany()
                         .HasForeignKey("AccountLevelId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountType", "AccountType")
+                    b.HasOne("DataAccess.DbEntities.AccountType", "AccountType")
                         .WithMany()
                         .HasForeignKey("AccountTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ExchangeRateVerification", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountingNew.ExchangeRateVerification", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ActivityMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AccountType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AccountHeadType", "AccountHeadType")
+                        .WithMany()
+                        .HasForeignKey("AccountHeadTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.ActivityMaster", b =>
+                {
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.TaskMaster", "TaskMaster")
+                    b.HasOne("DataAccess.DbEntities.TaskMaster", "TaskMaster")
                         .WithMany("ActivityMaster")
                         .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Advances", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Advances", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AgreeDisagreePermission", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AgreeDisagreePermission", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ApplicationPages", "ApplicationPages")
+                    b.HasOne("DataAccess.DbEntities.ApplicationPages", "ApplicationPages")
                         .WithMany()
                         .HasForeignKey("PageId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AnalyticalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AnalyticalDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ApplicationPages", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ApplicationPages", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AppraisalGeneralQuestions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AppraisalGeneralQuestions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ApproveRejectPermission", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ApproveRejectPermission", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ApplicationPages", "ApplicationPages")
+                    b.HasOne("DataAccess.DbEntities.ApplicationPages", "ApplicationPages")
                         .WithMany()
                         .HasForeignKey("PageId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AssignActivity", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AssignActivity", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ActivityMaster", "ActivityMaster")
+                    b.HasOne("DataAccess.DbEntities.ActivityMaster", "ActivityMaster")
                         .WithMany()
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProjectDetails", "ProjectDetails")
+                    b.HasOne("DataAccess.DbEntities.ProjectDetails", "ProjectDetails")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.TaskMaster", "TaskMaster")
+                    b.HasOne("DataAccess.DbEntities.TaskMaster", "TaskMaster")
                         .WithMany()
                         .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "User")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AssignActivityApproveBy", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AssignActivityApproveBy", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ApprovedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ApprovedBy")
                         .WithMany()
                         .HasForeignKey("ApprovedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AssignActivity", "AssignActivity")
+                    b.HasOne("DataAccess.DbEntities.AssignActivity", "AssignActivity")
                         .WithMany()
                         .HasForeignKey("AssignActivityId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AssignActivityFeedback", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AssignActivityFeedback", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AssignActivity", "AssignActivity")
+                    b.HasOne("DataAccess.DbEntities.AssignActivity", "AssignActivity")
                         .WithMany()
                         .HasForeignKey("AssignActivityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "User")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AssignLeaveToEmployee", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.AssignLeaveToEmployee", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetails")
+                    b.HasOne("DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetails")
                         .WithMany()
                         .HasForeignKey("FinancialYearId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.LeaveReasonDetail", "LeaveReasonDetails")
+                    b.HasOne("DataAccess.DbEntities.LeaveReasonDetail", "LeaveReasonDetails")
                         .WithMany()
                         .HasForeignKey("LeaveReasonId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.AttendanceGroupMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.BudgetLineType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.BudgetLineType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.BudgetReceivable", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.BudgetReceivable", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProjectBudgetLine", "ProjectBudgetLine")
+                    b.HasOne("DataAccess.DbEntities.ProjectBudgetLine", "ProjectBudgetLine")
                         .WithMany()
                         .HasForeignKey("BudgetLineId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProjectDetails", "ProjectDetails")
+                    b.HasOne("DataAccess.DbEntities.ProjectDetails", "ProjectDetails")
                         .WithMany()
                         .HasForeignKey("ProjectId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.BudgetReceivedAmount", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.BudgetReceivedAmount", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.BudgetReceivable", "BudgetReceivable")
+                    b.HasOne("DataAccess.DbEntities.BudgetReceivable", "BudgetReceivable")
                         .WithMany()
                         .HasForeignKey("BudgetReceivalbeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.CategoryPopulator", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.CategoryPopulator", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountType", "AccountType")
+                    b.HasOne("DataAccess.DbEntities.AccountType", "AccountType")
                         .WithMany()
                         .HasForeignKey("AccountTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ContractTypeContent", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ContractTypeContent", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeContractType", "EmployeeContractType")
+                    b.HasOne("DataAccess.DbEntities.EmployeeContractType", "EmployeeContractType")
                         .WithMany()
                         .HasForeignKey("EmployeeContractTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.CountryDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.CountryDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.CurrencyDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Department", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Department", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
                         .WithMany()
                         .HasForeignKey("OfficeId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.DesignationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.DesignationDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.DistrictDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.DistrictDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.DocumentFileDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.DonorDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.DonorDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmailSettingDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmailSettingDetail", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmailType", "EmailTypes")
+                    b.HasOne("DataAccess.DbEntities.EmailType", "EmailTypes")
                         .WithMany()
                         .HasForeignKey("EmailTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmailType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmailType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAnalyticalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAnalyticalDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeApplyLeave", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeApplyLeave", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetail")
+                    b.HasOne("DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetail")
                         .WithMany()
                         .HasForeignKey("FinancialYearId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.LeaveReasonDetail", "LeaveReasonDetails")
+                    b.HasOne("DataAccess.DbEntities.LeaveReasonDetail", "LeaveReasonDetails")
                         .WithMany()
                         .HasForeignKey("LeaveReasonId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAppraisalDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAppraisalDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAppraisalQuestions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAppraisalQuestions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppraisalGeneralQuestions", "AppraisalGeneralQuestions")
+                    b.HasOne("DataAccess.DbEntities.AppraisalGeneralQuestions", "AppraisalGeneralQuestions")
                         .WithMany()
                         .HasForeignKey("AppraisalGeneralQuestionsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAppraisalTeamMember", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAppraisalTeamMember", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeAttendance", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeAttendance", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany("EmployeeAttendance")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetail")
+                    b.HasOne("DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetail")
                         .WithMany()
                         .HasForeignKey("FinancialYearId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.HolidayDetails", "HolidayDetails")
+                    b.HasOne("DataAccess.DbEntities.HolidayDetails", "HolidayDetails")
                         .WithMany()
                         .HasForeignKey("HolidayId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.LeaveReasonDetail", "LeaveReasonDetail")
+                    b.HasOne("DataAccess.DbEntities.LeaveReasonDetail", "LeaveReasonDetail")
                         .WithMany()
                         .HasForeignKey("LeaveReasonId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeContract", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeContract", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "Employee")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.JobGrade", "JobGrade")
+                    b.HasOne("DataAccess.DbEntities.JobGrade", "JobGrade")
                         .WithMany()
                         .HasForeignKey("Grade");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CountryDetails", "CountryDetails")
+                    b.HasOne("DataAccess.DbEntities.CountryDetails", "CountryDetails")
                         .WithMany()
                         .HasForeignKey("CountryId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeType", "EmployeeType")
+                    b.HasOne("DataAccess.DbEntities.EmployeeType", "EmployeeType")
                         .WithMany()
                         .HasForeignKey("EmployeeTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.QualificationDetails", "QualificationDetails")
+                    b.HasOne("DataAccess.DbEntities.QualificationDetails", "QualificationDetails")
                         .WithMany()
                         .HasForeignKey("HigherQualificationId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.NationalityDetails", "NationalityDetails")
+                    b.HasOne("DataAccess.DbEntities.NationalityDetails", "NationalityDetails")
                         .WithMany()
                         .HasForeignKey("NationalityId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProvinceDetails", "ProvinceDetails")
+                    b.HasOne("DataAccess.DbEntities.ProvinceDetails", "ProvinceDetails")
                         .WithMany()
                         .HasForeignKey("ProvinceId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDocumentDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeDocumentDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeEducations", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeEducations", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeEvaluation", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeEvaluation", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeEvaluationTraining", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeEvaluationTraining", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHealthInfo", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHealthInfo", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHealthQuestion", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHealthQuestion", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHistoryDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHistoryDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHistoryOutsideCountry", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHistoryOutsideCountry", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeHistoryOutsideOrganization", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeHistoryOutsideOrganization", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeInfoReferences", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeInfoReferences", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeLanguages", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeLanguages", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.LanguageDetail", "LanguageDetail")
+                    b.HasOne("DataAccess.DbEntities.LanguageDetail", "LanguageDetail")
                         .WithMany()
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeMonthlyAttendance", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeMonthlyAttendance", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Advances", "Advance")
+                    b.HasOne("DataAccess.DbEntities.Advances", "Advance")
                         .WithMany()
                         .HasForeignKey("AdvanceId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeMonthlyPayroll", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeMonthlyPayroll", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.SalaryHeadDetails", "SalaryHeadDetails")
+                    b.HasOne("DataAccess.DbEntities.SalaryHeadDetails", "SalaryHeadDetails")
                         .WithMany()
                         .HasForeignKey("SalaryHeadId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeOtherSkills", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeOtherSkills", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePaymentTypes", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePaymentTypes", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Advances", "AdvanceDetail")
+                    b.HasOne("DataAccess.DbEntities.Advances", "AdvanceDetail")
                         .WithMany()
                         .HasForeignKey("AdvanceId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayroll", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayroll", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany("EmployeePayrollList")
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.SalaryHeadDetails", "SalaryHeadDetails")
+                    b.HasOne("DataAccess.DbEntities.SalaryHeadDetails", "SalaryHeadDetails")
                         .WithMany()
                         .HasForeignKey("SalaryHeadId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayrollAccountHead", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayrollAccountHead", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.PayrollAccountHead", "PayrollAccountHead")
+                    b.HasOne("DataAccess.DbEntities.PayrollAccountHead", "PayrollAccountHead")
                         .WithMany()
                         .HasForeignKey("PayrollHeadId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayrollDetailTest", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayrollDetailTest", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayrollForMonth", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayrollForMonth", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePayrollMonth", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePayrollMonth", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.SalaryHeadDetails", "SalaryHeadDetails")
+                    b.HasOne("DataAccess.DbEntities.SalaryHeadDetails", "SalaryHeadDetails")
                         .WithMany()
                         .HasForeignKey("SalaryHeadId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeePensionRate", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeePensionRate", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetail")
+                    b.HasOne("DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetail")
                         .WithMany()
                         .HasForeignKey("FinancialYearId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeProfessionalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeProfessionalDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AttendanceGroupMaster", "AttendanceGroupMaster")
-                        .WithMany()
-                        .HasForeignKey("AttendanceGroupId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Department", "Department")
+                    b.HasOne("DataAccess.DbEntities.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.DesignationDetail", "DesignationDetails")
+                    b.HasOne("DataAccess.DbEntities.DesignationDetail", "DesignationDetails")
                         .WithMany()
                         .HasForeignKey("DesignationId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeContractType", "EmployeeContractType")
+                    b.HasOne("DataAccess.DbEntities.EmployeeContractType", "EmployeeContractType")
                         .WithMany()
                         .HasForeignKey("EmployeeContractTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail")
                         .WithOne("EmployeeProfessionalDetail")
-                        .HasForeignKey("HumanitarianAssistance.DataAccess.DbEntities.EmployeeProfessionalDetail", "EmployeeId");
+                        .HasForeignKey("DataAccess.DbEntities.EmployeeProfessionalDetail", "EmployeeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeType", "EmployeeType")
+                    b.HasOne("DataAccess.DbEntities.EmployeeType", "EmployeeType")
                         .WithMany()
                         .HasForeignKey("EmployeeTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetail")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetail")
                         .WithMany()
                         .HasForeignKey("OfficeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProfessionDetails", "professionDetails")
+                    b.HasOne("DataAccess.DbEntities.ProfessionDetails", "professionDetails")
                         .WithMany()
                         .HasForeignKey("ProfessionId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeRelativeInfo", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeRelativeInfo", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryAnalyticalInfo", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeSalaryAnalyticalInfo", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLine")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLine")
                         .WithMany()
                         .HasForeignKey("BudgetlineId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectHiringRequestDetail", "ProjectHiringRequestDetail")
-                        .WithMany()
-                        .HasForeignKey("HiringRequestId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryBudget", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeSalaryBudget", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeSalaryDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithOne("EmployeeSalaryDetails")
-                        .HasForeignKey("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryDetails", "EmployeeId")
+                        .HasForeignKey("DataAccess.DbEntities.EmployeeSalaryDetails", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeSalaryPaymentHistory", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeSalaryPaymentHistory", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.VoucherDetail", "VoucherDetail")
+                    b.HasOne("DataAccess.DbEntities.VoucherDetail", "VoucherDetail")
                         .WithMany()
                         .HasForeignKey("VoucherNo")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.EmployeeType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.EmployeeType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ErrorLog.Errorlog", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ErrorLog.Errorlog", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ExchangeRate", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ExchangeRate", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyFrom")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyFrom")
                         .WithMany()
                         .HasForeignKey("FromCurrency");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetail")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetail")
                         .WithMany()
                         .HasForeignKey("OfficeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyTo")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyTo")
                         .WithMany()
                         .HasForeignKey("ToCurrency");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ExchangeRateDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ExchangeRateDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ExistInterviewDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ExistInterviewDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.FinancialYearDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.GainLossSelectedAccounts", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.GainLossSelectedAccounts", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartOfAccountNew")
+                    b.HasOne("DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartOfAccountNew")
                         .WithMany()
                         .HasForeignKey("ChartOfAccountNewId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.HRJobInterviewers", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.HolidayDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
-                        .WithMany("HRJobInterviewersList")
-                        .HasForeignKey("InterviewDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.HolidayDetails", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetail")
+                    b.HasOne("DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetail")
                         .WithMany()
                         .HasForeignKey("FinancialYearId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
                         .WithMany()
                         .HasForeignKey("OfficeId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.HolidayWeeklyDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.HolidayWeeklyDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetails")
+                    b.HasOne("DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetails")
                         .WithMany()
                         .HasForeignKey("FinancialYearId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
                         .WithMany()
                         .HasForeignKey("OfficeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.HRJobInterviewers", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
-                        .WithMany("InterviewDetails")
-                        .HasForeignKey("EmployeeID")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
+                        .WithMany("HRJobInterviewersList")
+                        .HasForeignKey("InterviewDetailsId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewLanguages", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                        .WithMany()
+                        .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewLanguages", b =>
+                {
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
                         .WithMany("InterviewLanguagesList")
                         .HasForeignKey("InterviewDetailsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewScheduleDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewScheduleDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetails")
                         .WithMany("InterviewScheduleDetails")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.JobGrade", "JobGrade")
+                    b.HasOne("DataAccess.DbEntities.JobGrade", "JobGrade")
                         .WithMany()
                         .HasForeignKey("GradeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.JobHiringDetails", "JobHiringDetails")
+                    b.HasOne("DataAccess.DbEntities.JobHiringDetails", "JobHiringDetails")
                         .WithMany()
                         .HasForeignKey("JobId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewTechnicalQuestion", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewTechnicalQuestion", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
+                    b.HasOne("DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
                         .WithMany("InterviewTechnicalQuestionList")
                         .HasForeignKey("InterviewDetailsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewTechnicalQuestions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewTechnicalQuestions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.InterviewTrainings", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.InterviewTrainings", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
+                    b.HasOne("DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
                         .WithMany("InterviewTrainingsList")
                         .HasForeignKey("InterviewDetailsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ItemSpecificationDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ItemSpecificationDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ItemSpecificationMaster", "ItemSpecificationMaster")
+                    b.HasOne("DataAccess.DbEntities.ItemSpecificationMaster", "ItemSpecificationMaster")
                         .WithMany()
                         .HasForeignKey("ItemSpecificationMasterId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ItemSpecificationMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ItemSpecificationMaster", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.InventoryItemType", "InventoryItemType")
+                    b.HasOne("DataAccess.DbEntities.Store.InventoryItemType", "InventoryItemType")
                         .WithMany()
                         .HasForeignKey("ItemTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetail")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetail")
                         .WithMany()
                         .HasForeignKey("OfficeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.JobGrade", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.JobDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.Marketing.ContractDetails", "ContractDetails")
+                        .WithMany()
+                        .HasForeignKey("ContractId");
+
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.JobPhase", "JobPhases")
+                        .WithMany()
+                        .HasForeignKey("JobPhaseId");
+
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.JobHiringDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.JobGrade", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.JobGrade", "JobGrade")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.JobHiringDetails", b =>
+                {
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("DataAccess.DbEntities.JobGrade", "JobGrade")
                         .WithMany()
                         .HasForeignKey("GradeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectHiringRequestDetail", "ProjectHiringRequestDetail")
-                        .WithOne("JobHiringDetails")
-                        .HasForeignKey("HumanitarianAssistance.DataAccess.DbEntities.JobHiringDetails", "HiringRequestId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
                         .WithMany()
                         .HasForeignKey("OfficeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.JournalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.JobPhase", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.LanguageDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.JournalDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.LeaveReasonDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.LanguageDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.LoggerDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.LeaveReasonDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ActivityType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.LoggerDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Category", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.ActivityType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Channel", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Category", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Medium", "Mediums")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Channel", b =>
+                {
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("DataAccess.DbEntities.Marketing.Medium", "Mediums")
                         .WithMany()
                         .HasForeignKey("MediumId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ClientDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.ClientDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Category", "Categories")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Category", "Categories")
                         .WithMany()
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ContractDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.ContractDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ActivityType", "ActivityTypes")
+                    b.HasOne("DataAccess.DbEntities.Marketing.ActivityType", "ActivityTypes")
                         .WithMany()
                         .HasForeignKey("ActivityTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ClientDetails", "ClientDetails")
+                    b.HasOne("DataAccess.DbEntities.Marketing.ClientDetails", "ClientDetails")
                         .WithMany()
                         .HasForeignKey("ClientId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.LanguageDetail", "LanguageDetail")
+                    b.HasOne("DataAccess.DbEntities.LanguageDetail", "LanguageDetail")
                         .WithMany()
                         .HasForeignKey("LanguageDetailLanguageId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.MediaCategory", "MediaCategories")
+                    b.HasOne("DataAccess.DbEntities.Marketing.MediaCategory", "MediaCategories")
                         .WithMany()
                         .HasForeignKey("MediaCategoryId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Medium", "Mediums")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Medium", "Mediums")
                         .WithMany()
                         .HasForeignKey("MediumId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Nature", "Natures")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Nature", "Natures")
                         .WithMany()
                         .HasForeignKey("NatureId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Quality", "Qualities")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Quality", "Qualities")
                         .WithMany()
                         .HasForeignKey("QualityId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.TimeCategory", "TimeCategories")
+                    b.HasOne("DataAccess.DbEntities.Marketing.TimeCategory", "TimeCategories")
                         .WithMany()
                         .HasForeignKey("TimeCategoryId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.UnitRate", "UnitRates")
+                    b.HasOne("DataAccess.DbEntities.Marketing.UnitRate", "UnitRates")
                         .WithMany()
                         .HasForeignKey("UnitRateId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.InvoiceApproval", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.InvoiceApproval", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobDetails", "JobDetails")
+                    b.HasOne("DataAccess.DbEntities.JobDetails", "JobDetails")
                         .WithMany()
                         .HasForeignKey("JobId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.InvoiceGeneration", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.InvoiceGeneration", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyDetailsCurrencyId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobDetails", "JobDetails")
+                    b.HasOne("DataAccess.DbEntities.JobDetails", "JobDetails")
                         .WithMany()
                         .HasForeignKey("JobId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.JobPriceDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ContractDetails", "ContractDetails")
-                        .WithMany()
-                        .HasForeignKey("ContractId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobPhase", "JobPhases")
-                        .WithMany()
-                        .HasForeignKey("JobPhaseId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobPhase", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobPriceDetails", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobDetails", "JobDetails")
+                    b.HasOne("DataAccess.DbEntities.JobDetails", "JobDetails")
                         .WithMany()
                         .HasForeignKey("JobId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Language", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Language", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.MediaCategory", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.MediaCategory", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Medium", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Medium", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Nature", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Nature", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PlayoutMinutes", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PlayoutMinutes", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ScheduleDetails", "ScheduleDetails")
+                    b.HasOne("DataAccess.DbEntities.Marketing.ScheduleDetails", "ScheduleDetails")
                         .WithMany()
                         .HasForeignKey("ScheduleId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDaySchedule", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicyDaySchedule", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
+                    b.HasOne("DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
                         .WithMany()
                         .HasForeignKey("PolicyId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicyDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.LanguageDetail", "Languages")
+                    b.HasOne("DataAccess.DbEntities.LanguageDetail", "Languages")
                         .WithMany()
                         .HasForeignKey("LanguagesLanguageId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.MediaCategory", "MediaCategories")
+                    b.HasOne("DataAccess.DbEntities.Marketing.MediaCategory", "MediaCategories")
                         .WithMany()
                         .HasForeignKey("MediaCategoryId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Medium", "Mediums")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Medium", "Mediums")
                         .WithMany()
                         .HasForeignKey("MediumId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Producer", "Producers")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Producer", "Producers")
                         .WithMany()
                         .HasForeignKey("ProducerId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyOrderSchedule", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicyOrderSchedule", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
+                    b.HasOne("DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
                         .WithMany()
                         .HasForeignKey("PolicyId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicySchedule", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicySchedule", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
+                    b.HasOne("DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
                         .WithMany()
                         .HasForeignKey("PolicyId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyTimeSchedule", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.PolicyTimeSchedule", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
+                    b.HasOne("DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
                         .WithMany()
                         .HasForeignKey("PolicyId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Producer", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Producer", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Quality", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.Quality", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ScheduleDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.ScheduleDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Channel", "Channel")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Channel", "Channel")
                         .WithMany()
                         .HasForeignKey("ChannelId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.JobDetails", "JobDetails")
+                    b.HasOne("DataAccess.DbEntities.JobDetails", "JobDetails")
                         .WithMany()
                         .HasForeignKey("JobId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Medium", "Mediums")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Medium", "Mediums")
                         .WithMany()
                         .HasForeignKey("MediumId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
+                    b.HasOne("DataAccess.DbEntities.Marketing.PolicyDetail", "PolicyDetails")
                         .WithMany()
                         .HasForeignKey("PolicyId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.TimeCategory", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.TimeCategory", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Marketing.UnitRate", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Marketing.UnitRate", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.ActivityType", "ActivityTypes")
+                    b.HasOne("DataAccess.DbEntities.Marketing.ActivityType", "ActivityTypes")
                         .WithMany()
                         .HasForeignKey("ActivityTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyDetailsCurrencyId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.MediaCategory", "MediaCategories")
+                    b.HasOne("DataAccess.DbEntities.Marketing.MediaCategory", "MediaCategories")
                         .WithMany()
                         .HasForeignKey("MediaCategoryId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Medium", "Medium")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Medium", "Medium")
                         .WithMany()
                         .HasForeignKey("MediumId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Nature", "Natures")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Nature", "Natures")
                         .WithMany()
                         .HasForeignKey("NatureId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.Quality", "Qualities")
+                    b.HasOne("DataAccess.DbEntities.Marketing.Quality", "Qualities")
                         .WithMany()
                         .HasForeignKey("QualityId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Marketing.TimeCategory", "TimeCategories")
+                    b.HasOne("DataAccess.DbEntities.Marketing.TimeCategory", "TimeCategories")
                         .WithMany()
                         .HasForeignKey("TimeCategoryId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.NationalityDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.NationalityDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.NotesMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.NotesMaster", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountType", "AccountType")
+                    b.HasOne("DataAccess.DbEntities.AccountType", "AccountType")
                         .WithMany()
                         .HasForeignKey("AccountTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartOfAccountNew")
+                    b.HasOne("DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartOfAccountNew")
                         .WithMany()
                         .HasForeignKey("ChartOfAccountNewId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.OfficeDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.OnlyForDT.EmployeeDetailDT", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.OnlyForDT.EmployeeDetailDT", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.OrderSchedulePermission", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.OrderSchedulePermission", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ApplicationPages", "ApplicationPages")
+                    b.HasOne("DataAccess.DbEntities.ApplicationPages", "ApplicationPages")
                         .WithMany()
                         .HasForeignKey("PageId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PayrollAccountHead", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.PayrollAccountHead", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PayrollMonthlyHourDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.PayrollMonthlyHourDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AttendanceGroupMaster", "AttendanceGroupMaster")
-                        .WithMany()
-                        .HasForeignKey("AttendanceGroupId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
                         .WithMany()
                         .HasForeignKey("OfficeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PensionDebitAccountMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.PensionPaymentHistory", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartOfAccountNew")
-                        .WithMany()
-                        .HasForeignKey("ChartOfAccountNewId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PensionPaymentHistory", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.VoucherDetail", "VoucherDetail")
+                    b.HasOne("DataAccess.DbEntities.VoucherDetail", "VoucherDetail")
                         .WithMany()
                         .HasForeignKey("VoucherNo")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Permissions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Permissions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.PermissionsInRoles", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.PermissionsInRoles", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ProfessionDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ProfessionDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ActivityDocumentsDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ActivityDocumentsDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityDetail", "ProjectActivityDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectActivityDetail", "ProjectActivityDetail")
                         .WithMany()
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ActivityStatusDetail", "ActivityStatusDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ActivityStatusDetail", "ActivityStatusDetail")
                         .WithMany()
                         .HasForeignKey("StatusId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ActivityStatusDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ActivityStatusDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ApproveProjectDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ApproveProjectDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.AreaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.AreaDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.CEAgeGroupDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.CEAgeGroupDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.CEAssumptionDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.CEAssumptionDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.CEFeasibilityExpertOtherDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.CEFeasibilityExpertOtherDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.CEOccupationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.CEOccupationDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.DistrictMultiSelect", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.DistrictMultiSelect", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.DistrictDetail", "DistrictDetail")
+                    b.HasOne("DataAccess.DbEntities.DistrictDetail", "DistrictDetail")
                         .WithMany()
                         .HasForeignKey("DistrictID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProvinceDetails", "ProvinceDetails")
+                    b.HasOne("DataAccess.DbEntities.ProvinceDetails", "ProvinceDetails")
                         .WithMany()
                         .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.DonorCriteriaDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.DonorCriteriaDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.DonorEligibilityCriteria", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.DonorEligibilityCriteria", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.EligibilityCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.EligibilityCriteriaDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.FeasibilityCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.FeasibilityCriteriaDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.FinancialCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.FinancialCriteriaDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.FinancialProjectDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.FinancialProjectDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.GenderConsiderationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.GenderConsiderationDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.HiringRequestCandidates", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.PriorityCriteriaDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
-                        .WithMany()
-                        .HasForeignKey("EmployeeID");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectHiringRequestDetail", "ProjectHiringRequestDetail")
-                        .WithMany()
-                        .HasForeignKey("HiringRequestId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.PriorityCriteriaDetail", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.PriorityOtherDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.PriorityOtherDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProgramDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProgramDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivitiesControl", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectActivityDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
-                        .WithMany()
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.UserDetails", "UserDetails")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityDetail", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLineDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLineDetail")
                         .WithMany()
                         .HasForeignKey("BudgetLineId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeID");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectActivityDetail")
                         .WithMany("ProjectSubActivityList")
                         .HasForeignKey("ParentId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ActivityStatusDetail", "ActivityStatusDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ActivityStatusDetail", "ActivityStatusDetail")
                         .WithMany()
                         .HasForeignKey("StatusId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityExtensions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectActivityExtensions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityDetail", "ProjectActivityDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectActivityDetail", "ProjectActivityDetail")
                         .WithMany("ProjectActivityExtensionList")
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityProvinceDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectActivityProvinceDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectActivityDetail", "ProjectActivityDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectActivityDetail", "ProjectActivityDetail")
                         .WithMany("ProjectActivityProvinceDetail")
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.DistrictDetail", "DistrictDetail")
+                    b.HasOne("DataAccess.DbEntities.DistrictDetail", "DistrictDetail")
                         .WithMany()
                         .HasForeignKey("DistrictID");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProvinceDetails", "ProvinceDetails")
+                    b.HasOne("DataAccess.DbEntities.ProvinceDetails", "ProvinceDetails")
                         .WithMany()
                         .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectArea", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectArea", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.AreaDetail", "AreaDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.AreaDetail", "AreaDetail")
                         .WithMany()
                         .HasForeignKey("AreaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectAssignTo", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectAssignTo", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectBudgetLineDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectBudgetLineDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
-                        .WithMany("ProjectBudgetLineDetails")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                        .WithMany()
                         .HasForeignKey("ProjectId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectJobDetail", "ProjectJobDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectJobDetail", "ProjectJobDetail")
                         .WithMany()
                         .HasForeignKey("ProjectJobId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectCommunication", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectCommunication", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectCommunicationAttachment", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectCommunicationAttachment", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectCommunication", "ProjectCommunication")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectCommunication", "ProjectCommunication")
                         .WithMany()
                         .HasForeignKey("PCId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectPhaseDetails", "ProjectPhaseDetails")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectPhaseDetails", "ProjectPhaseDetails")
                         .WithMany()
                         .HasForeignKey("ProjectPhaseDetailsId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectHiringControl", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectIndicatorQuestions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
-                        .WithMany()
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.UserDetails", "UserDetails")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectHiringRequestDetail", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLineDetail")
-                        .WithMany()
-                        .HasForeignKey("BudgetLineId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
-                        .WithMany()
-                        .HasForeignKey("CurrencyId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
-                        .WithMany()
-                        .HasForeignKey("EmployeeID");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.JobGrade", "JobGrade")
-                        .WithMany()
-                        .HasForeignKey("GradeId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
-                        .WithMany()
-                        .HasForeignKey("OfficeId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProfessionDetails", "ProfessionDetails")
-                        .WithMany()
-                        .HasForeignKey("ProfessionId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
-                        .WithMany()
-                        .HasForeignKey("ProjectId");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectIndicatorQuestions", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectIndicators", "ProjectIndicators")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectIndicators", "ProjectIndicators")
                         .WithMany("ProjectIndicatorQuestions")
                         .HasForeignKey("ProjectIndicatorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectIndicators", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectIndicators", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectJobDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectJobDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectLogisticsControl", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectMonitoringIndicatorDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
-                        .WithMany()
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.UserDetails", "UserDetails")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectMonitoringIndicatorDetail", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectIndicators", "ProjectIndicators")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectIndicators", "ProjectIndicators")
                         .WithMany()
                         .HasForeignKey("ProjectIndicatorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectMonitoringReviewDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectMonitoringReviewDetail")
                         .WithMany("ProjectMonitoringIndicatorDetail")
                         .HasForeignKey("ProjectMonitoringReviewId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectMonitoringIndicatorQuestions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectMonitoringIndicatorQuestions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectMonitoringIndicatorDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectMonitoringIndicatorDetail")
                         .WithMany("ProjectMonitoringIndicatorQuestions")
                         .HasForeignKey("MonitoringIndicatorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectIndicatorQuestions", "ProjectIndicatorQuestions")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectIndicatorQuestions", "ProjectIndicatorQuestions")
                         .WithMany()
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectMonitoringReviewDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectMonitoringReviewDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectOpportunityControl", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectOtherDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
-                        .WithMany()
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.UserDetails", "UserDetails")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectOtherDetail", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectPhaseDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectPhaseDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectPhaseTime", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectPhaseTime", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectPhaseDetails", "ProjectPhaseDetails")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectPhaseDetails", "ProjectPhaseDetails")
                         .WithMany()
                         .HasForeignKey("ProjectPhaseDetailsId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectProgram", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectProgram", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProgramDetail", "ProgramDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProgramDetail", "ProgramDetail")
                         .WithMany()
                         .HasForeignKey("ProgramId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectProposalDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectProposalDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectSector", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProjectSector", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.SectorDetails", "SectorDetails")
+                    b.HasOne("DataAccess.DbEntities.Project.SectorDetails", "SectorDetails")
                         .WithMany()
                         .HasForeignKey("SectorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.ProvinceMultiSelect", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.ProvinceMultiSelect", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProvinceDetails", "ProvinceDetails")
+                    b.HasOne("DataAccess.DbEntities.ProvinceDetails", "ProvinceDetails")
                         .WithMany()
                         .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.PurposeofInitiativeCriteria", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.PurposeofInitiativeCriteria", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.RiskCriteriaDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.RiskCriteriaDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.SectorDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.SectorDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.SecurityConsiderationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.SecurityConsiderationDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.SecurityConsiderationMultiSelect", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.SecurityConsiderationMultiSelect", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.SecurityConsiderationDetail", "SecurityConsiderationDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.SecurityConsiderationDetail", "SecurityConsiderationDetail")
                         .WithMany()
                         .HasForeignKey("SecurityConsiderationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.SecurityDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.SecurityDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.StrengthConsiderationDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.StrengthConsiderationDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.TargetBeneficiaryDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.TargetBeneficiaryDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Project.WinProjectDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Project.WinProjectDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ProjectBudgetLine", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ProjectBudgetLine", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.BudgetLineType", "BudgetLineType")
+                    b.HasOne("DataAccess.DbEntities.BudgetLineType", "BudgetLineType")
                         .WithMany()
                         .HasForeignKey("BudgetLineTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProjectDetails", "ProjectDetails")
+                    b.HasOne("DataAccess.DbEntities.ProjectDetails", "ProjectDetails")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ProjectDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ProjectDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.ProvinceDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.ProvinceDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CountryDetails", "CountryDetails")
+                    b.HasOne("DataAccess.DbEntities.CountryDetails", "CountryDetails")
                         .WithMany()
                         .HasForeignKey("CountryId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.QualificationDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.QualificationDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.RatingBasedCriteria", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.RatingBasedCriteria", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
+                    b.HasOne("DataAccess.DbEntities.InterviewDetails", "InterviewDetails")
                         .WithMany("RatingBasedCriteriaList")
                         .HasForeignKey("InterviewDetailsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.RolePermissions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.RolePermissions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ApplicationPages", "ApplicationPages")
+                    b.HasOne("DataAccess.DbEntities.ApplicationPages", "ApplicationPages")
                         .WithMany()
                         .HasForeignKey("PageId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.SalaryHeadDetails", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.SalaryHeadDetails", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.SalaryTaxReportContent", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.SalaryTaxReportContent", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.InventoryItemType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.InventoryItemType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.ItemPurchaseDocument", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.ItemPurchaseDocument", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemPurchase", "ItemPurchase")
+                    b.HasOne("DataAccess.DbEntities.Store.StoreItemPurchase", "ItemPurchase")
                         .WithMany()
                         .HasForeignKey("Purchase");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.MotorFuel", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.MotorFuel", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseGenerator", "PurchaseGenerator")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseGenerator", "PurchaseGenerator")
                         .WithMany()
                         .HasForeignKey("Generator")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StorePurchaseOrder", "PurchaseOrder")
+                    b.HasOne("DataAccess.DbEntities.Store.StorePurchaseOrder", "PurchaseOrder")
                         .WithMany()
                         .HasForeignKey("Order");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
                         .WithMany()
                         .HasForeignKey("Vehicle")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.MotorMaintenance", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.MotorMaintenance", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseGenerator", "PurchaseGenerator")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseGenerator", "PurchaseGenerator")
                         .WithMany()
                         .HasForeignKey("Generator")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StorePurchaseOrder", "StorePurchaseOrder")
+                    b.HasOne("DataAccess.DbEntities.Store.StorePurchaseOrder", "StorePurchaseOrder")
                         .WithMany()
                         .HasForeignKey("Order");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
                         .WithMany()
                         .HasForeignKey("Vehicle")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.MotorSparePart", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.MotorSparePart", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseGenerator", "PurchaseGenerator")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseGenerator", "PurchaseGenerator")
                         .WithMany()
                         .HasForeignKey("Generator")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StorePurchaseOrder", "StorePurchaseOrder")
+                    b.HasOne("DataAccess.DbEntities.Store.StorePurchaseOrder", "StorePurchaseOrder")
                         .WithMany()
                         .HasForeignKey("Order");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
                         .WithMany()
                         .HasForeignKey("Vehicle")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.PaymentTypes", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.PaymentTypes", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseGenerator", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.PurchaseGenerator", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemPurchase", "ItemPurchase")
+                    b.HasOne("DataAccess.DbEntities.Store.StoreItemPurchase", "ItemPurchase")
                         .WithMany()
                         .HasForeignKey("Purchase")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseUnitType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.PurchaseUnitType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseVehicle", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.PurchaseVehicle", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemPurchase", "ItemPurchase")
+                    b.HasOne("DataAccess.DbEntities.Store.StoreItemPurchase", "ItemPurchase")
                         .WithMany()
                         .HasForeignKey("Purchase");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.ReceiptType", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.ReceiptType", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StatusAtTimeOfIssue", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.StatusAtTimeOfIssue", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreInventory", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.StoreItemGroup", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartCreditAccountDetails")
-                        .WithMany()
-                        .HasForeignKey("InventoryCreditAccount");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartDebitAccountDetails")
-                        .WithMany()
-                        .HasForeignKey("InventoryDebitAccount")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreInventoryItem", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemGroup", "StoreItemGroup")
-                        .WithMany()
-                        .HasForeignKey("ItemGroupId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreInventory", "Inventory")
-                        .WithMany("InventoryItems")
-                        .HasForeignKey("ItemInventory");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.InventoryItemType", "ItemTypes")
-                        .WithMany()
-                        .HasForeignKey("ItemType")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemGroup", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreInventory", "StoreInventory")
+                    b.HasOne("DataAccess.DbEntities.StoreInventory", "StoreInventory")
                         .WithMany()
                         .HasForeignKey("InventoryId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemPurchase", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.StoreItemPurchase", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("Currency")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreInventoryItem", "StoreInventoryItem")
+                    b.HasOne("DataAccess.DbEntities.StoreInventoryItem", "StoreInventoryItem")
                         .WithMany("StoreItemPurchases")
                         .HasForeignKey("InventoryItem")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProjectDetails", "ProjectDetails")
+                    b.HasOne("DataAccess.DbEntities.ProjectDetails", "ProjectDetails")
                         .WithMany()
                         .HasForeignKey("ProjectId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("PurchasedById")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.ReceiptType", "ReceiptType")
+                    b.HasOne("DataAccess.DbEntities.Store.ReceiptType", "ReceiptType")
                         .WithMany()
                         .HasForeignKey("ReceiptTypeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StatusAtTimeOfIssue", "StatusAtTimeOfIssue")
+                    b.HasOne("DataAccess.DbEntities.Store.StatusAtTimeOfIssue", "StatusAtTimeOfIssue")
                         .WithMany()
                         .HasForeignKey("Status");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseUnitType", "PurchaseUnitType")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseUnitType", "PurchaseUnitType")
                         .WithMany()
                         .HasForeignKey("UnitType")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.VoucherDetail", "VoucherDetail")
+                    b.HasOne("DataAccess.DbEntities.VoucherDetail", "VoucherDetail")
                         .WithMany()
                         .HasForeignKey("VoucherId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.StorePurchaseOrder", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.StorePurchaseOrder", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreInventoryItem", "StoreInventoryItem")
+                    b.HasOne("DataAccess.DbEntities.StoreInventoryItem", "StoreInventoryItem")
                         .WithMany()
                         .HasForeignKey("InventoryItem");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
+                    b.HasOne("DataAccess.DbEntities.EmployeeDetail", "EmployeeDetail")
                         .WithMany()
                         .HasForeignKey("IssuedToEmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.StoreItemPurchase", "StoreItemPurchase")
+                    b.HasOne("DataAccess.DbEntities.Store.StoreItemPurchase", "StoreItemPurchase")
                         .WithMany("PurchaseOrders")
                         .HasForeignKey("Purchase");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.VehicleLocation", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.VehicleLocation", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
                         .WithMany()
                         .HasForeignKey("Vehicle")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.Store.VehicleMileage", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.Store.VehicleMileage", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
+                    b.HasOne("DataAccess.DbEntities.Store.PurchaseVehicle", "PurchaseVehicle")
                         .WithMany()
                         .HasForeignKey("Vehicle")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.StoreSourceCodeDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.StoreInventory", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CodeType", "CodeTypes")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartCreditAccountDetails")
+                        .WithMany()
+                        .HasForeignKey("InventoryCreditAccount");
+
+                    b.HasOne("DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartDebitAccountDetails")
+                        .WithMany()
+                        .HasForeignKey("InventoryDebitAccount")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.StoreInventoryItem", b =>
+                {
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("DataAccess.DbEntities.Store.StoreItemGroup", "StoreItemGroup")
+                        .WithMany()
+                        .HasForeignKey("ItemGroupId");
+
+                    b.HasOne("DataAccess.DbEntities.StoreInventory", "Inventory")
+                        .WithMany("InventoryItems")
+                        .HasForeignKey("ItemInventory");
+
+                    b.HasOne("DataAccess.DbEntities.Store.InventoryItemType", "ItemTypes")
+                        .WithMany()
+                        .HasForeignKey("ItemType")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("DataAccess.DbEntities.StoreSourceCodeDetail", b =>
+                {
+                    b.HasOne("DataAccess.DbEntities.CodeType", "CodeTypes")
                         .WithMany()
                         .HasForeignKey("CodeTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.StrongandWeakPoints", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.StrongandWeakPoints", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.TaskMaster", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.TaskMaster", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.ProjectDetails", "ProjectDetailss")
+                    b.HasOne("DataAccess.DbEntities.ProjectDetails", "ProjectDetailss")
                         .WithMany()
                         .HasForeignKey("ProjectId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.TechnicalQuestion", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.TechnicalQuestion", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.UserDetailOffices", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.UserDetailOffices", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.VoucherDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.VoucherDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLineDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLineDetail")
                         .WithMany()
                         .HasForeignKey("BudgetLineId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetail")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetail")
                         .WithMany()
                         .HasForeignKey("CurrencyId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetails")
+                    b.HasOne("DataAccess.DbEntities.FinancialYearDetail", "FinancialYearDetails")
                         .WithMany()
                         .HasForeignKey("FinancialYearId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.JournalDetail", "JournalDetails")
+                    b.HasOne("DataAccess.DbEntities.JournalDetail", "JournalDetails")
                         .WithMany("VoucherDetails")
                         .HasForeignKey("JournalCode");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
                         .WithMany()
                         .HasForeignKey("OfficeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.VoucherType", "VoucherTypes")
+                    b.HasOne("DataAccess.DbEntities.VoucherType", "VoucherTypes")
                         .WithMany()
                         .HasForeignKey("VoucherTypeId");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.VoucherDocumentDetail", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.VoucherDocumentDetail", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.DocumentFileDetail", "DocumentFileDetail")
-                        .WithMany()
-                        .HasForeignKey("DocumentFileId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.VoucherDetail", "VoucherDetails")
+                    b.HasOne("DataAccess.DbEntities.VoucherDetail", "VoucherDetails")
                         .WithMany()
                         .HasForeignKey("VoucherNo")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.DataAccess.DbEntities.VoucherTransactions", b =>
+            modelBuilder.Entity("DataAccess.DbEntities.VoucherTransactions", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLineDetail")
-                        .WithMany("VoucherTransactions")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectBudgetLineDetail", "ProjectBudgetLineDetail")
+                        .WithMany()
                         .HasForeignKey("BudgetLineId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartOfAccountDetail")
+                    b.HasOne("DataAccess.DbEntities.AccountingNew.ChartOfAccountNew", "ChartOfAccountDetail")
                         .WithMany("VoucherTransactionsList")
                         .HasForeignKey("ChartOfAccountNewId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "CreatedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
+                    b.HasOne("DataAccess.DbEntities.CurrencyDetails", "CurrencyDetails")
                         .WithMany()
                         .HasForeignKey("CurrencyId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectJobDetail", "ProjectJobDetail")
-                        .WithMany()
-                        .HasForeignKey("JobId");
-
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser", "ModifiedBy")
+                    b.HasOne("DataAccess.DbEntities.AppUser", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
+                    b.HasOne("DataAccess.DbEntities.OfficeDetail", "OfficeDetails")
                         .WithMany()
                         .HasForeignKey("OfficeId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
+                    b.HasOne("DataAccess.DbEntities.Project.ProjectDetail", "ProjectDetail")
                         .WithMany()
                         .HasForeignKey("ProjectId");
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.VoucherDetail", "VoucherDetails")
+                    b.HasOne("DataAccess.DbEntities.VoucherDetail", "VoucherDetails")
                         .WithMany("VoucherTransactionDetails")
                         .HasForeignKey("VoucherNo");
                 });
@@ -16156,7 +13178,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser")
+                    b.HasOne("DataAccess.DbEntities.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -16164,7 +13186,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser")
+                    b.HasOne("DataAccess.DbEntities.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -16177,7 +13199,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser")
+                    b.HasOne("DataAccess.DbEntities.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -16185,7 +13207,7 @@ namespace HumanitarianAssistance.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("HumanitarianAssistance.DataAccess.DbEntities.AppUser")
+                    b.HasOne("DataAccess.DbEntities.AppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
