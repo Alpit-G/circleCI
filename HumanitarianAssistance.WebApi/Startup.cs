@@ -1,7 +1,9 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using HumanitarianAssistance.Common.ApplicationSettings;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.DataAccess.Data;
@@ -16,6 +18,7 @@ using HumanitarianAssistance.Service.interfaces.AccountingNew;
 using HumanitarianAssistance.Service.interfaces.Marketing;
 using HumanitarianAssistance.Service.interfaces.ProjectManagement;
 using HumanitarianAssistance.WebApi.Auth;
+using HumanitarianAssistance.WebApi.ChaHub;
 using HumanitarianAssistance.WebApi.Extensions;
 using HumanitarianAssistance.WebApi.Filter;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -28,6 +31,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
@@ -266,8 +270,11 @@ namespace HumanitarianAssistance.WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserManager<AppUser> _userManager, RoleManager<IdentityRole> _roleManager, ILogger<DbInitializer> logger)
         {
+            // update database
+            UpdateDatabase(app, _userManager, _roleManager, logger).Wait();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -282,6 +289,22 @@ namespace HumanitarianAssistance.WebApi
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseCors(DefaultCorsPolicyName);
+            app.UseAuthentication();
+
+            // swagger config
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
+            // signal-r config
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ProjectChatHub>("/chathub");
+            });
 
             app.UseMvc(routes =>
             {
@@ -303,5 +326,47 @@ namespace HumanitarianAssistance.WebApi
                 }
             });
         }
+
+        //2011
+        private static async Task UpdateDatabase(IApplicationBuilder app, UserManager<AppUser> um, RoleManager<IdentityRole> rm, ILogger<DbInitializer> logger)
+        {
+            using (var serviceScope = app.ApplicationServices
+              .GetRequiredService<IServiceScopeFactory>()
+              .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>())
+                {
+                    context.Database.Migrate();
+
+                    if (!context.Users.Any())
+                    {
+                        await DbInitializer.CreateDefaultUserAndRoleForApplication(um, rm, context, logger);
+                    }
+
+                    // check if Contract Content present or not
+                    if (!context.ContractTypeContent.Any())
+                    {
+                        await DbInitializer.AddContractClauses(context);
+                    }
+
+                    // check if JobGrade present or not
+                    if (!context.JobGrade.Any())
+                    {
+                        await DbInitializer.AddJobGrades(context);
+                    }
+
+                    // check if Categories present or not
+                    if (!context.Categories.Any())
+                    {
+                        await DbInitializer.AddMarketingCategory(context);
+                    }
+                    if (!context.ActivityStatusDetail.Any())
+                    {
+                        await DbInitializer.AddActivityStatus(context);
+                    }
+                }
+            }
+        }
+
     }
 }

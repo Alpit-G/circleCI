@@ -21,10 +21,10 @@ jobs:
           command: dotnet --info
       - run: 
           name: dotnet restore
-          command: dotnet restore HumanitarianAssistance.WebApi/HumanitarianAssistance.WebApi.csproj 
+          command: dotnet restore 
       - run: 
           name: dotnet clean
-          command: dotnet clean HumanitarianAssistance.WebApi/HumanitarianAssistance.WebApi.csproj 
+          command: dotnet clean  
       - run: 
           name: dotnet build
           command: dotnet build HumanitarianAssistance.WebApi/HumanitarianAssistance.WebApi.csproj 
