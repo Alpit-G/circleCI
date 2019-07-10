@@ -14,3 +14,5 @@ HumanitarianAssistance.Service/obj/Debug/netcoreapp2.2/HumanitarianAssistance.Se
 HumanitarianAssistance.DataAccess/obj/Debug/netcoreapp2.2/HumanitarianAssistance.DataAccess.csprojAssemblyReference.cache
 HumanitarianAssistance.DataAccess/obj/Debug/netcoreapp2.2/HumanitarianAssistance.DataAccess.csproj.CoreCompileInputs.cache
 HumanitarianAssistance.DataAccess/obj/Debug/netcoreapp2.2/HumanitarianAssistance.DataAccess.AssemblyInfo.cs
+/HumanitarianAssistance.Common/obj
+/HumanitarianAssistance.Common/bin
