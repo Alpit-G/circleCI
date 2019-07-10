@@ -1,8 +1,0 @@
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.Common\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Common.deps.json
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.Common\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Common.dll
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.Common\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Common.pdb
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.csproj.CoreCompileInputs.cache
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.AssemblyInfoInputs.cache
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.AssemblyInfo.cs
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.dll
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.pdb

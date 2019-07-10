@@ -1,9 +1,0 @@
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\bin\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.deps.json
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\bin\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.dll
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\bin\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.pdb
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.csprojAssemblyReference.cache
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.csproj.CoreCompileInputs.cache
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.AssemblyInfoInputs.cache
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.AssemblyInfo.cs
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.dll
-D:\Alpit_G\Projects\Humanitarian\github-alpit-g\circleCI\HumanitarianAssistance.ViewModels\obj\Release\netcoreapp2.2\HumanitarianAssistance.ViewModels.pdb
