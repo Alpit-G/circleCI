@@ -6,11 +6,15 @@
 
 /HumanitarianAssistance.Common/bin
 /HumanitarianAssistance.Common/obj
+
 /HumanitarianAssistance.DataAccess/bin
 /HumanitarianAssistance.DataAccess/obj
+
 /HumanitarianAssistance.Service/bin
 /HumanitarianAssistance.Service/obj
+
 /HumanitarianAssistance.ViewModels/bin
 /HumanitarianAssistance.ViewModels/obj
+
 /HumanitarianAssistance.WebApi/bin
 /HumanitarianAssistance.WebApi/obj
