@@ -135,6 +135,7 @@ namespace HumanitarianAssistance.WebApi
             services.AddTransient<IProjectPeopleService, ProjectPeopleService>();
             services.AddTransient<IFileManagement, FileManagementService>();
             services.AddTransient<IHiringRequestService, HiringRequestService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             // configure JWT
             var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
@@ -217,7 +218,6 @@ namespace HumanitarianAssistance.WebApi
                     p.WithOrigins(DefaultCorsPolicyUrl).AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials();
                 });
             });
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddMvc().AddJsonOptions(c =>
                         {
